@@ -58,6 +58,7 @@
   }
   .textcard.alt .num{background:linear-gradient(135deg,var(--accent2),#0891b2)}
   .textcard.b3 .num{background:linear-gradient(135deg,#e11d48,#f43f5e);font-size:1.15rem}
+  .textcard.f .num{background:linear-gradient(135deg,#b45309,#d97706);font-size:1.15rem}
   .textcard.all .num{background:linear-gradient(135deg,#7c3aed,#a855f7)}
   .textcard .body h3{margin:0 0 3px;font-size:1.08rem}
   .textcard .body p{margin:0;color:var(--muted);font-size:.86rem}
@@ -175,11 +176,19 @@
           </div>
           <div class="chev">›</div>
         </div>
+        <div class="textcard f" onclick="chooseText('frydman')">
+          <div class="num">5.2.1</div>
+          <div class="body">
+            <h3>Frydman — Efectividad y productividad comercial</h3>
+            <p>Caps. 1, 9 y 13 · 38 preguntas</p>
+          </div>
+          <div class="chev">›</div>
+        </div>
         <div class="textcard all" onclick="chooseText('todos')">
           <div class="num">∑</div>
           <div class="body">
             <h3>Todos los textos</h3>
-            <p>Repaso integral combinado · 107 preguntas</p>
+            <p>Repaso integral combinado · 145 preguntas</p>
           </div>
           <div class="chev">›</div>
         </div>
@@ -270,7 +279,8 @@ const TEXT_INFO = {
   hair:     {title:'Hair et al. — Pronósticos y presupuestos', sub:'Administración de ventas, Cap. 5'},
   lavolpe:  {title:'Lavolpe et al. — El presupuesto de ventas', sub:'Presupuestos y gestión, Cap. 3'},
   bilinkis: {title:'Bilinkis — Modelar para emprender', sub:'Artículos de entrepreneurship (2009)'},
-  todos:    {title:'Todos los textos', sub:'Repaso integral · Unidad 5 (Planeamiento Comercial)'}
+  frydman:  {title:'Frydman — Efectividad y productividad comercial', sub:'Caps. 1, 9 y 13 (2012)'},
+  todos:    {title:'Todos los textos', sub:'Repaso integral · Unidad 5'}
 };
 
 /* ===================== BANCO DE PREGUNTAS =====================
@@ -284,7 +294,7 @@ const BANK = [
 {n:1,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Caso de apertura (Hopkins)',
  q:`Según el caso de apertura, ¿cuál de las siguientes afirmaciones (a-d) sobre el "túnel de ventas" es correcta?`,
  opts:[
-  `En la etapa 2 los prospectos ya han identificado a Morgan Holland como su proveedor preferido y, a partir de allí, ninguno debería salir del túnel.`,
+  `En la etapa 2 los prospectos ya han identificado a Morgan Holland como su proveedor preferido y, a partir de ese punto, ningún prospecto debería salir del túnel de ventas que se estrecha cada vez más.`,
   `Los prospectos de la etapa 2 han expresado interés, tienen una necesidad identificada y un marco de tiempo para resolverla, lo que le permite a Hopkins predecir a quiénes necesitará en el equipo.`,
   `En la etapa 4 se cierra el trato y recién allí Hopkins comienza a identificar a quiénes necesitará para el proyecto.`,
   `El túnel de ventas se ensancha a medida que los prospectos avanzan de etapa, porque aumenta el número de involucrados.`],
@@ -304,7 +314,7 @@ const BANK = [
 {n:3,text:'hair',express:true,type:'mc',ask:'incorrecta',src:'Hair et al. · Importancia del pronóstico',
  q:`Según el texto, ¿cuál de las siguientes afirmaciones (a-d) sobre la importancia de los pronósticos es incorrecta?`,
  opts:[
-  `Sin un pronóstico a corto plazo, los gerentes carecen de una base lógica para asignar las cargas de trabajo o decidir dónde concentrar el esfuerzo de ventas.`,
+  `Sin un pronóstico a corto plazo, los gerentes de ventas carecen de una base lógica para asignar las cargas de trabajo o para decidir dónde concentrar el esfuerzo de ventas del equipo.`,
   `El pronóstico a largo plazo permite estimar cuántos vendedores necesitará la empresa y a cuántos promover a gerentes de ventas.`,
   `La necesidad misma de elaborar un pronóstico reconoce que existe incertidumbre en el proceso.`,
   `Como el arte y la ciencia de pronosticar son imperfectos, cada pronóstico puede llegar a ser completamente exacto sólo si se emplean técnicas cuantitativas avanzadas.`],
@@ -314,7 +324,7 @@ const BANK = [
 {n:4,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Conceptos base',
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre pronóstico, potencial de mercado y potencial de ventas es correcta?`,
  opts:[
-  `El potencial de mercado es la porción del potencial de ventas que una empresa espera razonablemente obtener.`,
+  `El potencial de mercado es la porción del potencial de ventas que una entre varias empresas competidoras espera razonablemente obtener dentro de un mercado determinado y específico.`,
   `El potencial de ventas es la estimación cuantitativa de las ventas totales de un producto dentro de un mercado, considerando a todas las empresas competidoras.`,
   `El pronóstico de ventas es una predicción del futuro potencial de mercado para un producto específico y establece las expectativas de ventas para un periodo determinado.`,
   `El potencial de mercado se expresa únicamente en unidades monetarias y el potencial de ventas únicamente en unidades físicas.`],
@@ -346,7 +356,7 @@ const BANK = [
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el proceso de V y PO y las contingencias es correcta?`,
  opts:[
   `El proceso de V y PO ajusta los parámetros de planeación (compras, programas de mano de obra, requerimientos de capital) con base en el pronóstico.`,
-  `Una contingencia se refiere a acontecimientos más probables que los basados directamente en el pronóstico y que, por lo tanto, deben priorizarse.`,
+  `Una contingencia se refiere a acontecimientos más probables que los basados directamente en el pronóstico y que, por lo tanto, deben priorizarse en el plan de ventas resultante.`,
   `En el proceso de V y PO interviene sólo el equipo de ventas, sin participación de marketing, producción o finanzas.`,
   `El proceso parte de un pronóstico ya cerrado por la dirección y no admite ajustes de los gerentes funcionales.`],
  correct:'a',
@@ -368,14 +378,14 @@ const BANK = [
   `Los compradores industriales suelen ser cooperativos, con índices de respuesta del 50% o más, mientras que en los consumidores un índice cercano al 33% ya sería bueno.`,
   `Los consumidores suelen ser más cooperativos que los compradores industriales, alcanzando índices del 50% o más.`,
   `Cuando una muestra aleatoria representativa es imposible o impráctica, las empresas nunca deben recurrir a técnicas de muestreo no probabilísticas.`,
-  `Al usar muestras no probabilísticas no es necesario examinar los perfiles de los participantes, porque el índice de respuesta garantiza la representatividad.`],
+  `Al usar muestras no probabilísticas no es necesario examinar los perfiles de los participantes, porque el alto índice de respuesta obtenido garantiza por sí solo la representatividad.`],
  correct:'a',
  just:`b invierte la cooperación; ante la imposibilidad de muestra aleatoria sí se usan muestras no probabilísticas (c falsa), pero hay que examinar los perfiles (d falsa).`},
 
 {n:11,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Pronóstico ingenuo',
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el pronóstico ingenuo es correcta?`,
  opts:[
-  `El pronóstico ingenuo supone que las ventas del siguiente periodo serán el promedio de los últimos tres periodos.`,
+  `El pronóstico ingenuo supone que las ventas del siguiente periodo serán iguales al promedio ponderado de los últimos tres periodos de ventas registrados.`,
   `El pronóstico ingenuo es el método de juicio más sencillo y supone que las ventas del siguiente periodo serán iguales a las del periodo anterior.`,
   `El pronóstico ingenuo es un método cuantitativo de series de tiempo basado en la ponderación de datos recientes.`,
   `El pronóstico ingenuo es más exacto que cualquier otro método de juicio.`],
@@ -387,7 +397,7 @@ const BANK = [
  opts:[
   `En industrias caracterizadas por cambios rápidos puede ser el mejor método disponible, por ser flexible y rápido.`,
   `Una desventaja es que se basa en opiniones y no en hechos, por lo que puede ser poco científico.`,
-  `Otra desventaja es que los altos directivos a menudo no están en contacto con los desarrollos de los mercados locales.`,
+  `Otra desventaja es que los altos directivos a menudo no se encuentran en contacto directo con los desarrollos y particularidades de los mercados locales de la empresa.`,
   `Al reunir a los gerentes clave, es un método cuantitativo cuyo consenso garantiza mayor exactitud que cualquier otro método.`],
  correct:'d',
  just:`Es un método no cuantitativo (de juicio) y el consenso no "garantiza" exactitud.`},
@@ -408,7 +418,7 @@ const BANK = [
   `Son particularmente útiles para productos industriales, porque los clientes son identificables, de número reducido y pueden estimar sus requerimientos con anticipación al pedido.`,
   `Una ventaja es que las intenciones que los clientes declaran siempre coinciden con lo que finalmente compran.`,
   `Sólo pueden aplicarse cuando existen amplios datos históricos de ventas del producto.`,
-  `Las intenciones de compra de productos industriales están libres de efectos externos, porque su demanda es autónoma respecto de la de bienes de consumo.`],
+  `Las intenciones de compra de productos industriales están libres de efectos externos y de sesgos, porque su demanda es totalmente autónoma respecto de la demanda de bienes de consumo.`],
  correct:'a',
  just:`Lo declarado y lo comprado pueden diferir (b falsa); son "base viable cuando no existen datos históricos" (c falsa); la demanda industrial es derivada (d falsa).`},
 
@@ -416,8 +426,8 @@ const BANK = [
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el mercado de prueba y la prueba de laboratorio es incorrecta?`,
  opts:[
   `La estimación de ventas de un producto nuevo es el tipo de pronóstico más difícil, porque no existen datos históricos disponibles.`,
-  `El mercado de prueba es un método popular para bienes empacados de consumo, similar a un ensayo general en un área de mercado limitada.`,
-  `Entre sus críticas están que se lleva mucho tiempo, es costoso y revela información a los competidores.`,
+  `El mercado de prueba es un método popular de pronóstico para los bienes empacados de consumo, similar a un ensayo general con vestuario realizado en un área de mercado limitada.`,
+  `Entre las críticas al mercado de prueba están que se lleva mucho tiempo, es costoso y revela información a los competidores.`,
   `La prueba de laboratorio se reserva exclusivamente para productos industriales de demanda derivada, ya que resulta más costosa y lenta que el mercado de prueba tradicional.`],
  correct:'d',
  just:`La prueba de laboratorio ofrece mayor privacidad, menor costo y mayor rapidez, y no está reservada a productos industriales.`},
@@ -436,7 +446,7 @@ const BANK = [
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el promedio móvil y el suavizamiento exponencial es incorrecta?`,
  opts:[
   `El suavizamiento exponencial es un tipo de promedio móvil que asigna el mayor peso a los datos más recientes.`,
-  `El suavizamiento exponencial supera una desventaja del promedio móvil: que este último no es sensible a las tendencias más recientes.`,
+  `El suavizamiento exponencial supera una desventaja significativa del promedio móvil: que este último no resulta suficientemente sensible a las tendencias más recientes de los datos.`,
   `Cuando las ventas son particularmente volátiles, suele ser más exacto un promedio que contenga menos datos, como el móvil de tres años.`,
   `En empresas con crecimiento o disminución sostenida de las ventas, el promedio móvil suele ser más exacto que el promedio total.`],
  correct:'c',
@@ -451,7 +461,7 @@ const BANK = [
 {n:19,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Métodos causales/de asociación',
  q:`Según el texto, ¿cuál de las siguientes afirmaciones (a-d) sobre los métodos causales/de asociación es correcta?`,
  opts:[
-  `El análisis de correlación permite establecer relaciones de causa y efecto entre las variables.`,
+  `El análisis de correlación permite establecer relaciones directas de causa y efecto entre las distintas variables que intervienen en el comportamiento de las ventas.`,
   `En el análisis de tendencias como pronóstico cuantitativo, la variable dependiente son las ventas y la independiente es el tiempo.`,
   `La regresión múltiple utiliza una única variable independiente para predecir la variable dependiente.`,
   `El coeficiente de correlación mide la pendiente de la recta de regresión estimada por mínimos cuadrados.`],
@@ -517,7 +527,7 @@ const BANK = [
  q:`Según el modelo de elaboración de pronósticos de ventas (Figura 5.2), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
   `El pronóstico de ventas de la empresa puede desglosarse por producto, territorio, cliente y periodo.`,
-  `Los cambios demográficos y los desarrollos legales no se consideran factores relevantes del modelo.`,
+  `Los cambios demográficos, sociales y los desarrollos legales no se consideran factores relevantes dentro del modelo de elaboración de pronósticos.`,
   `El jurado de opinión ejecutivo no figura entre los recursos potenciales del modelo.`,
   `El modelo parte del pronóstico del producto y asciende hacia las condiciones económicas generales.`],
  correct:'a',
@@ -606,7 +616,7 @@ const BANK = [
   `La regresión simple describe la relación entre una variable independiente y una dependiente.`,
   `La regresión múltiple utiliza el tiempo como única variable independiente.`,
   `En el análisis de tendencias, la variable independiente son las ventas.`,
-  `El método de mínimos cuadrados traza la recta mediante inspección visual con una regla.`],
+  `El método de mínimos cuadrados traza la recta de regresión mediante una inspección visual realizada con una regla sobre el diagrama de dispersión.`],
  correct:'a',
  just:`La regresión múltiple usa varias variables independientes (b falsa); en tendencias la independiente es el tiempo (c falsa); mínimos cuadrados es un ajuste matemático (d falsa).`},
 
@@ -634,7 +644,7 @@ const BANK = [
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los horizontes del presupuesto de ventas es correcta?`,
  opts:[
   `Un presupuesto operativo para un año incluye por lo común un pronóstico para los próximos 12 meses.`,
-  `Un presupuesto a corto plazo abarca por lo común periodos de cinco años o más.`,
+  `Un presupuesto a corto plazo abarca por lo común periodos de cinco años o más, mientras que el de largo plazo cubre sólo unos pocos meses.`,
   `El presupuesto a largo plazo cubre periodos de seis meses o menos.`,
   `Las empresas deben tener presupuestos sólo a largo plazo, nunca a corto plazo.`],
  correct:'a',
@@ -654,7 +664,7 @@ const BANK = [
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la función de planeación del presupuesto es correcta?`,
  opts:[
   `El presupuesto proporciona una guía para la acción hacia el logro de los objetivos de la organización.`,
-  `Las tareas del departamento de ventas no llevan asociado ningún costo estimado.`,
+  `Las tareas del departamento de ventas no llevan asociado ningún costo estimado, ya que el presupuesto sólo contabiliza los ingresos por ventas del período.`,
   `El cálculo del presupuesto es un proceso ajeno a la planeación operativa.`,
   `El presupuesto se expresa en términos cualitativos, no financieros.`],
  correct:'a',
@@ -672,7 +682,7 @@ const BANK = [
   `Es un presupuesto parcial más, cuya elaboración depende de que estén definidos previamente el plan de producción y el plan de compras.`,
   `Constituye el punto de partida de todo el sistema presupuestario y funciona como la "llave" que pone en funcionamiento las distintas áreas.`,
   `Es relevante sólo para el área comercial; el resto elabora sus presupuestos con independencia del pronóstico de ventas.`,
-  `El plan de producción se arma primero y de él se deriva el pronóstico de ventas.`],
+  `El plan de producción y el plan de compras se arman primero y, una vez definidos, de ellos se deriva luego el pronóstico de ventas que dará origen al presupuesto.`],
  correct:'b',
  just:`a y d invierten la dependencia; el PV es el disparador de todo el sistema presupuestario.`},
 
@@ -684,7 +694,7 @@ const BANK = [
 {n:45,text:'lavolpe',express:true,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.1 Criterio de confección',
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre cómo debe confeccionarse el PV es incorrecta?`,
  opts:[
-  `Con criterio profesional y el mayor realismo posible.`,
+  `Con criterio profesional y el mayor realismo posible, dado que el PV opera como regulador de toda la actividad de la empresa.`,
   `Descartando por completo las manifestaciones de optimismo o de prudencia excesiva.`,
   `Cierto optimismo moderado es tolerable cuando la empresa enfrenta un contexto económico desfavorable.`,
   `Debe entenderse como la fiel expresión de lo que se espera vender.`],
@@ -694,7 +704,7 @@ const BANK = [
 {n:46,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.1 Ejemplo del plan de producción',
  q:`Una empresa tiene un plan de producción técnicamente impecable, pero su pronóstico de ventas fue mal confeccionado. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
-  `El plan de producción, por ser perfecto, neutraliza los errores del pronóstico de ventas.`,
+  `El plan de producción, por ser técnicamente perfecto, neutraliza y compensa por completo los errores cometidos en el pronóstico de ventas, evitando desvíos posteriores.`,
   `Las unidades a fabricar serán insuficientes o excesivas, ocasionando pérdidas de ventas y utilidades o costos por inmovilización de inventarios.`,
   `El error sólo afecta al área comercial, sin impacto en producción ni inventarios.`,
   `La calidad del plan de producción es independiente del pronóstico de ventas.`],
@@ -707,7 +717,7 @@ const BANK = [
   `Es una práctica muy discutible como medio motivacional.`,
   `Genera niveles de producción sobredimensionados, con sobrestock e inmovilización de capital.`,
   `Es una práctica recomendada por los autores siempre que se confeccione un presupuesto paralelo con los valores reales para el área productiva.`,
-  `Es de dudosa efectividad, pues existen otros medios para lograr los mismos objetivos sin distorsionar los presupuestos.`],
+  `Es de dudosa efectividad, pues existen otros medios más apropiados para lograr los mismos objetivos de motivación sin distorsionar los presupuestos ni la programación de la producción.`],
  correct:'c',
  just:`Los autores critican esta práctica; no la recomiendan (trampa del "siempre que…").`},
 
@@ -729,7 +739,7 @@ const BANK = [
 {n:50,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.3 Rubros que integran el PV',
  q:`¿Cuál de las siguientes afirmaciones (a-d) define correctamente qué operaciones integran el PV?`,
  opts:[
-  `Sólo las ventas de productos que generan un ingreso directo y habitual.`,
+  `Sólo las ventas de productos elaborados que generan un ingreso directo y habitual para la empresa, quedando excluida cualquier operación a título gratuito.`,
   `Todas las operaciones que, según la práctica habitual, implican una transferencia definitiva a título oneroso o gratuito de bienes o servicios a terceros.`,
   `Todas las operaciones que generan ingresos, tengan o no habitualidad.`,
   `Únicamente las transferencias a título oneroso, quedando excluidas las gratuitas.`],
@@ -761,7 +771,7 @@ const BANK = [
  opts:[
   `La venta de bienes de uso no integra el PV.`,
   `La venta de materias primas revendidas en el mismo estado no integra el PV.`,
-  `Los intereses por colocaciones financieras no integran el PV.`,
+  `Los intereses generados por colocaciones financieras de dinero no integran el PV, por carecer de habitualidad y ser ajenos a la acción de producir bienes para terceros.`,
   `Las bonificaciones por cantidad o promoción no integran el PV porque no generan ingresos directos.`],
  correct:'d',
  just:`Las bonificaciones SÍ integran el PV (aunque no generen ingreso directo).`},
@@ -784,7 +794,7 @@ const BANK = [
 {n:56,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.1 Productos a vender',
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los "productos a ser vendidos" es correcta?`,
  opts:[
-  `Incluyen los bienes de uso y las materias primas que la empresa pueda llegar a vender.`,
+  `Incluyen los bienes de uso y las materias primas que la empresa pueda llegar a vender a terceros en el mismo estado en que fueron adquiridas durante el período.`,
   `Comprenden los de línea, los nuevos lanzados, los nuevos a lanzar, los stocks discontinuados y los semielaborados y subproductos.`,
   `Se limitan exclusivamente a los productos de venta normal ya consolidados.`,
   `Excluyen los productos nuevos a lanzar durante el período.`],
@@ -796,7 +806,7 @@ const BANK = [
  opts:[
   `Se basa exclusivamente en la performance histórica.`,
   `Se basa en dos elementos: la performance histórica y la proyección futura de la misma.`,
-  `Se basa únicamente en la proyección futura, sin considerar el pasado.`,
+  `Se basa únicamente en la proyección futura de la demanda, sin considerar en absoluto la performance histórica del producto en períodos anteriores.`,
   `Se basa en la capacidad máxima de producción como único parámetro.`],
  correct:'b',
  just:`Los dos pilares son la performance histórica y la proyección futura.`},
@@ -804,7 +814,7 @@ const BANK = [
 {n:58,text:'lavolpe',express:false,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.4.2 Comportamientos (Cuadro 3.3)',
  q:`Con relación a los comportamientos históricos de la demanda (Cuadro 3.3), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
  opts:[
-  `La tendencia lineal u horizontal implica ventas estables a lo largo del tiempo.`,
+  `La tendencia lineal u horizontal implica ventas relativamente estables a lo largo del tiempo, sin crecimiento ni caída significativa período tras período.`,
   `La tendencia positiva implica un crecimiento sostenido período a período.`,
   `La estacionalidad sólo puede combinarse con tendencias positivas, nunca con negativas ni lineales.`,
   `La tendencia negativa implica una caída sostenida de las ventas.`],
@@ -817,7 +827,7 @@ const BANK = [
   `Debe proyectarse el comportamiento histórico tal cual, sin depurar situaciones atípicas.`,
   `Debe proyectarse el comportamiento histórico eliminando previamente las situaciones que no corresponden a un mercado normalizado.`,
   `La proyección sólo puede ser una extrapolación lineal, sin posibilidad de modificarse.`,
-  `Las situaciones atípicas deben conservarse porque reflejan el comportamiento natural del mercado.`],
+  `Las situaciones atípicas deben conservarse íntegramente en la serie, porque reflejan el comportamiento natural del mercado y aportan realismo a la proyección futura.`],
  correct:'b',
  just:`Regla de oro: proyectar sobre la base de un mercado normalizado, depurando los hechos atípicos.`},
 
@@ -825,7 +835,7 @@ const BANK = [
  q:`Al proyectar cantidades, ¿cuál de las siguientes situaciones (a-d) debe eliminarse de la serie histórica por NO corresponder a un mercado normalizado?`,
  opts:[
   `Un incremento imprevisto de la demanda originado en problemas internos de nuestro principal competidor.`,
-  `La venta habitual de los productos de línea en condiciones normales de mercado.`,
+  `La venta habitual de los productos de línea en condiciones normales de mercado, que constituye la base regular sobre la cual se proyecta la demanda futura.`,
   `El crecimiento explicado por una tendencia positiva genuina del producto.`,
   `La estacionalidad recurrente propia del producto.`],
  correct:'a',
@@ -834,7 +844,7 @@ const BANK = [
 {n:61,text:'lavolpe',express:true,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.4.2 Capacidad máxima',
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la capacidad máxima de producción es incorrecta?`,
  opts:[
-  `En principio, es el límite a los niveles de venta: no se puede vender más de lo que se puede producir.`,
+  `En principio, constituye el límite a los niveles de venta que la empresa puede presupuestar: no se puede vender más de lo que efectivamente se está en condiciones de producir.`,
   `En empresas en marcha, una proyección a un año normalmente no supera la capacidad disponible.`,
   `Superar la capacidad máxima nunca afecta los resultados, ya que los costos fijos permanecen constantes.`,
   `Cambiar de "rango" de producción sin un aprovechamiento significativo puede no ser conveniente.`],
@@ -857,7 +867,7 @@ const BANK = [
   `En posición monopólica o de líder de oligopolio, el precio es más controlable por la empresa.`,
   `En competencia perfecta, la empresa carece de fuerza para asegurar el precio durante el período.`,
   `En mercados altamente competitivos, la empresa fija libremente los precios sin atender a las "indicaciones" del mercado.`,
-  `En posición monopólica, la estimación del volumen no se ve tan afectada por variaciones de precios.`],
+  `En posición monopólica o de líder de oligopolio, la estimación del volumen de ventas no se ve tan fuertemente afectada por las variaciones que la empresa introduce en sus precios.`],
  correct:'c',
  just:`En competencia el precio lo fija el mercado; la empresa sólo prevé las "indicaciones", no fija libremente.`},
 
@@ -867,14 +877,14 @@ const BANK = [
   `Las modificaciones de precio por "indicaciones" del mercado alteran el monto de ventas por variación de precios, pero no las cantidades demandadas.`,
   `Las modificaciones de precio alteran las participaciones de las empresas competidoras entre sí.`,
   `La empresa puede asegurar su precio durante todo el período presupuestado.`,
-  `Hoy la influencia de la empresa sobre las cantidades demandadas es mayor que en el pasado, porque el precio se volvió plenamente controlable.`],
+  `Hoy la influencia de la empresa sobre las cantidades demandadas es mayor que en el pasado, porque el precio se volvió una variable plenamente controlable por cada competidor del mercado.`],
  correct:'a',
  just:`Todo el mercado se mueve en el mismo sentido: no se alteran las participaciones ni las cantidades, sólo el monto por variación de precios.`},
 
 {n:65,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.3 Precios brutos o netos',
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre precios brutos o netos de descuentos es correcta?`,
  opts:[
-  `Los precios brutos son la mejor alternativa para el control y la evaluación de resultados.`,
+  `Los precios brutos, considerados como un único renglón que resta del total, son la mejor alternativa para el control y la evaluación de resultados por líneas de producto.`,
   `Los precios netos de descuentos son la mejor alternativa para el control, porque facilitan el análisis del cumplimiento por líneas de producto.`,
   `Los descuentos pueden considerarse como un solo renglón que resta del total del presupuesto.`,
   `Trabajar con precios brutos es siempre válido, sin condición alguna.`],
@@ -885,7 +895,7 @@ const BANK = [
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los métodos de venta es correcta?`,
  opts:[
   `Son los mecanismos para promocionar, vender y distribuir; cuanto más agresivos, generan un efecto negativo en los resultados pero permiten suponer un mayor volumen de ventas.`,
-  `Cuanto más desarrollados y agresivos son, menor resulta su impacto sobre los costos, por lo que conviene intensificarlos sin análisis previo.`,
+  `Cuanto más desarrollados y agresivos son los métodos de venta, menor resulta su impacto sobre los costos y los resultados, por lo que conviene intensificarlos sin necesidad de un estudio económico previo.`,
   `No guardan ninguna relación con el volumen de ventas esperado.`,
   `Son siempre adoptados por libre voluntad de la empresa, nunca por presión de la competencia.`],
  correct:'a',
@@ -906,7 +916,7 @@ const BANK = [
  opts:[
   `La segmentación geográfica dificulta la certeza de la estimación.`,
   `Presupuestar por zonas da mayor certeza y facilita el control y la determinación de resultados por segmento geográfico.`,
-  `Todas las empresas deben definir la misma cantidad de zonas, sin importar su tamaño.`,
+  `Todas las empresas deben definir exactamente la misma cantidad de zonas comerciales, sin importar su tamaño ni su nivel de participación en el mercado.`,
   `Las exportaciones nunca se incluyen en el PV.`],
  correct:'b',
  just:`La segmentación geográfica aumenta la certeza y sirve al control por región.`},
@@ -924,7 +934,7 @@ const BANK = [
 {n:70,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.6 Canales',
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los canales de distribución es correcta?`,
  opts:[
-  `Un producto de consumo masivo de bajo precio unitario requiere una distribución más selectiva y menos canales.`,
+  `Un producto de consumo masivo de bajo precio unitario requiere una distribución más selectiva y una menor cantidad de canales que un producto industrial de alta tecnología.`,
   `La elección de canales considera la dispersión geográfica de los clientes, la frecuencia de compras y los volúmenes de las operaciones.`,
   `El tipo de producto no incide en la definición de los canales.`,
   `Un producto industrial de alta tecnología requiere la mayor cantidad posible de canales.`],
@@ -934,7 +944,7 @@ const BANK = [
 {n:71,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.6 Ejemplo de la mayonesa',
  q:`En el ejemplo del fabricante de mayonesa (a: directa domiciliaria; b: minoristas; c: distribuidores de minoristas; d: supermercados), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
-  `Se inclinará por la entrega directa domiciliaria, por el menor costo.`,
+  `Se inclinará por la entrega directa domiciliaria a cada consumidor, por ser la alternativa que garantiza el menor costo de distribución posible.`,
   `Se inclinará por las opciones c) y d), que garantizan un razonable equilibrio entre llegada y costo.`,
   `Elegirá las opciones que maximizan las ventas sin considerar el costo.`,
   `Descartará la venta a supermercados por su alto costo.`],
@@ -944,7 +954,7 @@ const BANK = [
 {n:72,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.5 Presentaciones del PV',
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre las distintas presentaciones del PV es correcta?`,
  opts:[
-  `Existe una única presentación válida, y cualquier otra apertura debe elaborarse como un presupuesto independiente.`,
+  `Existe una única presentación válida del PV, la que totaliza por líneas de venta, y cualquier otra apertura debe elaborarse necesariamente como un presupuesto independiente del principal.`,
   `Cada sector usa el PV con fines distintos y requiere aperturas diferentes, todas derivaciones válidas de un mismo presupuesto base.`,
   `Todos los sectores requieren exactamente los mismos datos y la misma presentación.`,
   `La presentación por cliente es la más recomendada con carácter general para todas las empresas.`],
@@ -956,7 +966,7 @@ const BANK = [
  opts:[
   `El Directorio usa una presentación por líneas de venta y grandes rubros, con fines de control.`,
   `Ventas y Marketing requieren, además, agrupamientos por zonas y canales de distribución.`,
-  `El área de Producción requiere una presentación en unidades totalizadas por líneas de producción.`,
+  `El área de Producción requiere una presentación expresada en unidades físicas totalizadas por líneas de producción, ya que su interés pasa por el componente físico del presupuesto.`,
   `La apertura por condición de venta es útil para Producción, ya que le permite determinar el uso de la capacidad productiva.`],
  correct:'d',
  just:`La apertura por condición de venta la usa Planeamiento y Control (proyección financiera); Producción usa la apertura por líneas de producción.`},
@@ -965,7 +975,7 @@ const BANK = [
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la presentación base (por líneas de venta) es correcta?`,
  opts:[
   `Constituye el único indicador del PV incorporado al "tablero de comando" del Directorio.`,
-  `Es la única presentación que necesitan también las gerencias de Ventas y Marketing.`,
+  `Es la única presentación que necesitan también las gerencias de Ventas y de Marketing, sin requerir ninguna apertura adicional por zonas ni por canales.`,
   `Agrupa los productos por proceso productivo, no por línea de venta.`,
   `No sirve para el seguimiento del cumplimiento presupuestario.`],
  correct:'a',
@@ -976,7 +986,7 @@ const BANK = [
  opts:[
   `Presentan información distinta y no comparable entre sí.`,
   `Son inversas: una corta primero por zona y dentro por canal; la otra primero por canal y dentro por zona.`,
-  `La presentación por zonas agrupa los productos por proceso productivo.`,
+  `La presentación por zonas agrupa los productos según su proceso productivo, del mismo modo en que lo hace la presentación destinada al área de Producción.`,
   `La presentación por canales elimina la apertura geográfica.`],
  correct:'b',
  just:`Son la misma información con el corte invertido: zona→canal (3.6) vs. canal→zona (3.7).`},
@@ -995,7 +1005,7 @@ const BANK = [
  q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la presentación por condición de venta (Cuadro 3.9) es correcta?`,
  opts:[
   `La utiliza Planeamiento y Control para la proyección financiera, con valores totales mensuales y apertura por condiciones de venta.`,
-  `La utiliza Producción para definir el uso de la capacidad productiva.`,
+  `La utiliza el área de Producción para definir el uso de la capacidad productiva y planificar los distintos procesos de fabricación del período presupuestario.`,
   `Se expresa exclusivamente en unidades físicas, sin valores.`,
   `No requiere distinguir plazos de cobro como 30, 60 o 90 días.`],
  correct:'a',
@@ -1025,7 +1035,7 @@ const BANK = [
 {n:81,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Modelar el negocio',
  q:`Según Bilinkis, ¿qué significa "modelar" un negocio?`,
  opts:[
-  `Para él, el Excel sirve únicamente para hacer las proyecciones financieras del emprendimiento.`,
+  `Para él, el Excel sirve únicamente para hacer las proyecciones financieras del emprendimiento y calcular por adelantado la rentabilidad esperada del negocio.`,
   `Es construir una representación simplificada pero funcional de cómo opera internamente el negocio, identificando sus variables y conectándolas entre sí.`,
   `Es adivinar con precisión la cifra de ventas del primer año.`,
   `Es una herramienta secundaria, menos relevante que dominar la contabilidad.`],
@@ -1050,7 +1060,7 @@ const BANK = [
 {n:84,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Tipos de variables',
  q:`Sobre los dos tipos de variables descompuestas, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
-  `Las variables de decisión son las que el emprendedor no controla y debe estimar.`,
+  `Las variables de decisión son aquellas que el emprendedor no controla directamente y que, por lo tanto, debe estimar mediante investigación de mercado.`,
   `Hay dos tipos: de decisión (que el emprendedor controla) y desconocidas pero estimables (más fáciles de estimar que la variable grande).`,
   `Todas las variables descompuestas son incontrolables y de estimación imposible.`,
   `Las variables desconocidas se controlan directamente fijando su valor.`],
@@ -1063,7 +1073,7 @@ const BANK = [
   `Ambas variables de decisión.`,
   `Una de decisión (piezas de correo) y una desconocida pero estimable (consumo promedio).`,
   `Ambas desconocidas pero estimables.`,
-  `Una desconocida (piezas de correo) y una de decisión (consumo promedio).`],
+  `Una variable desconocida pero estimable (las piezas de correo) y una variable de decisión bajo control del emprendedor (el consumo promedio por cliente).`],
  correct:'b',
  just:`Las piezas de correo las decide el emprendedor; el consumo promedio se estima.`},
 
@@ -1071,7 +1081,7 @@ const BANK = [
  q:`Sobre el paso del modelo de ventas al modelo completo del negocio, ¿cuál es correcta?`,
  opts:[
   `Una vez estimadas las ventas, esa cifra es el input para modelar en cadena pedidos, personal, logística y demás áreas.`,
-  `La estimación de ventas se usa sólo para el estado de resultados, sin vincularla a las áreas operativas.`,
+  `La estimación de ventas se usa sólo para armar el estado de resultados y el flujo de caja, sin vincularla con el dimensionamiento de las áreas operativas del negocio.`,
   `Cada área del negocio se modela de manera independiente de las ventas.`,
   `El ejercicio de descomposición se aplica exclusivamente a las ventas.`],
  correct:'a',
@@ -1081,7 +1091,7 @@ const BANK = [
  q:`Sobre la hoja de supuestos y la megaplanilla, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
   `La hoja de supuestos reúne todas las variables chiquitas del modelo en una pestaña aparte.`,
-  `La megaplanilla mantiene las proyecciones fijas: cambiar un supuesto no afecta al resto.`,
+  `La megaplanilla mantiene las proyecciones fijas mes a mes: al cambiar un supuesto, el resto del modelo permanece igual y debe recalcularse a mano.`,
   `Los supuestos se dispersan por todas las pestañas, sin centralizarse.`,
   `La megaplanilla modela un solo mes, no la proyección de los primeros años.`],
  correct:'a',
@@ -1090,7 +1100,7 @@ const BANK = [
 {n:88,text:'bilinkis',express:true,type:'mc',ask:'incorrecta',src:'Bilinkis · Art. I · Sistema de semáforo',
  q:`Sobre el sistema de semáforo (código de colores), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
  opts:[
-  `Verde = confianza alta: datos ciertos, decisiones propias o estimaciones validadas por investigación.`,
+  `Verde = confianza alta: datos conocidos con certeza, decisiones propias del emprendedor o estimaciones que fueron validadas mediante una investigación rigurosa.`,
   `Amarillo = confianza media: supuestos razonables pero con margen de error importante.`,
   `Rojo = confianza baja: estimaciones "al voleo", sin respaldo en datos reales.`,
   `El color refleja el impacto de la variable en los resultados, no el nivel de confianza en su estimación.`],
@@ -1102,7 +1112,7 @@ const BANK = [
  opts:[
   `Sólo las que son datos oficiales publicados.`,
   `Las que son una decisión propia del emprendedor o las que fueron validadas mediante investigación rigurosa.`,
-  `Las decisiones del emprendedor se pintan de rojo, por su incertidumbre.`,
+  `Las decisiones propias del emprendedor se pintan de rojo, ya que su alto nivel de incertidumbre impide conocerlas con la certeza necesaria.`,
   `El verde se reserva para variables que nunca fueron investigadas.`],
  correct:'b',
  just:`Verde = certeza: dato conocido, decisión propia o estimación ya validada.`},
@@ -1115,7 +1125,7 @@ const BANK = [
 {n:91,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Proceso de validación',
  q:`Una variable está en rojo ("no sé cuánto consume un cliente por mes"). Según el ejemplo del autor, el camino de validación es:`,
  opts:[
-  `Dejarla en rojo, porque las variables inciertas no pueden mejorarse.`,
+  `Dejarla en rojo de forma permanente, porque las variables muy inciertas no pueden mejorarse por más investigación que el emprendedor realice sobre ellas.`,
   `Preguntar a varias empresas conocidas (pasa a amarilla) y luego contrastar con estadísticas ajustadas al país (puede pasar a verde).`,
   `Pintarla directamente de verde, ya que es una decisión del emprendedor.`,
   `Eliminarla del modelo por ser demasiado incierta.`],
@@ -1137,7 +1147,7 @@ const BANK = [
  opts:[
   `Patentarla legalmente antes de contarla.`,
   `Desmenuzar a fondo el modelo y pintar de verde todos los supuestos.`,
-  `Mantener la idea en absoluto secreto como ventaja competitiva.`,
+  `Mantener la idea en absoluto secreto y no compartirla con nadie, ya que ahí reside la verdadera ventaja competitiva del emprendedor.`,
   `No compartir jamás la idea una vez validado el modelo.`],
  correct:'b',
  just:`La ventaja competitiva es el conocimiento validado, no el secreto.`},
@@ -1145,7 +1155,7 @@ const BANK = [
 {n:94,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Officenet: venta total',
  q:`En el modelo de Officenet, la venta total de un mes se descompone como:`,
  opts:[
-  `Piezas de correo × monto promedio de un pedido.`,
+  `La cantidad de piezas de correo enviadas multiplicada por el monto promedio de cada pedido recibido.`,
   `Cantidad de clientes que compran en el mes × consumo promedio por cliente.`,
   `Clientes nuevos × tasa de efectividad del catálogo.`,
   `Pedidos del mes × cantidad de camionetas.`],
@@ -1157,7 +1167,7 @@ const BANK = [
  opts:[
   `Depende sólo de los nuevos clientes que se consiguen.`,
   `Clientes al comenzar el mes + nuevos que se consiguen − viejos que se pierden.`,
-  `La cartera es la misma todos los meses, incluido el primero.`,
+  `La cartera de clientes se mantiene idéntica todos los meses, incluido el primero, ya que no se ganan ni se pierden clientes.`,
   `El primer mes se parte de una cartera ya consolidada.`],
  correct:'b',
  just:`El primer mes parte de cero; luego = inicio + nuevos − perdidos.`},
@@ -1168,7 +1178,7 @@ const BANK = [
   `Piezas de correo enviadas × tasa de efectividad (% que responde al catálogo).`,
   `Se estiman directamente, sin descomponerlos.`,
   `Dependen sólo del consumo promedio por cliente.`,
-  `Monto promedio del pedido × cantidad de camionetas.`],
+  `El monto promedio de cada pedido multiplicado por la cantidad de camionetas disponibles para las entregas mensuales.`],
  correct:'a',
  just:`Nuevos = piezas enviadas × tasa de efectividad de la pieza.`},
 
@@ -1198,14 +1208,14 @@ const BANK = [
   `Dos supuestos: pedidos que arma una persona por hora (amarilla) y horas trabajadas por mes (verde).`,
   `No puede estimarse a partir del modelo.`,
   `Sólo con el margen bruto de la empresa.`,
-  `Con las horas trabajadas, que son una variable roja imposible de conocer.`],
+  `Únicamente con las horas trabajadas por mes, que constituyen una variable roja imposible de conocer con precisión al armar el modelo.`],
  correct:'a',
  just:`Personal = pedidos por hora (amarilla) y horas por mes (verde), cruzados con el total de pedidos.`},
 
 {n:100,text:'bilinkis',express:false,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Margen bruto (benchmarking)',
  q:`Para estimar el margen bruto porcentual ("quizá la variable más difícil"), Bilinkis:`,
  opts:[
-  `Lo estimó al voleo, dejándolo permanentemente en rojo.`,
+  `Lo estimó al voleo y lo dejó permanentemente pintado de rojo, ya que consideró que era imposible aproximarlo con datos reales.`,
   `Miró los balances públicos de empresas comparables (Staples, Office Depot, OfficeMax) y asumió un margen igual o algo menor.`,
   `Lo copió de un promedio de la industria local sin ajustes.`,
   `Lo definió como una decisión propia, pintándolo de verde.`],
@@ -1226,7 +1236,7 @@ const BANK = [
  q:`Sobre la estructura de la planilla, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
   `La pestaña "Supuestos" es la única con valores ingresados a mano; el resto debe contener sólo fórmulas.`,
-  `Todas las pestañas contienen valores cargados a mano, para mayor control.`,
+  `Todas las pestañas del modelo contienen valores cargados a mano de forma independiente, para tener un mayor control sobre cada una de ellas.`,
   `Cambiar un supuesto no afecta al resto del modelo.`,
   `Los parámetros manuales se reparten entre varias pestañas.`],
  correct:'a',
@@ -1240,7 +1250,7 @@ const BANK = [
 {n:104,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Análisis de sensibilidad',
  q:`¿En qué consiste el análisis de sensibilidad?`,
  opts:[
-  `En fijar los valores definitivos de cada supuesto.`,
+  `En fijar de manera definitiva el valor de cada uno de los supuestos del modelo, de modo que ya no vuelvan a modificarse.`,
   `En subir y bajar cada supuesto para ver cuánto impacta en los resultados y así priorizar la investigación.`,
   `En pintar de verde todas las variables sin investigarlas.`,
   `En eliminar del modelo las variables de decisión.`],
@@ -1250,7 +1260,7 @@ const BANK = [
 {n:105,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Hallazgo de sensibilidad',
  q:`Hallazgo clave del análisis de sensibilidad:`,
  opts:[
-  `Todas las variables rojas tienen siempre un alto impacto en los resultados.`,
+  `Todas las variables rojas tienen siempre, sin excepción, un alto impacto en los resultados del negocio, por lo que deben investigarse todas con el mismo esfuerzo.`,
   `Algunas variables rojas tienen impacto chico (no justifican gran esfuerzo), mientras otras tienen impacto enorme y deben concentrar la preparación.`,
   `Las variables de alto impacto no requieren esfuerzo de investigación.`,
   `El impacto de una variable no puede conocerse hasta terminar el emprendimiento.`],
@@ -1271,11 +1281,373 @@ const BANK = [
  q:`¿Cuándo está listo el modelo para pasar a la siguiente etapa?`,
  opts:[
   `Cuando la mayoría de los supuestos —incluidos todos los muy sensibles— están en verde y el modelo refleja bien el negocio; la etapa siguiente es el manual de procesos.`,
-  `Apenas se completa la primera carga de datos, aunque haya supuestos rojos sensibles.`,
+  `Apenas se completa la primera carga de datos en la planilla, aunque todavía queden varios supuestos rojos y muy sensibles sin validar mediante investigación ni análisis de sensibilidad.`,
   `Cuando todas las variables son de decisión.`,
   `Todos los proyectos requieren exactamente el mismo nivel de complejidad de modelado.`],
  correct:'a',
- just:`Dos condiciones: modelo sofisticado + supuestos sensibles en verde. Luego: manual de procesos.`}
+ just:`Dos condiciones: modelo sofisticado + supuestos sensibles en verde. Luego: manual de procesos.`},
+
+/* ---------- FRYDMAN (108-145) ---------- */
+{n:108,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · MHN (Máquina de Hacer Negocios)',
+ q:`Sobre la MHN y sus cinco engranajes, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Los cinco engranajes funcionan de manera independiente: cada uno puede mejorarse por separado sin afectar a los demás.`,
+  `Los resultados dependen de que los cinco engranajes funcionen bien y en conjunto; si uno falla, el sistema se frena.`,
+  `La MHN sostiene que los resultados dependen de un único factor: la capacitación del vendedor.`,
+  `La ejecución no forma parte de los cinco elementos de la MHN.`],
+ correct:'b',
+ just:`Son interdependientes: capacitar al vendedor (4) sin tocar procesos (3) ni estrategia (2) no mejora los resultados.`},
+
+{n:109,text:'frydman',express:false,type:'mc',ask:'incorrecta',src:'Frydman · Los 5 elementos de la MHN',
+ q:`Sobre los cinco elementos de la MHN, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `La estrategia empresaria define el norte general de la organización.`,
+  `La organización de la gestión de los ambientes comerciales incluye metas/indicadores, procesos/herramientas e incentivos.`,
+  `La efectividad de las personas abarca capacidades, aprendizajes y motivaciones.`,
+  `La ejecución brillante puede omitirse si la estrategia y los procesos están bien diseñados.`],
+ correct:'d',
+ just:`"No basta con planificar: hay que ejecutar." La ejecución es el quinto elemento, indispensable.`},
+
+{n:110,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 1 · La crisis como filtro',
+ q:`Sobre la crisis como filtro, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `En la cultura china "crisis" combina amenaza y oportunidad, y en griego krinein significa "cribar" o "filtrar".`,
+  `La crisis es un filtro que sólo deja pasar a las empresas más grandes, sin importar su velocidad de adaptación.`,
+  `Las empresas que perciben la crisis únicamente como una amenaza o situación de peligro tienden a salir reforzadas y a ganar participación de mercado.`,
+  `En la crisis, la oferta suele ser menor que la demanda.`],
+ correct:'a',
+ just:`Pasan las que se adaptan más rápido (no las más grandes); las que la ven sólo como amenaza se paralizan.`},
+
+{n:111,text:'frydman',express:true,type:'vf',src:'Frydman · Cap. 1 · Crisis como amenaza',
+ q:`Conteste V o F: Cuando la crisis es percibida sólo como una amenaza o situación de peligro, la mayoría de las empresas tienden a achicarse o paralizarse, lo que representa "el principio del fin".`,
+ correct:'V',
+ just:`Afirmación textual del apartado 1.1.`},
+
+{n:112,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 1 · El resultado y "el karma"',
+ q:`Sobre el origen de los resultados en la crisis, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El resultado depende sobre todo del azar y del contexto externo.`,
+  `El resultado que obtiene una empresa es la resultante de lo que hace su gente; las acciones actuales condicionan el futuro.`,
+  `En la crisis, los integrantes de la empresa no necesitan ajustar su modo de actuar ni sus herramientas de gestión, metas e incentivos, porque el contexto externo lo define todo.`,
+  `El resultado depende únicamente de la estrategia, no de la ejecución de las personas.`],
+ correct:'b',
+ just:`"Es como la ley buda del karma": las acciones actuales condicionan el futuro.`},
+
+{n:113,text:'frydman',express:false,type:'mc',ask:'incorrecta',src:'Frydman · Cap. 1 · Escenarios recesivos',
+ q:`Sobre los escenarios recesivos y el comportamiento del consumidor, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Una característica principal es que la oferta supera a la demanda.`,
+  `La situación se agrava con problemas bursátiles, crisis de crédito y liquidez, desempleo y desconfianza.`,
+  `Que el consumo descienda significa que desaparecerá por completo.`,
+  `Cambian los comportamientos del consumidor, lo que abre un abanico de oportunidades.`],
+ correct:'c',
+ just:`El consumo desciende pero no desaparece; cambian los comportamientos.`},
+
+{n:114,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 1 · La propuesta de Quelch',
+ q:`Sobre la propuesta de Quelch, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Quelch propone dejar de clasificar los productos y servicios, porque en los escenarios de crisis todos se comportan de la misma manera frente a los distintos tipos de clientes.`,
+  `Quelch propone reclasificar productos y servicios según los cambios y preferencias de los distintos clientes, distinguiendo por ejemplo los esenciales.`,
+  `Según Quelch, los productos esenciales son los primeros que la gente elimina del gasto.`,
+  `Quelch sostiene que en crisis el comportamiento del consumidor no cambia.`],
+ correct:'b',
+ just:`Los esenciales son los que la gente seguirá comprando; otros se postergan o eliminan.`},
+
+{n:115,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 1 · Ejemplo de la concesionaria',
+ q:`En el ejemplo de la concesionaria en crisis (el vendedor lee el diario y no conoce al cliente), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La baja de ventas es responsabilidad exclusiva del vendedor, no de la empresa.`,
+  `Como hay menos consumidores dispuestos a comprar, la empresa debe modificar sus modelos de gestión, atención, ventas, retención y cobranzas.`,
+  `El modelo de atención pasivo, en el que el vendedor espera al cliente, sigue funcionando igual de bien que en las épocas en que la demanda superaba a la oferta.`,
+  `El vendedor no necesita conocer al cliente para transformarse en su asesor de compra.`],
+ correct:'b',
+ just:`"Que esto suceda no es responsabilidad del vendedor, sino de la empresa."`},
+
+{n:116,text:'frydman',express:true,type:'mc',ask:'incorrecta',src:'Frydman · Cap. 1 · Recortar antes de planificar',
+ q:`Sobre el error de recortar antes de planificar, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Muchas empresas recortan con el único foco de bajar costos, sin un plan comercial claro.`,
+  `Recortar antes de tener el plan es "poner el carro delante de los caballos".`,
+  `Reducir la fuerza de venta siempre mejora la productividad y acelera la salida de la crisis.`,
+  `Reducir la fuerza de venta puede ser "adelantar el día del funeral", porque es la que puede ayudar a salir del problema.`],
+ correct:'c',
+ just:`El texto lo llama "un suicidio": la fuerza comercial es la que puede ayudar a salir del problema.`},
+
+{n:117,text:'frydman',express:false,type:'vf',src:'Frydman · Cap. 1 · "Todos a vender"',
+ q:`Conteste V o F: Ante la crisis, la mejor solución es dar la directriz de "ahora, todos a vender" con algún incentivo y esperar los resultados.`,
+ correct:'F',
+ just:`Es un "manotón de ahogado"; hace falta plan, liderazgo y preparación.`},
+
+{n:118,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 1 · Líderes para la turbulencia',
+ q:`Sobre los líderes para la turbulencia, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Conviene líderes de alto perfil administrador que deleguen la operación y se mantengan lejos de la ejecución, de los detalles, de su gente y de los mercados clave.`,
+  `Deben ser presentes y proactivos, innovadores, visionarios (ver oro donde otros ven barro), seguros, comunicadores y cercanos.`,
+  `El éxito llegará por sí mismo, sin necesidad de que el líder se "embarre".`,
+  `Si el líder no logra cambiar la organización, no hay nada más que hacer.`],
+ correct:'b',
+ just:`Si el líder no cambia la organización, la organización deberá cambiar al líder (d falsa).`},
+
+{n:119,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 1 · Patton / los ingresos están afuera',
+ q:`Sobre el estilo de liderazgo en crisis, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Dentro de la empresa están los ingresos y afuera sólo los costos.`,
+  `Dentro de la empresa hay sólo costos; los ingresos están afuera y hay que ir a buscarlos.`,
+  `En crisis alcanza con criticar y esperar sentado a que los resultados lleguen.`,
+  `La referencia histórica a Patton ilustra a un líder que delegaba el combate en su infantería y evitaba exponerse personalmente al terreno enemigo.`],
+ correct:'b',
+ just:`Patton entraba con su infantería: no pedía a nadie lo que él mismo no hacía (d falsa).`},
+
+{n:120,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 1 · Tres caminos para aumentar ventas',
+ q:`Sobre los tres caminos para aumentar las ventas, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Son: agregar nuevos canales, agrandar los existentes y potenciar/optimizar los existentes.`,
+  `La única vía válida es agregar nuevos canales comerciales.`,
+  `Agrandar los canales existentes significa hacerlos más productivos y eficientes sin sumar recursos ni incorporar nuevos vendedores ni sucursales.`,
+  `Potenciar los canales existentes implica siempre grandes inversiones.`],
+ correct:'a',
+ just:`Agrandar = sumar sucursales/vendedores; potenciar = hacerlos más productivos con lo que se tiene.`},
+
+{n:121,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 1 · La apuesta del autor',
+ q:`Una empresa mejora la tasa de conversión y optimiza procesos de sus canales actuales, sin sumar sucursales ni canales nuevos. Según Frydman, ¿qué camino aplica y cómo lo valora?`,
+ opts:[
+  `Agregar nuevos canales; es la vía que el autor prioriza.`,
+  `Potenciar y optimizar los canales existentes; es la apuesta central del autor (apalancamiento de la productividad).`,
+  `Agrandar los canales existentes sumando más sucursales y vendedores; el autor la considera la vía más económica y recomendable en la crisis.`,
+  `No corresponde a ninguno de los tres caminos.`],
+ correct:'b',
+ just:`El foco de todo el libro es el tercer camino: apalancamiento múltiple de la productividad.`},
+
+{n:122,text:'frydman',express:false,type:'mc',ask:'incorrecta',src:'Frydman · Cap. 1 · M.T.C.',
+ q:`Sobre el M.T.C. (Modelo de Transformación Comercial), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `El eje "Reconversión del negocio" responde qué vender, a quién y cuánto.`,
+  `El eje "Re-enfoque comercial" aborda la estructura, los canales y cómo generar demanda.`,
+  `El eje "Productividad comercial" incluye la organización del ambiente, la efectividad de los individuos y asegurar la ejecución.`,
+  `El M.T.C. propone intentar vender aun cuando nadie compra, ignorando el comportamiento del consumidor.`],
+ correct:'d',
+ just:`"No se trata de intentar vender cuando nadie compra, sino cuando menos compran."`},
+
+{n:123,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 1 · Nuevo escenario (Einstein)',
+ q:`Sobre el nuevo escenario y los "dos frentes", ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `En crisis conviene concentrarse en un solo frente por vez: primero bajar costos reestructurando y aplanando la estructura, y dejar para más adelante la generación de ingresos.`,
+  `La empresa debe trabajar en paralelo en dos frentes: reestructurar/aplanar para bajar costos y reinventar/fortalecer su forma de generar ingresos.`,
+  `"Vender es un verbo" significa que basta con planificar y decir lo que habría que hacer.`,
+  `No es necesario cambiar la forma de vender si la oferta actual se mantiene.`],
+ correct:'b',
+ just:`Ambos frentes, ya, antes de que los costos fijos consuman a la empresa; "vender es un verbo" = hacer, no hablar.`},
+
+{n:124,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 9 · Definición de productividad',
+ q:`Según Frydman, ¿qué es mejorar la productividad?`,
+ opts:[
+  `Alcanzar o superar el objetivo de forma más fácil, rápida, económica y controlada; lograr más con lo mismo o con menos.`,
+  `Alcanzar o superar el objetivo comercial sin importar los recursos, el tiempo ni el costo que ello demande a la empresa o unidad.`,
+  `Se mide por lo que el manager dice que se debería hacer.`,
+  `Implica siempre invertir más recursos.`],
+ correct:'a',
+ just:`"Es lograr más con lo mismo o, idealmente, con menos."`},
+
+{n:125,text:'frydman',express:false,type:'mc',ask:'incorrecta',src:'Frydman · Cap. 9 · El manager y la productividad',
+ q:`Sobre el manager y la productividad, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Un manager es exitoso cuando logra un equipo cuya productividad crece semana a semana, mes a mes y año a año.`,
+  `Su principal responsabilidad es mejorar la productividad de su unidad.`,
+  `Un manager es exitoso cuando habla bien y explica lo que se debería hacer, aunque los resultados no crezcan.`,
+  `El manager que no trae ni ejecuta soluciones termina siendo parte del problema.`],
+ correct:'c',
+ just:`No es exitoso por hablar bien, sino por hacer crecer la productividad del equipo.`},
+
+{n:126,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 9 · Eficacia y eficiencia',
+ q:`Sobre eficacia y eficiencia, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La eficacia mide la proporción existente entre el resultado obtenido y los insumos requeridos, mientras que la eficiencia es simplemente la consecución de la meta propuesta.`,
+  `La productividad abarca la eficacia (consecución de la meta) y la eficiencia (proporción resultado/insumos) en conjunto.`,
+  `Dos empresas con la misma eficacia tienen necesariamente la misma eficiencia.`,
+  `La eficiencia es irrelevante si la empresa alcanza su meta de ventas.`],
+ correct:'b',
+ just:`a invierte las definiciones; el ejemplo de las dos empresas muestra igual eficacia con distinta eficiencia.`},
+
+{n:127,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 9 · Círculo virtuoso vs. perverso',
+ q:`La empresa 1 vende 1.000/mes con 3.000 vendedores (0,33 c/u, rotación 100%, alta deserción); la empresa 2 vende 1.000/mes con 500 vendedores (2 c/u, motivados, alta retención). Según el texto:`,
+ opts:[
+  `Ambas empresas son igualmente productivas entre sí, porque alcanzan exactamente la misma eficacia al vender 1.000 productos por mes.`,
+  `La empresa 2 es más eficiente y genera un "círculo virtuoso", mientras la 1 está en un "círculo perverso".`,
+  `La empresa 1 es más productiva por tener más vendedores.`,
+  `La eficacia distinta explica la diferencia entre ambas.`],
+ correct:'b',
+ just:`Misma eficacia (1.000/mes), eficiencia radicalmente distinta: círculo virtuoso vs. perverso.`},
+
+{n:128,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 9 · Indicadores de productividad',
+ q:`Sobre los indicadores de productividad, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Se clasifican en cantidad, calidad, tiempo y costo.`,
+  `Los únicos válidos son los de cantidad (ventas e ingresos).`,
+  `La tasa de conversión es un indicador de costo.`,
+  `La satisfacción del cliente es un indicador de tiempo.`],
+ correct:'a',
+ just:`Cuatro tipos: cantidad, calidad, tiempo y costo (la conversión es de cantidad; la satisfacción, de calidad).`},
+
+{n:129,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 9 · Performance gap',
+ q:`Sobre el performance gap, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Es la diferencia entre el nivel actual y el nivel deseado de un indicador.`,
+  `Es la diferencia entre dos empresas competidoras.`,
+  `Ampliar de forma progresiva el performance gap es el verdadero objetivo del proceso de mejora de la productividad.`,
+  `Se define antes de conocer el nivel actual del indicador.`],
+ correct:'a',
+ just:`El objetivo del proceso de mejora es reducir/eliminar el performance gap (c falsa).`},
+
+{n:130,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 9 · Objetivo a Corto Plazo (O.C.P.)',
+ q:`Sobre el Objetivo a Corto Plazo (O.C.P.), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Es un objetivo intermedio que aumenta la expectativa de logro y ayuda a erradicar la creencia de que "no se puede".`,
+  `Reemplaza al objetivo final y lo vuelve innecesario.`,
+  `Desmotiva a la gente porque le muestra anticipadamente lo difícil e inalcanzable que resulta la meta final propuesta por la dirección.`,
+  `Es un indicador de costo de la fuerza de ventas.`],
+ correct:'a',
+ just:`"Si la gente cree que podrá hacerlo y alcanzarlo, todo será más fácil."`},
+
+{n:131,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 9 · Fórmula PPVV = CA × TC × OP',
+ q:`Sobre la fórmula de la PPVV, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Se calcula como PPVV = CA × TC × OP: cantidad de actividad, tasa de conversión y operación promedio.`,
+  `Es la suma de la cantidad de actividad comercial, la tasa de conversión promedio y el valor de la operación promedio de cada vendedor.`,
+  `En la fórmula, TC es el valor promedio de cada venta cerrada.`,
+  `Mide la productividad total de la empresa, no la de cada vendedor.`],
+ correct:'a',
+ just:`Es un producto, no una suma; TC = tasa de conversión, OP = valor de la venta.`},
+
+{n:132,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 9 · Aplicación numérica (PPVV)',
+ q:`Un vendedor realiza CA = 120 entrevistas/mes, con TC = 10% y OP = U$S 250. Su PPVV mensual es:`,
+ opts:[`U$S 3.000.`,`U$S 2.500.`,`U$S 300.`,`U$S 3.600.`],
+ correct:'a',
+ just:`120 × 0,10 × 250 = 3.000.`},
+
+{n:133,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 9 · De 2.000 a 2.600',
+ q:`Con una PPVV de U$S 2.000 (CA=100, TC=10%, OP=U$S 200), ¿cuál es correcta para llegar a U$S 2.600?`,
+ opts:[
+  `Es imprescindible mejorar los tres indicadores explicativos (CA, TC y OP) un 30% cada uno y de manera simultánea para poder alcanzar la meta.`,
+  `Alcanza con subir uno de los tres un 30%, o una combinación que sume ese efecto (por ejemplo, pasar la TC del 10% al 13%).`,
+  `Sólo puede lograrse aumentando la cantidad de vendedores del equipo.`,
+  `Es imposible sin grandes inversiones.`],
+ correct:'b',
+ just:`Pasar la TC de 10% a 13%: de 100 entrevistas, ahora 13 compran y 87 dicen "lo voy a pensar".`},
+
+{n:134,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 9 · Análisis del 20% superior',
+ q:`Una fuerza de ventas tiene PPVV promedio de U$S 2.000 y se quiere llevar a U$S 2.600. Si la PPVV del 20% superior es U$S 4.500, según el texto:`,
+ opts:[
+  `Como el 20% superior ya supera ampliamente la meta de U$S 2.600, el director debería enfocarse sólo en ese grupo y no invertir recursos en el resto del equipo.`,
+  `El dato demuestra empíricamente que, con el mismo producto, sistemas e incentivos, es factible alcanzar una nueva media de U$S 2.600.`,
+  `El dato del 20% superior no aporta información sobre la factibilidad de la meta.`,
+  `Si el 20% superior fuera U$S 2.450, igual podría aseverarse la factibilidad de llegar a 2.600.`],
+ correct:'b',
+ just:`Un grupo demuestra empíricamente que se puede vender más de 2.600; si fuera 2.450 no podría aseverarse (d falsa).`},
+
+{n:135,text:'frydman',express:false,type:'mc',ask:'incorrecta',src:'Frydman · Cap. 9 · Muestra del 20% superior',
+ q:`Sobre el análisis del 20% superior, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Hay que excluir factores distorsionantes y no reproducibles, como carteras excepcionales o zonas privilegiadas.`,
+  `No siempre los de mejores resultados coinciden con los de mejores prácticas deseables de reproducir.`,
+  `La factibilidad de mejorar la media depende exclusivamente de la PPVV del 20% superior.`,
+  `Al potenciar la productividad se trabaja sobre toda la MHN, y hasta los sobresalientes probablemente mejoren.`],
+ correct:'c',
+ just:`La respuesta nunca depende sólo del 20% superior: se trabaja sobre toda la MHN.`},
+
+{n:136,text:'frydman',express:false,type:'vf',src:'Frydman · Cap. 9 · Estudio ESAMA (mystery shoppers)',
+ q:`Conteste V o F: El estudio sistemático de ESAMA con mystery shoppers mide conductas observables en el momento de contacto con el cliente y permite analizar, año tras año, si los procesos de mejora generan un efecto positivo, neutro o negativo.`,
+ correct:'V',
+ just:`Son los dos objetivos del estudio descritos en 9.5.`},
+
+{n:137,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 13 · Checklist diagnóstico',
+ q:`Sobre los ítems a analizar para mejorar la productividad, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Implica optimizar fundamentalmente un único ítem central: la capacitación de la fuerza de ventas en habilidades comerciales y de atención, del cual dependen de manera directa todos los resultados del equipo.`,
+  `Implica analizar y optimizar múltiples ítems (organización de la fuerza, perfiles, reclutamiento, remuneración, incentivos, procesos, herramientas, rotación, aprendizajes, etc.).`,
+  `La remuneración y los incentivos no forman parte de los ítems a optimizar.`,
+  `La rotación de la fuerza de ventas es irrelevante para la productividad.`],
+ correct:'b',
+ just:`Es un checklist diagnóstico completo que cubre todos los engranajes de la MHN.`},
+
+{n:138,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 13 · Los tres drivers (silla de tres patas)',
+ q:`Sobre los tres drivers de la productividad de ventas, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Es como una silla de tres patas: a quién ofrecerle, a cuántos ofrecerles y cómo ofrecerles; si falla una, la silla se cae.`,
+  `Depende de una sola pata: la cantidad de contactos.`,
+  `Si se falla en uno de los tres drivers, los otros dos lo compensan automáticamente y las ventas del comercial se mantienen en su nivel habitual.`,
+  `Los tres drivers son precio, producto y plaza.`],
+ correct:'a',
+ just:`Calidad (a quién), cantidad (a cuántos) y efectividad (cómo) de los contactos.`},
+
+{n:139,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 13 · Primer driver (a quién)',
+ q:`Un vendedor ofrece seguros de auto a diez personas que no tienen auto. Según el texto, ¿dónde está el problema y a qué driver corresponde?`,
+ opts:[
+  `En la cantidad insuficiente de entrevistas realizadas; corresponde al driver de cantidad de contactos, es decir, a cuántos contarles la historia.`,
+  `En la selección de las personas a quienes contarles la historia; driver de calidad de contactos (a quién).`,
+  `En la forma de ofrecer el seguro; driver de efectividad.`,
+  `En el producto ofrecido; no corresponde a ningún driver.`],
+ correct:'b',
+ just:`El problema no fue la cantidad ni la forma, sino elegir a las personas incorrectas.`},
+
+{n:140,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 13 · Clasificación estratégica de la cartera',
+ q:`Sobre la clasificación estratégica de la cartera, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La cartera se clasifica por una sola dimensión, la rentabilidad (clientes A, B y C), que indica cuánto dinero deja hoy cada cliente a la empresa.`,
+  `A la rentabilidad (A/B/C) se le suman el potencial (cuánto más venderle) y el nivel de demanda (cuánto tiempo requiere atenderlo).`,
+  `El potencial mide cuánto dinero deja hoy el cliente.`,
+  `El nivel de demanda mide la rentabilidad histórica del cliente.`],
+ correct:'b',
+ just:`Rentabilidad = lo que deja hoy; potencial = cuánto más; nivel de demanda = tiempo/costo de atención.`},
+
+{n:141,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 13 · Estrategia por cliente',
+ q:`Según la clasificación estratégica, ¿cuál de las siguientes estrategias por cliente es correcta?`,
+ opts:[
+  `A un cliente A3 (alta rentabilidad, potencial limitado) conviene desarrollarlo intensamente con venta cruzada.`,
+  `A un cliente C1 (baja rentabilidad, alto potencial) conviene desarrollarlo para transformarlo en A1 o B1.`,
+  `A un cliente A1 (alta rentabilidad, alto potencial) conviene sólo retenerlo, sin desarrollarlo.`,
+  `A todos los clientes se les destina el mismo tiempo.`],
+ correct:'b',
+ just:`A3 = sólo retener; A1 = retener + desarrollar; C1 = desarrollar para transformarlo en A1/B1.`},
+
+{n:142,text:'frydman',express:false,type:'mc',ask:'correcta',src:'Frydman · Cap. 13 · Matriz de 4 grupos',
+ q:`En la matriz de 4 grupos (Rentabilidad × Potencial), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El Grupo 1 (alta rentabilidad y alto potencial) se orienta principalmente a mantener, educar o eventualmente eliminar a esos clientes de la cartera.`,
+  `El Grupo 4 (baja rentabilidad + bajo potencial) se orienta a mantener, educar o eventualmente eliminar.`,
+  `El Grupo 3 (baja rentabilidad + alto potencial) sólo se retiene, sin desarrollarlo.`,
+  `Todos los grupos comparten el mismo objetivo comercial.`],
+ correct:'b',
+ just:`Grupo 1 = retener/cruce/uso/referidos; Grupo 3 = desarrollar (cruce, uso, referidos).`},
+
+{n:143,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 13 · Tercer driver (efectividad)',
+ q:`Sobre el tercer driver (efectividad) y el problema del cliente, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El cliente comprará aunque no reconozca ningún problema ni le interese mejorar su situación.`,
+  `Un problema puede ser manifiesto (reconocido) o latente (aún no reconocido por el cliente).`,
+  `Ser efectivo equivale simplemente a mostrar el producto al cliente.`,
+  `Basta con que el cliente reconozca el problema para que compre, sin importar la oferta.`],
+ correct:'b',
+ just:`Además de reconocer el problema, el cliente debe percibir que la oferta es la mejor opción (c y d falsas).`},
+
+{n:144,text:'frydman',express:true,type:'mc',ask:'incorrecta',src:'Frydman · Cap. 13 · Campana de Gauss y 6 grupos',
+ q:`Sobre la campana de Gauss y los 6 grupos, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `La distribución de resultados de una fuerza de ventas suele adoptar la forma de una campana de Gauss.`,
+  `Los seis grupos van de las "estrellas" (5%) a los "desperfilados" (5%), con dos "pelotones del medio" del 35% cada uno.`,
+  `Una curva muy achatada (alta dispersión) indica menor margen de mejora que una muy puntiaguda.`,
+  `La posibilidad de mejorar la media depende del nivel de curtosis y de detectar aspectos mejorables, sobre todo debajo de la media.`],
+ correct:'c',
+ just:`Está invertido: la curva achatada (platocúrtica, alta dispersión) da MÁS margen de mejora que la puntiaguda.`},
+
+{n:145,text:'frydman',express:true,type:'mc',ask:'correcta',src:'Frydman · Cap. 13 · Metodología de patrones comunes',
+ q:`Sobre la metodología de patrones comunes (ESAMA), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La clave del éxito de un vendedor siempre coincide exactamente con lo que él mismo declara como su secreto, por lo que basta con preguntarle para reproducir su desempeño.`,
+  `El análisis debe basarse en conductas observables, porque un vendedor exitoso muchas veces no sabe la clave de su éxito o dice cosas que también hacen los no exitosos.`,
+  `Una vez hallados los patrones, no es necesario reproducirlos en el resto del equipo.`,
+  `Sólo se estudian los patrones de los exitosos, nunca los de los no exitosos.`],
+ correct:'b',
+ just:`Se aíslan los factores diferenciales entre exitosos y no exitosos, y se reproduce lo que funciona.`}
 ];
 
 /* ===================== LÓGICA ===================== */
