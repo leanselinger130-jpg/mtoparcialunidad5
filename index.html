@@ -59,6 +59,8 @@
   .textcard.alt .num{background:linear-gradient(135deg,var(--accent2),#0891b2)}
   .textcard.b3 .num{background:linear-gradient(135deg,#e11d48,#f43f5e);font-size:1.15rem}
   .textcard.f .num{background:linear-gradient(135deg,#b45309,#d97706);font-size:1.15rem}
+  .textcard.cs .num{background:linear-gradient(135deg,#059669,#10b981);font-size:1.15rem}
+  .textcard.hs .num{background:linear-gradient(135deg,#ea580c,#fb923c);font-size:1.15rem}
   .textcard.all .num{background:linear-gradient(135deg,#7c3aed,#a855f7)}
   .textcard .body h3{margin:0 0 3px;font-size:1.08rem}
   .textcard .body p{margin:0;color:var(--muted);font-size:.86rem}
@@ -184,11 +186,27 @@
           </div>
           <div class="chev">›</div>
         </div>
+        <div class="textcard cs" onclick="chooseText('cescato')">
+          <div class="num">5.2.2</div>
+          <div class="body">
+            <h3>Cescato — Consumo masivo, es hora de cambiar</h3>
+            <p>Caps. II, III, IV y VI · 40 preguntas</p>
+          </div>
+          <div class="chev">›</div>
+        </div>
+        <div class="textcard hs" onclick="chooseText('hubspot')">
+          <div class="num">5.2.3</div>
+          <div class="body">
+            <h3>HubSpot — El poder de la conexión</h3>
+            <p>Enriquecimiento de contactos con IA · 26 preguntas</p>
+          </div>
+          <div class="chev">›</div>
+        </div>
         <div class="textcard all" onclick="chooseText('todos')">
           <div class="num">∑</div>
           <div class="body">
             <h3>Todos los textos</h3>
-            <p>Repaso integral combinado · 145 preguntas</p>
+            <p>Repaso integral combinado · 211 preguntas</p>
           </div>
           <div class="chev">›</div>
         </div>
@@ -280,6 +298,8 @@ const TEXT_INFO = {
   lavolpe:  {title:'Lavolpe et al. — El presupuesto de ventas', sub:'Presupuestos y gestión, Cap. 3'},
   bilinkis: {title:'Bilinkis — Modelar para emprender', sub:'Artículos de entrepreneurship (2009)'},
   frydman:  {title:'Frydman — Efectividad y productividad comercial', sub:'Caps. 1, 9 y 13 (2012)'},
+  cescato:  {title:'Cescato — Consumo masivo, es hora de cambiar', sub:'Caps. II, III, IV y VI (2019)'},
+  hubspot:  {title:'HubSpot — El poder de la conexión', sub:'Enriquecimiento de contactos con IA (2025)'},
   todos:    {title:'Todos los textos', sub:'Repaso integral · Unidad 5'}
 };
 
@@ -1647,7 +1667,632 @@ const BANK = [
   `Una vez hallados los patrones, no es necesario reproducirlos en el resto del equipo.`,
   `Sólo se estudian los patrones de los exitosos, nunca los de los no exitosos.`],
  correct:'b',
- just:`Se aíslan los factores diferenciales entre exitosos y no exitosos, y se reproduce lo que funciona.`}
+ just:`Se aíslan los factores diferenciales entre exitosos y no exitosos, y se reproduce lo que funciona.`},
+
+/* ---------- CESCATO (146-185) ---------- */
+{n:146,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. II · Preventa',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la preventa es correcta?`,
+ opts:[
+  `El preventista atiende, vende y entrega en el mismo momento y por la misma persona, en función al stock que lleva cargado en su vehículo, sin intervención de un repartidor o fletero en un momento posterior de la operación.`,
+  `La clave de la preventa es la separación entre la función de venta y la de entrega: el preventista prevende y otra persona (repartidor/fletero) entrega después, habitualmente dentro de las 24 horas.`,
+  `En la preventa el día y la frecuencia de venta no se programan; el PDV decide cuándo comprar.`,
+  `La preventa es una modalidad no programada que depende de llamadas entrantes del cliente al call center.`],
+ correct:'b',
+ just:`a describe la autoventa; c y d, otras modalidades. La preventa separa la venta (programada) de la entrega posterior.`},
+
+{n:147,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. II · Autoventa / Car Service',
+ q:`Sobre la autoventa / car service / venta directa, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La misma persona ejecuta la atención, la venta y la entrega, que se realizan en el mismo momento en función al stock del vehículo.`,
+  `Un preventista toma el pedido y otro repartidor lo entrega al día siguiente, en un esquema totalmente programado y separado.`,
+  `Se basa en operadores telefónicos que levantan pedidos sin presencia física en el punto de venta.`,
+  `El punto de venta realiza sus propios pedidos por una app o portal web y decide libremente el momento de la compra, en función a su propia necesidad de reposición de mercadería.`],
+ correct:'a',
+ just:`Venta y entrega simultáneas, por la misma persona (b es preventa; c es call center; d es autogestión).`},
+
+{n:148,text:'cescato',express:false,type:'mc',ask:'incorrecta',src:'Cescato · Cap. II · Quién vende (Cuadro 2.2)',
+ q:`Sobre "quién vende" en cada modalidad (Cuadro 2.2), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `En la autoventa vende el vendedor/repartidor; en la preventa, el prevendedor.`,
+  `Tanto en el Call Center (Call Out) como en el Contact Center (Call In) quien vende es un operador telefónico, que atiende las necesidades del punto de venta y levanta los pedidos.`,
+  `En la autogestión, quien "vende" es el propio punto de venta, que realiza sus pedidos.`,
+  `En el Contact Center (Call In) la venta está programada con frecuencia fija, igual que en la preventa, ya que el operador llama al PDV según un cronograma establecido.`],
+ correct:'d',
+ just:`El Call In recibe llamados que originan ventas NO programadas: el PDV es quien activa la venta.`},
+
+{n:149,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. II · Call Out vs Call In',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre Call Out y Call In es correcta?`,
+ opts:[
+  `En el Call Center – Call Out, el operador llama de manera programada a un conjunto de PDVs (similar a la preventa) pero sin presencia física.`,
+  `En el Contact Center – Call In la venta está programada y la empresa es la responsable de activar el pedido y la reposición del PDV.`,
+  `Tanto el Call Out como el Call In entregan en el mismo momento de la venta, sin ningún tipo de diferimiento, ya que el operador telefónico coordina la entrega inmediata del pedido.`,
+  `El Call Out se aplica sólo cuando el producto es extremadamente fuerte y sin competencia en su sector.`],
+ correct:'a',
+ just:`En el Call In el PDV es el único responsable de activar la venta (b falsa); ambos entregan con diferimiento (c falsa); d describe al Call In.`},
+
+{n:150,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. II · Identificar modalidad',
+ q:`Una empresa ofrece una app y portales web para que los clientes consulten la oferta y realicen sus propios pedidos cuando lo necesiten, con entrega posterior programada. ¿Qué modalidad es y cómo se programa la venta?`,
+ opts:[
+  `Preventa; con día y frecuencia de venta programados por la empresa, ya que el preventista visita físicamente el punto de venta según un cronograma fijo y estable.`,
+  `Autogestión (portales/apps); no programada, ya que el PDV decide el momento de la compra en función a su necesidad.`,
+  `Contact Center – Call In; programada por el operador telefónico.`,
+  `Car service; con venta y entrega simultáneas en el punto de venta.`],
+ correct:'b',
+ just:`El IoT (heladeras/estanterías con sensores) amplía este modelo de autogestión.`},
+
+{n:151,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. II · Sistemas mixtos',
+ q:`Sobre los sistemas mixtos, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Aplicar sistemas mixtos es una excepción marginal que el autor desaconseja de forma expresa por su elevada complejidad operativa, sus costos y las dificultades de control que implica.`,
+  `Aplicar sistemas mixtos es optimizar: como no todos los clientes son iguales, atender a todos de la misma manera es "la mayor pérdida de utilidad del negocio".`,
+  `Los sistemas mixtos consisten en aplicar una única modalidad uniforme a toda la cartera de clientes.`,
+  `Los sistemas mixtos sólo son viables para empresas con una cantidad muy limitada de SKUs.`],
+ correct:'b',
+ just:`Es la idea central del libro: optimizar combinando modalidades según el valor de cada cliente.`},
+
+{n:152,text:'cescato',express:false,type:'mc',ask:'incorrecta',src:'Cescato · Cap. II · Fortalezas y debilidades (Cuadro 2.3)',
+ q:`Sobre las fortalezas y debilidades de cada modelo (Cuadro 2.3), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `La autoventa tiene un nivel de servicio alto (el funcionario no sólo vende), pero se aplica sólo en empresas con pocos productos y no satisface la demanda completa en ruta.`,
+  `La preventa es costosa por su pesada estructura de recursos humanos, y tiene difícil control del personal en el campo.`,
+  `La autogestión es un modelo económico, sin los riesgos, costos y previsiones asociados a los recursos humanos.`,
+  `El Call Center tiene un nivel de servicio alto y es difícil de controlar, ya que la tarea se efectúa fuera de un ambiente supervisado que impide optimizar los recursos.`],
+ correct:'d',
+ just:`El Call Center tiene nivel de servicio bajo y es fácil de controlar (ambiente supervisado).`},
+
+{n:153,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. II · ¿Quiénes aplican?',
+ q:`Sobre quiénes aplican cada modelo (2.4), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La autoventa es el modelo ideal del sector y hoy alrededor del 90% de las compañías de consumo masivo la utilizan como forma principal de atención, mediante distribuidores o estructuras directas.`,
+  `La preventa es el modelo ideal (bien ejecutada y con cartera rentable ofrece los mejores resultados); hoy el 90% de las compañías tienen distribuidores o directas que la usan.`,
+  `La autoventa se reserva para distribuidores con una enorme cantidad de SKUs de gran tamaño.`,
+  `El Contact Center – Call In es el modelo más usado del sector y reemplaza a la preventa en la mayoría de las distribuidoras.`],
+ correct:'b',
+ just:`La autoventa es para pocos SKUs / pequeño tamaño (cigarrillos, baterías, golosinas); el Call In como único modelo es marginal.`},
+
+{n:154,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Terminología',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la terminología es correcta?`,
+ opts:[
+  `Un punto de venta (PDV) sólo se considera tal si es una persona jurídica de cierto tamaño, con condición fiscal formal y que no pertenezca a ninguna cadena o grupo económico.`,
+  `La ruta de venta es el conjunto de PDVs que un vendedor visita, atiende o llama en un día, con periodicidad y frecuencia repetitiva y estable.`,
+  `Una cadena o grupo económico son siempre PDVs de razones sociales distintas que compiten entre sí.`,
+  `La cantidad de PDVs por ruta es fija en 100, sin importar la movilidad del vendedor ni la zona geográfica.`],
+ correct:'b',
+ just:`El PDV lo es independientemente de condición fiscal, tamaño o pertenencia (a falsa); la ruta habitual tiene 40-65 PDVs (d falsa).`},
+
+{n:155,text:'cescato',express:false,type:'mc',ask:'incorrecta',src:'Cescato · Cap. III · Periodicidad vs frecuencia',
+ q:`Sobre periodicidad y frecuencia de visita, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `La periodicidad es el tiempo cada el cual se repite el cronograma de visitas (habitualmente semanal).`,
+  `La frecuencia de visita es la cantidad de días (y por ende la cantidad de veces) con que se visita, atiende o llama a un PDV o a una ruta dentro de la periodicidad definida.`,
+  `La periodicidad y la frecuencia son conceptos equivalentes que miden exactamente lo mismo dentro del cronograma de atención de una ruta.`,
+  `Una ruta semanal con frecuencia 2 se visita dos días por semana (por ejemplo, lunes y jueves).`],
+ correct:'c',
+ just:`Son conceptos distintos: una es el "cada cuánto"; la otra, "cuántas veces" dentro de esa periodicidad.`},
+
+{n:156,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Rotación, stock, periodicidad y frecuencia',
+ q:`Sobre el vínculo entre rotación, stock, periodicidad y frecuencia, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `A mayor rotación de un producto corresponde siempre una mayor periodicidad de visita y una menor frecuencia de atención, para no saturar al punto de venta con contactos innecesarios y reducir de ese modo los costos logísticos totales.`,
+  `Mayor rotación implica menor periodicidad y mayor frecuencia; productos con corto vencimiento, alto costo o necesidad de frío limitan el stock e impactan también en una mayor frecuencia y menor periodicidad.`,
+  `Los niveles de stock son el único factor que determina la periodicidad y la frecuencia, siendo la rotación irrelevante.`,
+  `Productos con muchas presentaciones o sabores no afectan de ningún modo la periodicidad ni la frecuencia de atención.`],
+ correct:'b',
+ just:`a invierte la relación; la rotación es uno de los dos factores clave junto al nivel de stock.`},
+
+{n:157,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Aplicación rotación/stock',
+ q:`Una distribuidora incorpora un lácteo de corto vencimiento y alta rotación que necesita frío. Según el texto, ¿qué corresponde?`,
+ opts:[
+  `Aumentar la periodicidad y reducir la frecuencia, para no saturar el punto de venta con contactos.`,
+  `Reducir la periodicidad (por ejemplo, semanal) y aumentar la frecuencia (dos o tres visitas), porque tanto la alta rotación como el bajo stock lo empujan en ese sentido.`,
+  `Mantener exactamente la misma periodicidad y frecuencia que el resto de la cartera, ya que ni el vencimiento del producto ni sus necesidades de frío constituyen factores relevantes para definir la atención.`,
+  `Atender ese producto sólo con periodicidad mensual, dado su alto costo de inmovilización.`],
+ correct:'b',
+ just:`Alta rotación y bajo stock → menor periodicidad y mayor frecuencia.`},
+
+{n:158,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Aplicación numérica (sector de venta)',
+ q:`Con periodicidad semanal (6 jornadas), un vendedor que atiende su cartera con frecuencia 3 tendrá un sector compuesto por:`,
+ opts:[`2 rutas.`,`3 rutas.`,`6 rutas.`,`1 ruta.`],
+ correct:'a',
+ just:`6 jornadas ÷ frecuencia 3 = 2 rutas (frec 1 → 6 rutas; frec 2 → 3 rutas).`},
+
+{n:159,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Aplicación numérica (contactos planeados)',
+ q:`Un PDV con periodicidad semanal y frecuencia 2, durante un período de 4 semanas, tendrá una cantidad de contactos planeados de:`,
+ opts:[`4.`,`8.`,`2.`,`6.`],
+ correct:'b',
+ just:`2 contactos/semana × 4 semanas = 8.`},
+
+{n:160,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Eficiencia teórica (positivación)',
+ q:`Sobre la eficiencia teórica (positivación), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Se calcula dividiendo los contactos con compra por los contactos planeados y multiplicando por cien.`,
+  `Se calcula dividiendo los contactos con compra por los contactos realmente visitados, excluyendo los planeados no visitados.`,
+  `Es un indicador de venta que mide el volumen facturado neto de descuentos e impuestos.`,
+  `Sólo permite analizar al vendedor, sin decir nada sobre la periodicidad ni la frecuencia definidas.`],
+ correct:'a',
+ just:`b es la eficiencia de campo; y la teórica sí permite evaluar si la periodicidad/frecuencia están bien definidas.`},
+
+{n:161,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Aplicación numérica (eficiencia teórica)',
+ q:`Una ruta tiene 50 contactos planeados en el período, de los cuales 20 registraron compra. Su eficiencia teórica es:`,
+ opts:[`40%.`,`250%.`,`30%.`,`20%.`],
+ correct:'a',
+ just:`20 / 50 × 100 = 40%.`},
+
+{n:162,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Valoración de la eficiencia',
+ q:`Sobre la valoración de la eficiencia, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Una eficiencia general baja infiere que probablemente estemos atendiendo "de más" a los puntos de venta.`,
+  `Una eficiencia muy alta siempre es el mejor resultado posible y nunca amerita revisar la cantidad de visitas.`,
+  `Una eficiencia superior al 90% se valora como "excelente" y confirma que la frecuencia definida es la óptima.`,
+  `El objetivo es maximizar la cantidad de visitas sin importar la relación entre la forma de visita y la venta lograda.`],
+ correct:'a',
+ just:`Una eficiencia >90% ("¿oportunidad?") suele indicar que conviene INCREMENTAR las visitas.`},
+
+{n:163,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Clientes visitados (GPS)',
+ q:`Sobre el indicador de clientes visitados, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Cuenta únicamente los PDVs en los que el vendedor registró manualmente una visita en su sistema de gestión, en función a una acción o evento que él mismo confirma al finalizar la atención.`,
+  `Mediante GPS, cuenta los PDVs en los que el vendedor pasó a menos de 50-100 metros; el PDV se considera visitado por su ubicación geográfica, no por una acción registrada.`,
+  `Cuenta únicamente los clientes que efectivamente realizaron una compra en el período.`,
+  `Es el padrón total de clientes que la empresa podría llegar a atender.`],
+ correct:'b',
+ just:`El GPS mide la cercanía física, no una acción del vendedor.`},
+
+{n:164,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Eficiencia de campo',
+ q:`Sobre la eficiencia de campo, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Se calcula dividiendo los visitados con compra por los contactos planeados del período.`,
+  `Se calcula dividiendo los visitados con compra por los visitados, y siempre arroja un valor mayor que la eficiencia teórica porque su denominador es menor.`,
+  `Siempre arroja un valor menor que la eficiencia teórica, porque su denominador incluye la totalidad de los PDVs del padrón y no sólo aquellos que el vendedor efectivamente visitó en la jornada.`,
+  `Mide exactamente lo mismo que la eficiencia teórica, ya que ambos usan el mismo denominador.`],
+ correct:'b',
+ just:`Es una pormenorización de la teórica, enfocada en los PDVs que realmente visitó (denominador menor → valor mayor).`},
+
+{n:165,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Aplicación numérica (eficiencia de campo)',
+ q:`Una ruta tiene 61 PDVs; el vendedor visitó 51 y en 23 hubo compra. La eficiencia de campo es aproximadamente:`,
+ opts:[`45,1%.`,`37,7%.`,`83,6%.`,`23,0%.`],
+ correct:'a',
+ just:`23 / 51 = 45,1% (la teórica sería 23/61 = 37,7%, menor).`},
+
+{n:166,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Clientes con compra',
+ q:`Sobre el indicador de clientes con compra, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Un cliente cuenta como comprador en proporción directa a la cantidad de productos que adquirió y a la cantidad de veces que efectuó una compra a lo largo del período considerado.`,
+  `Un cliente es comprador o no lo es (con al menos una compra), y se aconseja definir un mínimo de compra para evitar que se sobrevalúe el indicador con cantidades mínimas.`,
+  `Los productos entregados sin cargo siempre deben computarse como compra, sin excepción ni discusión.`,
+  `Es un índice porcentual que se obtiene dividiendo por el padrón total de clientes.`],
+ correct:'b',
+ just:`No hay consenso sobre los sin cargo; d describe la efectividad/cobertura.`},
+
+{n:167,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Efectividad (cobertura)',
+ q:`Sobre la efectividad (cobertura), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Se obtiene dividiendo la cantidad de clientes con compra por el padrón total de clientes, multiplicado por 100.`,
+  `Se obtiene dividiendo los visitados con compra por el total de visitados que registró el dispositivo GPS del vendedor durante su jornada de trabajo.`,
+  `Mide el volumen facturado neto de descuentos, expresado en unidad de medida (litros o kilos).`,
+  `Es un valor nominal (no porcentual) que cuenta la cantidad de clientes compradores del período.`],
+ correct:'a',
+ just:`Representa la porción de clientes que compran sobre todos los posibles compradores.`},
+
+{n:168,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Clientes con compra vs efectividad',
+ q:`Sobre medir clientes con compra o efectividad (padrón no depurado), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Siempre conviene medir sólo clientes con compra, porque la efectividad nunca aporta contexto sobre el máximo posible.`,
+  `Es preferible medir efectividad (contextualiza con el 100%), pero requiere un padrón completo y real; si no está depurado, conviene medir ambos indicadores a la vez.`,
+  `Con un padrón sin depurar, la efectividad porcentual siempre sube en los primeros períodos de medición, aun cuando no crezcan los clientes con compra, porque el denominador se estabiliza muy rápido.`,
+  `Depurar el padrón no tiene ningún efecto sobre el valor de la efectividad porcentual.`],
+ correct:'b',
+ just:`Con padrón sin depurar la efectividad tiende a bajar al inicio (crece el denominador), por eso se miden ambos.`},
+
+{n:169,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Efectividad vs compradores',
+ q:`Una empresa depura su padrón y la efectividad cae de 57,8% (feb) a 54,7% (abr), aunque los clientes con compra crecieron 13,6%. Según el texto, esto ocurre porque:`,
+ opts:[
+  `Los vendedores efectivamente dejaron de vender durante esos meses, pese a registrar un número creciente de altas de clientes nuevos en el padrón de la distribuidora.`,
+  `Es más fácil dar de alta clientes no registrados que venderles; al crecer el denominador (padrón), el porcentaje baja aunque los compradores aumenten.`,
+  `La efectividad se calcula mal cuando el padrón crece, y por eso el indicador pierde toda validez.`,
+  `La caída se debe exclusivamente a la estacionalidad del consumo entre febrero y abril.`],
+ correct:'b',
+ just:`Dar de alta clientes es más fácil que venderles: el padrón crece más rápido que los compradores.`},
+
+{n:170,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Venta en bultos',
+ q:`Sobre la venta en bultos, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Es un indicador perfectamente exacto para analizar las ventas totales de la empresa, incluso cuando se mezclan productos de muy distinta presentación, empaque o tamaño dentro del mismo total.`,
+  `Es válido para análisis por SKU/producto, pero resulta inexacto para ventas totales; un cambio de empaque (de 6 a 12) puede simular una caída del 50% sin cambio de volumen real.`,
+  `Se expresa siempre en importes netos, tras descuentos y sin impuestos.`,
+  `Convierte todos los productos a una unidad de medida uniforme (litros o kilos) para evitar distorsiones.`],
+ correct:'b',
+ just:`"Mezclar chanchos con bicicletas": c es la venta neta y d es la venta en unidad de medida.`},
+
+{n:171,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Aplicación numérica (venta neta)',
+ q:`Se venden 20 bultos a un precio bruto de $30 con un 10% de descuento. La venta neta es:`,
+ opts:[`$540.`,`$600.`,`$594.`,`$6.`],
+ correct:'a',
+ just:`20 × (30 × (1 − 0,10)) = 20 × 27 = $540.`},
+
+{n:172,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Venta en unidad de medida',
+ q:`Sobre la venta en unidad de medida, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Aplica un factor de conversión uniforme (volumen o peso) para superar las limitaciones de los bultos y de los importes; si el volumen es muy grande, se usa la unidad mayor (hectolitros/toneladas).`,
+  `Consiste en sumar la totalidad de los bultos vendidos según la presentación original con la que el fabricante entrega cada producto (cajas, packs, blisters), sin aplicar ningún factor de conversión uniforme.`,
+  `Es el monto neto que percibe el negocio tras descuentos y sin impuestos.`,
+  `Sólo puede aplicarse a productos sólidos pesables, nunca a bebidas ni líquidos.`],
+ correct:'a',
+ just:`Bebidas → litros/hectolitros; alimentos → kilos/toneladas.`},
+
+{n:173,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Drop size',
+ q:`Sobre el drop size (tamaño promedio), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Mide el tamaño promedio de una entrega o venta, dividiendo el indicador elegido (bultos, litros, kilos, importe) por la cantidad de entregas/operaciones.`,
+  `Mide la porción de clientes que compran un producto sobre el padrón total de posibles compradores, expresada como un valor porcentual respecto del máximo posible del 100%.`,
+  `Es el cociente entre los contactos con compra y los contactos planeados del período.`,
+  `Es la estimación de las ventas futuras a partir de la extrapolación de los períodos pasados.`],
+ correct:'a',
+ just:`b es efectividad; c, eficiencia teórica; d, tendencia.`},
+
+{n:174,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Aplicación numérica (drop size)',
+ q:`En un período se vendieron 1.200 bultos en 300 entregas (clientes con compra por día). El drop size en bultos es:`,
+ opts:[`4 bultos.`,`40 bultos.`,`0,25 bultos.`,`900 bultos.`],
+ correct:'a',
+ just:`1.200 / 300 = 4 bultos por entrega.`},
+
+{n:175,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Promedio ponderado',
+ q:`Sobre el promedio ponderado, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Se calcula exactamente igual que el promedio simple o tradicional: sumando todos los valores del conjunto y dividiendo ese total por la cantidad de valores que lo componen, sin asignar ningún peso ni ponderación particular a ninguno.`,
+  `Multiplica cada dato por su ponderación, suma esos productos y divide por la suma de los pesos; la ponderación puede ser subjetiva (criterio personal) u objetiva (otro indicador de la serie).`,
+  `Sólo puede usarse con ponderaciones objetivas, nunca subjetivas.`,
+  `Siempre arroja el mismo resultado que el promedio simple, por lo que resulta redundante.`],
+ correct:'b',
+ just:`La ponderación puede ser subjetiva u objetiva y cambia por completo el ranking respecto del promedio simple.`},
+
+{n:176,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Precio promedio ponderado',
+ q:`Para analizar el precio real de un SKU vendido a distintos precios (incluidos sin cargo), el promedio simple da $62,26, "que dice poco y nada". Según el texto, ¿qué corresponde?`,
+ opts:[
+  `Usar directamente el promedio simple de los precios, ya que el autor lo considera el método más objetivo y lógico para analizar el precio real percibido por cada unidad efectivamente vendida del SKU durante el período.`,
+  `Usar el precio promedio ponderado por las cantidades vendidas a cada precio ($78,58), que refleja el valor real percibido por unidad y, multiplicado por los bultos, da la venta total neta.`,
+  `Descartar todo análisis de precios porque los descuentos lo vuelven imposible de calcular.`,
+  `Tomar directamente el precio de lista de reposición como precio promedio del período.`],
+ correct:'b',
+ just:`El precio promedio ponderado se usa luego para el análisis de contribución marginal (restando el costo).`},
+
+{n:177,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Tendencia',
+ q:`Sobre la tendencia de ventas, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Es una medida de tendencia central (media, mediana o modo) aplicada al conjunto de ventas del período, que resume en un único valor el comportamiento típico de la serie histórica de ventas del período analizado.`,
+  `Es la inclinación o estimación de las ventas futuras: extrapola el comportamiento promedio de los períodos pasados a los futuros (Venta Real / Períodos Transcurridos × Total de Períodos).`,
+  `Es el tamaño promedio de cada entrega, obtenido dividiendo la venta por la cantidad de comprobantes.`,
+  `Es el porcentaje de clientes que compran sobre el padrón total.`],
+ correct:'b',
+ just:`El texto aclara que no debe confundirse con la tendencia central.`},
+
+{n:178,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Aplicación numérica (tendencia)',
+ q:`Al día 10 de un mes (con 20 días hábiles) una ruta lleva vendidos $800.000. La tendencia de ventas del mes es:`,
+ opts:[`$1.600.000.`,`$800.000.`,`$400.000.`,`$16.000.000.`],
+ correct:'a',
+ just:`(800.000 / 10) × 20 = $1.600.000.`},
+
+{n:179,text:'cescato',express:true,type:'mc',ask:'incorrecta',src:'Cescato · Cap. IV · Comisiones',
+ q:`Sobre las comisiones como metodología única de remuneración variable, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Son limitantes porque contemplan sólo la variable monetaria, cuando existen esquemas con capacitación, cursos y ocio.`,
+  `Cuando incluyen otras variables además de la venta en importes, su cálculo puede volverse tan complejo que el vendedor sólo conoce cuánto cobra al finalizar el período.`,
+  `Pueden ser distorsivas: el vendedor tiende a concentrarse en los clientes grandes que impactan su comisión y a desatender a los pequeños.`,
+  `Constituyen la metodología que el autor recomienda con carácter general, por ser la forma más equitativa de retribuir a la fuerza de ventas.`],
+ correct:'d',
+ just:`El autor sostiene lo contrario: "es hora de cambiar", pasando de comisiones a objetivos.`},
+
+{n:180,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. IV · Inequidad en consumo masivo',
+ q:`Sobre por qué las comisiones son inequitativas en consumo masivo, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El vendedor que más comisiones cobra es siempre, y por definición, el mejor vendedor y el que mejor trabaja de toda la fuerza de ventas, con independencia de la zona geográfica que le haya tocado.`,
+  `Como la ruta se define por límites geográficos, muchas veces el que más comisiones cobra es circunstancialmente quien tiene los mejores clientes en su zona, no el mejor vendedor.`,
+  `La comisión no guarda ninguna relación con la zona geográfica asignada al vendedor.`,
+  `Para equilibrar, las empresas asignan siempre las mejores zonas a los peores vendedores.`],
+ correct:'b',
+ just:`Por eso se asignan mejores zonas a los mejores (evaluación subjetiva) o se rompe la cercanía geográfica de las rutas.`},
+
+{n:181,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. IV · Controversia de las comisiones',
+ q:`Sobre la controversia que genera el pago de comisiones, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Cuando las ventas aumentan desproporcionadamente por una acción comercial, publicidad o un nuevo producto, las comisiones se vuelven un "derecho adquirido" difícil de ajustar, aun cuando el incremento no fue producto de la gestión del vendedor.`,
+  `Ante un aumento de ventas totalmente ajeno a su propia gestión, los vendedores aceptan sin ningún tipo de conflicto ni resistencia resignar de inmediato su participación histórica en las comisiones que venían percibiendo mes a mes desde su ingreso a la empresa.`,
+  `Si las ventas caen, la empresa nunca modifica el esquema ni incorpora productos con mejor comisión.`,
+  `El conflicto por las comisiones desaparece por completo cuando las ventas crecen, ya que todos ganan más.`],
+ correct:'a',
+ just:`Las comisiones se convierten en derecho adquirido cuando el aumento excede la gestión del vendedor.`},
+
+{n:182,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. IV · Programas de remuneración y premios',
+ q:`Sobre los programas de remuneración variable y premios, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El autor se opone por completo a la remuneración variable de la fuerza de ventas y prefiere garantizar un ingreso fijo elevado para todo el equipo comercial, sin distinguir en absoluto entre los de mejor y peor desempeño individual dentro de la estructura.`,
+  `Los programas de remuneración variable definen objetivos que dan un valor económico directo y reemplazan a las comisiones; con objetivos S.M.A.R.T. y escala adecuada, la mayoría del personal debería percibir al menos una escala básica.`,
+  `En los programas de premios (concursos) siempre cobran todos los participantes por igual, sin escala ni ranking.`,
+  `En estos programas sólo puede incluirse el objetivo de venta en importes, nunca otros indicadores.`],
+ correct:'b',
+ just:`El autor defiende la meritocracia (menor fijo + mayor variable); los premios a veces premian sólo a los "N" primeros; pueden incluir varios indicadores.`},
+
+{n:183,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. VI · Aplicación numérica (dimensionamiento)',
+ q:`Para atender 4.700 PDVs con un estándar de 60 visitas/día, periodicidad semanal y frecuencia 2, la estructura necesaria es de aproximadamente:`,
+ opts:[`13 vendedores.`,`26 vendedores.`,`39 vendedores.`,`7 vendedores.`],
+ correct:'b',
+ just:`Frec 2 → 3 rutas/vendedor → 180 clientes/vendedor → 4.700 / 180 ≈ 26 vendedores (frec 1 → 13; frec 3 → 39).`},
+
+{n:184,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. VI · Separar fuerzas por canal',
+ q:`Sobre la separación de fuerzas de ventas por canal, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Lo recomendable, según el autor, es tener una fuerza de ventas exclusiva e independiente para cada uno de los subcanales existentes (SMK, Tradicional, Kioscos, Petroleras, Social y On Premise), sin importar el tamaño total de la cartera de clientes de cada zona geográfica.`,
+  `No conviene tener una fuerza por canal (por costos y traslados); se aconseja separar al menos dos: una para SMK y Mayoristas, y otra para el resto (Tradicional, Kioscos, Petroleras, Social, On Premise), con una cartera mínima de 1.000 PDVs.`,
+  `Nunca conviene separar fuerzas de ventas, porque los canales tienen características idénticas.`,
+  `La separación se justifica con cualquier cartera, incluso con menos de 100 PDVs.`],
+ correct:'b',
+ just:`a describe justamente lo que el autor descarta; la cota mínima es ~1.000 PDVs.`},
+
+{n:185,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. VI · Pareto y optimización por cliente',
+ q:`Sobre por qué no todos los clientes merecen la misma atención, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Según Pareto, alrededor del 80% de la venta se origina en el 20% de los clientes, por lo que la optimización debe ser por cliente, asignando a cada PDV la periodicidad y frecuencia que su valor justifica.`,
+  `Como todos los clientes son iguales, corresponde atenderlos a todos con la misma periodicidad y frecuencia.`,
+  `La mejor solución es que cada vendedor decida discrecionalmente a qué clientes visitar y a cuáles omitir.`,
+  `Disminuir la frecuencia a rutas enteras (asignando frecuencia 2 a las "buenas rutas" y frecuencia 1 a las "malas rutas") resuelve por completo el problema de la atención no diferenciada de los clientes que integran la cartera.`],
+ correct:'a',
+ just:`La decisión no debe quedar en manos del vendedor (c); el recorte por ruta es insuficiente porque dentro de cada ruta conviven clientes de distinto valor (d).`},
+
+/* ---------- HUBSPOT (186-211) ---------- */
+{n:186,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Contexto',
+ q:`Sobre el contexto que plantea la guía, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Los consumidores actuales responden muy bien a los mensajes genéricos y masivos, sin necesidad de ninguna personalización ni segmentación por parte de la empresa.`,
+  `Los datos son el "combustible" del marketing actual, y los consumidores esperan interacciones relevantes y personalizadas, no genéricas.`,
+  `La competencia por captar la atención del cliente es cada vez menos intensa.`,
+  `El volumen de datos disponible en el mundo es cada vez menor.`],
+ correct:'b',
+ just:`El mundo contiene más de 44 zettabytes de data; los consumidores exigen personalización.`},
+
+{n:187,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Cookies de terceros',
+ q:`Sobre las cookies de terceros, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Las cookies de terceros están en pleno crecimiento y se consolidan como la fuente de datos más confiable y estable para la personalización de campañas.`,
+  `Las cookies de terceros están en proceso de desaparición; sin una adecuada estrategia de datos, las empresas quedarán "navegando a ciegas".`,
+  `La eliminación de cookies no afecta en absoluto la estrategia de datos de las empresas.`,
+  `Las cookies de terceros son un ejemplo de first-party data.`],
+ correct:'b',
+ just:`Las cookies de terceros están de salida; por eso cobra valor la estrategia de datos propios.`},
+
+{n:188,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · First-party data',
+ q:`Sobre la first-party data (datos de primera mano), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Es información comprada a proveedores externos de datos de terceros.`,
+  `Es información recopilada directamente por la empresa de sus clientes y prospectos, que permite comprender mejor a las audiencias, personalizar interacciones y predecir comportamientos futuros.`,
+  `Es información genérica y agregada, comprada a proveedores externos, que no permite personalizar las interacciones ni predecir con exactitud los comportamientos futuros de cada cliente o prospecto de la empresa.`,
+  `Es un tipo de dato en desuso por las nuevas normativas de privacidad.`],
+ correct:'b',
+ just:`Se recopila directamente de clientes/prospectos; por eso es tan valiosa.`},
+
+{n:189,text:'hubspot',express:false,type:'mc',ask:'incorrecta',src:'HubSpot · First-party vs third-party',
+ q:`Sobre la first-party data frente a la de terceros, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `En un entorno de privacidad creciente, la first-party data garantiza el cumplimiento de las normativas de protección de datos.`,
+  `La first-party data es un activo propio, confiable y regulatoriamente seguro.`,
+  `La disponibilidad de la third-party data se reduce con la eliminación de las cookies.`,
+  `La first-party data es un dato de terceros cuya disponibilidad aumenta a medida que desaparecen las cookies.`],
+ correct:'d',
+ just:`La first-party data es propia (no de terceros) y su valor crece porque la de terceros se reduce.`},
+
+{n:190,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · IA y first-party data',
+ q:`Sobre el rol de la IA respecto de la first-party data, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La IA reemplaza a la first-party data por datos de terceros más completos.`,
+  `La IA no solo facilita la recopilación y el análisis de la first-party data, sino que también la enriquece integrándola con otras fuentes (demográficas, comportamentales, firmográficas).`,
+  `La IA se limita exclusivamente a almacenar la first-party data en un repositorio, sin analizarla, sin depurarla y sin integrarla con ninguna otra fuente de información externa que esté disponible.`,
+  `La IA impide combinar la first-party data con datos demográficos o comportamentales.`],
+ correct:'b',
+ just:`La IA facilita, analiza y enriquece la first-party data combinándola con otras fuentes.`},
+
+{n:191,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Enriquecimiento de datos',
+ q:`Sobre el enriquecimiento de datos (data enrichment), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Es el proceso de mejorar la calidad y profundidad de la información sobre clientes y prospectos, a partir de fuentes como bases externas, datos internos, scrapeo, minería de datos o APIs de terceros.`,
+  `Es el simple almacenamiento de información básica de contacto, como nombres, direcciones de correo electrónico y números de teléfono, guardada en una base de datos sin capas adicionales de detalle ni profundidad.`,
+  `Consiste en eliminar información de los contactos para simplificar la base de datos.`,
+  `Es una técnica exclusiva de datos internos que no admite fuentes externas.`],
+ correct:'a',
+ just:`Mejora calidad y profundidad de la información desde múltiples fuentes.`},
+
+{n:192,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Almacenamiento vs enriquecimiento',
+ q:`Sobre la diferencia entre almacenamiento y enriquecimiento de datos, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El almacenamiento de datos agrega capas adicionales de detalle y profundidad, mientras que el enriquecimiento se limita únicamente a guardar información básica como el nombre, el correo y el número de teléfono del contacto.`,
+  `El almacenamiento se limita a recopilar y guardar información básica (nombre, email, teléfono); el enriquecimiento agrega capas adicionales de detalle para una comprensión más completa del contacto.`,
+  `Almacenamiento y enriquecimiento son sinónimos y hacen exactamente lo mismo.`,
+  `El enriquecimiento reduce la profundidad de la información disponible sobre cada contacto.`],
+ correct:'b',
+ just:`a invierte los conceptos: el enriquecimiento agrega capas; el almacenamiento sólo guarda lo básico.`},
+
+{n:193,text:'hubspot',express:false,type:'vf',src:'HubSpot · Dato de mercado',
+ q:`Conteste V o F: Según la guía, se prevé que los ingresos del mercado mundial que utiliza estrategias de enriquecimiento de datos alcancen los 3.500 millones de dólares en 2030.`,
+ correct:'V',
+ just:`Dato cuantitativo citado por HubSpot.`},
+
+{n:194,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Enriquecimiento demográfico',
+ q:`Sobre el enriquecimiento demográfico, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Refleja intereses, valores, actitudes y estilos de vida del cliente.`,
+  `Aporta información básica como edad, género, ubicación, nivel educativo y estado civil, y ayuda a segmentar la audiencia según características básicas.`,
+  `Mejora los datos de leads con información firmográfica como la industria y el tamaño de la empresa, orientada específicamente a optimizar las estrategias de marketing B2B.`,
+  `Es un tipo de enriquecimiento orientado exclusivamente al marketing B2B.`],
+ correct:'b',
+ just:`a es psicográfico; c y d corresponden al enriquecimiento "de leads".`},
+
+{n:195,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Enriquecimiento psicográfico',
+ q:`Sobre el enriquecimiento psicográfico, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Aporta datos básicos y objetivos del contacto, como la edad, el género, la ubicación, el nivel educativo y el estado civil de cada persona registrada como contacto.`,
+  `Refleja intereses, valores, actitudes y estilos de vida, y permite comprender las motivaciones de compra y diseñar mensajes que resuenen emocionalmente.`,
+  `Se limita a la información firmográfica de las empresas clientes.`,
+  `No aporta ningún valor para la personalización de mensajes.`],
+ correct:'b',
+ just:`El psicográfico apunta a las motivaciones y a la conexión emocional.`},
+
+{n:196,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Enriquecimiento de leads',
+ q:`Sobre el enriquecimiento de leads, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Mejora los datos de leads con información firmográfica (industria, tamaño de empresa) y demográfica (cargo, nivel educativo), y optimiza estrategias de marketing B2B.`,
+  `Refleja los valores y estilos de vida del consumidor final.`,
+  `Se limita a los datos demográficos básicos del consumidor individual.`,
+  `No permite segmentar ni personalizar las ofertas comerciales según las características de las empresas clientes, ya que se limita a los intereses y valores del consumidor individual.`],
+ correct:'a',
+ just:`Es el tipo orientado al B2B: firmográfico + cargo.`},
+
+{n:197,text:'hubspot',express:false,type:'mc',ask:'correcta',src:'HubSpot · Identificar tipo',
+ q:`Una empresa B2B agrega a sus contactos el cargo del interlocutor, la industria y el tamaño de la empresa. ¿Qué tipo de enriquecimiento es?`,
+ opts:[
+  `Demográfico.`,
+  `De leads (información firmográfica más los datos demográficos del cargo).`,
+  `Psicográfico.`,
+  `Almacenamiento simple de datos básicos de contacto, sin ninguna capa de enriquecimiento adicional.`],
+ correct:'b',
+ just:`Industria y tamaño = firmográfico; cargo = demográfico del lead. Es enriquecimiento de leads.`},
+
+{n:198,text:'hubspot',express:false,type:'mc',ask:'incorrecta',src:'HubSpot · Tipos de enriquecimiento',
+ q:`Sobre los tres tipos de enriquecimiento, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `El demográfico segmenta según características básicas del contacto.`,
+  `El enriquecimiento psicográfico ayuda a comprender las motivaciones de compra del cliente y a diseñar mensajes que conecten emocionalmente con él.`,
+  `El de leads optimiza el marketing B2B con información firmográfica.`,
+  `Los tres tipos aportan exactamente la misma información y persiguen el mismo beneficio.`],
+ correct:'d',
+ just:`Cada tipo aporta información y beneficios diferenciados.`},
+
+{n:199,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Capacidades de la IA',
+ q:`Sobre las capacidades de la IA en el enriquecimiento, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La IA analiza grandes volúmenes de datos en tiempo real, identificando patrones y tendencias que podrían ser ignorados por los humanos.`,
+  `La IA sólo puede procesar pequeños volúmenes de datos y siempre de forma diferida, nunca en tiempo real, lo que limita su utilidad para actualizar los perfiles de contacto.`,
+  `La IA vuelve el proceso más lento y menos escalable que el trabajo manual.`,
+  `La IA impide la actualización constante de la información de los contactos.`],
+ correct:'a',
+ just:`Análisis en tiempo real y actualización constante, a gran escala.`},
+
+{n:200,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Limpieza y depuración',
+ q:`Sobre la limpieza y depuración de datos con IA, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Los algoritmos de IA introducen deliberadamente duplicados y errores en las bases para ampliar el volumen total de datos disponibles sobre los contactos que tiene la empresa.`,
+  `La IA puede identificar y corregir errores (duplicados, información incorrecta) de manera automatizada, garantizando decisiones basadas en datos confiables.`,
+  `La depuración de datos sólo puede hacerse manualmente, sin intervención de la IA.`,
+  `La limpieza automatizada es irrelevante cuando se manejan bases de datos grandes.`],
+ correct:'b',
+ just:`Especialmente valiosa en bases grandes donde la revisión manual sería impracticable.`},
+
+{n:201,text:'hubspot',express:false,type:'mc',ask:'incorrecta',src:'HubSpot · Contraste sin/con IA',
+ q:`Sobre el contraste entre el proceso "sin IA" y "con IA", ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Sin IA: recopilación manual, actualización periódica, errores frecuentes y análisis limitado.`,
+  `Con IA: automatización de la recopilación, actualización en tiempo real y depuración automática de duplicados y errores.`,
+  `Con IA: identificación de patrones y tendencias a gran escala.`,
+  `Con IA el proceso sigue requiriendo el mismo esfuerzo manual y la misma frecuencia de errores que sin IA.`],
+ correct:'d',
+ just:`La IA justamente elimina el esfuerzo manual y reduce los errores.`},
+
+{n:202,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Marketing (3 pasos)',
+ q:`Sobre cómo la IA identifica compañías con potencial en marketing, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El proceso sigue tres pasos: análisis de datos demográficos y firmográficos, evaluación de comportamientos en línea y predicción de la intención de compra.`,
+  `El proceso se limita a un único paso, que consiste en enviar exactamente el mismo mensaje genérico a toda la base de datos de contactos, sin ningún análisis previo.`,
+  `La IA predice la intención de compra sin analizar ningún comportamiento en línea.`,
+  `La IA sólo evalúa datos demográficos, ignorando los firmográficos y el comportamiento.`],
+ correct:'a',
+ just:`Los tres pasos: datos demográficos/firmográficos → comportamiento en línea → predicción de intención.`},
+
+{n:203,text:'hubspot',express:false,type:'mc',ask:'correcta',src:'HubSpot · Segmentación en marketing',
+ q:`Sobre la segmentación de audiencias con IA en marketing, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Consiste en definir segmentos específicos, personalizar los mensajes de cada segmento y monitorear/ajustar las campañas de forma continua.`,
+  `Consiste en unificar a todos los clientes dentro de un único gran segmento, al que se le envía un mismo mensaje uniforme, sin distinguir características ni comportamientos.`,
+  `Una vez definidos los segmentos, no se realiza ningún monitoreo ni ajuste posterior.`,
+  `La personalización de mensajes por segmento perjudica la efectividad de las campañas.`],
+ correct:'a',
+ just:`Definir segmentos → personalizar mensajes → monitorear y ajustar.`},
+
+{n:204,text:'hubspot',express:false,type:'mc',ask:'correcta',src:'HubSpot · Ventas (tomadores de decisión)',
+ q:`Sobre el uso de la IA en ventas (conectar con tomadores de decisión), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La IA analiza la estructura organizacional (con datos firmográficos y redes sociales como LinkedIn), evalúa el poder de decisión y recomienda la mejor forma de conexión.`,
+  `La IA contacta de forma automática a todos y cada uno de los empleados de la empresa por igual, sin distinguir su rol, su cargo ni su nivel de influencia en la toma de decisiones.`,
+  `La IA ignora los cargos y antecedentes profesionales al evaluar quién decide la compra.`,
+  `La IA no puede sugerir cuál es el mejor contacto para iniciar una conversación comercial.`],
+ correct:'a',
+ just:`Mapea la estructura, evalúa el poder de decisión y recomienda la conexión.`},
+
+{n:205,text:'hubspot',express:false,type:'mc',ask:'correcta',src:'HubSpot · Ventas (aplicación)',
+ q:`Un representante de ventas quiere identificar quién tiene autoridad para aprobar una compra dentro de una empresa. Según la guía, la IA:`,
+ opts:[
+  `Escanea datos firmográficos y redes sociales para mapear la estructura organizacional y destacar a los individuos con más influencia en la decisión.`,
+  `Elige al azar un empleado de la empresa para iniciar el contacto.`,
+  `Sólo puede aportar el nombre y el correo del contacto, sin evaluar su poder de decisión.`,
+  `Requiere que el propio vendedor investigue de forma manual y exhaustiva toda la organización de la empresa, uno por uno, sin ningún aporte ni automatización por parte de la IA.`],
+ correct:'a',
+ just:`La IA usa datos firmográficos y LinkedIn para mapear la estructura y el poder de decisión.`},
+
+{n:206,text:'hubspot',express:false,type:'mc',ask:'correcta',src:'HubSpot · Operaciones',
+ q:`Sobre el uso de la IA en operaciones, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La IA integra fuentes de datos (CRM, marketing, redes sociales), elimina duplicados y errores, identifica oportunidades de venta cruzada y automatiza encuestas como el NPS.`,
+  `La IA en operaciones se limita a almacenar datos, sin integrarlos ni depurarlos.`,
+  `La IA no puede identificar oportunidades de upselling ni cross-selling.`,
+  `La automatización del diseño y envío de encuestas de satisfacción, como el Net Promoter Score (NPS), queda por completo fuera del alcance de las capacidades de la IA en operaciones.`],
+ correct:'a',
+ just:`Integra fuentes, depura, detecta venta cruzada y automatiza el NPS.`},
+
+{n:207,text:'hubspot',express:false,type:'mc',ask:'correcta',src:'HubSpot · Upselling y cross-selling',
+ q:`La IA sugiere ofrecer a un cliente un producto complementario que suele adquirirse junto con el que ya compró, optimizando el momento de la oferta. Según la guía, esto corresponde a:`,
+ opts:[
+  `Estrategias de upselling y cross-selling, basadas en el historial de compras del cliente.`,
+  `Eliminación de datos duplicados y erróneos.`,
+  `Mapeo de la estructura organizacional de la empresa.`,
+  `Auditoría periódica de la precisión y la completitud de los datos de contacto, comparando su calidad antes y después del enriquecimiento.`],
+ correct:'a',
+ just:`La IA recomienda productos complementarios y combinaciones según el historial de compras.`},
+
+{n:208,text:'hubspot',express:false,type:'mc',ask:'correcta',src:'HubSpot · Retención y fidelización',
+ q:`Sobre la optimización de la retención y fidelización con IA, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La IA analiza el comportamiento post-compra para detectar patrones de (in)satisfacción y sugiere acciones para retener a los clientes en riesgo de abandono o fidelizar a los satisfechos.`,
+  `La IA sólo sirve para adquirir clientes nuevos, nunca para retener a los actuales.`,
+  `La IA recomienda ignorar a los clientes que reducen sus compras después de cierto período.`,
+  `Las estrategias de fidelización, como los programas de recompensas y las encuestas personalizadas, quedan por completo fuera del alcance de la IA, que sólo interviene en la adquisición de clientes.`],
+ correct:'a',
+ just:`La IA propone campañas de fidelización, encuestas y recompensas para retener clientes.`},
+
+{n:209,text:'hubspot',express:true,type:'mc',ask:'correcta',src:'HubSpot · Métricas de éxito',
+ q:`Sobre las métricas para medir el éxito del enriquecimiento, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Las cinco métricas clave son: precisión y completitud de los datos, segmentación y personalización mejoradas, eficiencia del proceso de ventas, ROI y satisfacción/retención del cliente.`,
+  `La única métrica verdaderamente relevante para medir el éxito del enriquecimiento es la cantidad total de contactos almacenados en la base de datos de la empresa, sin importar su calidad.`,
+  `El éxito del enriquecimiento no puede medirse con ninguna métrica objetiva.`,
+  `El ROI y el NPS no forman parte de las métricas de éxito.`],
+ correct:'a',
+ just:`Son las cinco métricas que propone la guía.`},
+
+{n:210,text:'hubspot',express:false,type:'mc',ask:'incorrecta',src:'HubSpot · Métricas (detalle)',
+ q:`Sobre las métricas de éxito, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `La precisión y completitud se mide con auditorías de datos periódicas, comparando la calidad antes y después del enriquecimiento.`,
+  `La mejora en segmentación se evalúa con la tasa de apertura de correos, la tasa de clics y la conversión.`,
+  `El ROI se calcula comparando los ingresos generados por las campañas basadas en datos enriquecidos con el costo de implementar y mantener las herramientas.`,
+  `La satisfacción y retención del cliente se mide exclusivamente por la cantidad de datos duplicados eliminados.`],
+ correct:'d',
+ just:`Se mide con NPS, tasa de retención y posibilidad de recompra.`},
+
+{n:211,text:'hubspot',express:false,type:'mc',ask:'correcta',src:'HubSpot · Eficiencia del proceso de ventas',
+ q:`Sobre la eficiencia del proceso de ventas como métrica, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Se mide con indicadores como la reducción del ciclo de ventas, el aumento en la tasa de cierre y el costo de adquisición.`,
+  `Se mide únicamente con la tasa de apertura de correos electrónicos.`,
+  `Es equivalente al ROI y se calcula del mismo modo.`,
+  `No guarda ninguna relación con la rapidez para cerrar acuerdos ni con la capacidad de conectar con los tomadores de decisión correctos dentro de cada empresa cliente.`],
+ correct:'a',
+ just:`Ciclo de ventas, tasa de cierre y costo de adquisición.`}
 ];
 
 /* ===================== LÓGICA ===================== */
