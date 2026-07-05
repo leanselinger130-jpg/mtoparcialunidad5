@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repaso Parcial · Marketing Táctico y Operativo (U5)</title>
+<style>
+  :root{
+    --card:#ffffff; --ink:#0f172a; --muted:#64748b;
+    --brand:#1d4ed8; --brand2:#2563eb; --brandInk:#eff6ff;
+    --ok:#15803d; --okBg:#dcfce7; --okBd:#86efac;
+    --bad:#b91c1c; --badBg:#fee2e2; --badBd:#fca5a5;
+    --line:#e2e8f0; --soft:#f8fafc; --shadow:0 10px 30px rgba(2,6,23,.12);
+    --accent2:#0e7490;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --card:#111c33; --ink:#e6edf7; --muted:#93a4bd; --line:#24344f; --soft:#0f1a30;
+      --brandInk:#dbeafe; --okBg:#0c2a1a; --okBd:#1f6f43; --ok:#7ee2a8;
+      --badBg:#2c1414; --badBd:#7f2b2b; --bad:#f7a6a6; --shadow:0 12px 34px rgba(0,0,0,.45);
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:linear-gradient(160deg,#0f172a 0%,#1e3a8a 55%,#1d4ed8 120%);
+    min-height:100vh; padding:28px 16px; line-height:1.55;
+  }
+  .wrap{max-width:840px;margin:0 auto}
+  .card{
+    background:var(--card);border-radius:18px;box-shadow:var(--shadow);
+    padding:30px 30px 26px;border:1px solid var(--line);
+  }
+  header.hero{color:#fff;text-align:center;margin-bottom:22px}
+  header.hero h1{font-size:1.6rem;margin:0 0 6px;letter-spacing:.2px}
+  header.hero p{margin:0;opacity:.85;font-size:.95rem}
+  .kicker{
+    display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    background:rgba(255,255,255,.14);color:#dbeafe;padding:5px 12px;border-radius:999px;margin-bottom:12px;
+  }
+  h2{font-size:1.25rem;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:.92rem;margin:0 0 20px}
+  .backbtn{background:none;border:none;color:var(--brand2);font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;padding:0;margin-bottom:14px}
+  .backbtn:hover{text-decoration:underline}
+
+  /* Text panel */
+  .texts{display:flex;flex-direction:column;gap:14px}
+  .textcard{
+    text-align:left;cursor:pointer;border:1.5px solid var(--line);background:var(--soft);
+    border-radius:14px;padding:18px 20px;transition:.18s;display:flex;align-items:center;gap:16px;
+  }
+  .textcard:hover{border-color:var(--brand2);transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,99,235,.18)}
+  .textcard .num{
+    flex:0 0 52px;height:52px;border-radius:12px;display:grid;place-items:center;
+    font-weight:800;font-size:1.4rem;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));
+  }
+  .textcard.alt .num{background:linear-gradient(135deg,var(--accent2),#0891b2)}
+  .textcard.b3 .num{background:linear-gradient(135deg,#e11d48,#f43f5e);font-size:1.15rem}
+  .textcard.all .num{background:linear-gradient(135deg,#7c3aed,#a855f7)}
+  .textcard .body h3{margin:0 0 3px;font-size:1.08rem}
+  .textcard .body p{margin:0;color:var(--muted);font-size:.86rem}
+  .textcard .chev{margin-left:auto;color:var(--muted);font-size:1.4rem}
+
+  /* Mode panel */
+  .modes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:560px){.modes{grid-template-columns:1fr}}
+  .mode{
+    text-align:left;cursor:pointer;border:1.5px solid var(--line);background:var(--soft);
+    border-radius:14px;padding:20px;transition:.18s;display:flex;flex-direction:column;gap:8px;
+  }
+  .mode:hover{border-color:var(--brand2);transform:translateY(-3px);box-shadow:0 10px 24px rgba(37,99,235,.18)}
+  .mode .tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand2)}
+  .mode h3{margin:0;font-size:1.12rem}
+  .mode .count{font-size:2rem;font-weight:800;color:var(--brand);line-height:1}
+  .mode p{margin:0;color:var(--muted);font-size:.86rem}
+  .optrow{display:flex;align-items:center;gap:9px;margin-top:20px;color:var(--muted);font-size:.9rem}
+  .optrow input{width:17px;height:17px;accent-color:var(--brand2)}
+
+  /* Quiz */
+  .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+  .counter{font-size:.85rem;color:var(--muted);font-weight:600}
+  .scorepill{font-size:.8rem;font-weight:700;color:var(--brand2);background:var(--soft);border:1px solid var(--line);padding:4px 11px;border-radius:999px}
+  .progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:22px}
+  .bar{height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .35s}
+  .srctag{display:inline-block;font-size:.74rem;font-weight:600;color:var(--brandInk);background:var(--brand);padding:4px 10px;border-radius:7px;margin-bottom:12px}
+  .qtext{font-size:1.06rem;font-weight:600;margin:0 0 18px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{
+    display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--line);
+    border-radius:11px;padding:13px 15px;cursor:pointer;transition:.14s;background:var(--card);
+  }
+  .opt:hover{border-color:var(--brand2);background:var(--soft)}
+  .opt.sel{border-color:var(--brand2);background:var(--soft)}
+  .opt .lt{
+    flex:0 0 26px;height:26px;border-radius:7px;background:var(--soft);border:1px solid var(--line);
+    display:grid;place-items:center;font-weight:700;font-size:.85rem;color:var(--muted)
+  }
+  .opt.sel .lt{background:var(--brand2);color:#fff;border-color:var(--brand2)}
+  .opt .ot{flex:1;font-size:.95rem}
+  .opt.correct{border-color:var(--okBd);background:var(--okBg)}
+  .opt.correct .lt{background:var(--ok);color:#fff;border-color:var(--ok)}
+  .opt.wrong{border-color:var(--badBd);background:var(--badBg)}
+  .opt.wrong .lt{background:var(--bad);color:#fff;border-color:var(--bad)}
+  .opt.locked{cursor:default}
+  .feedback{margin-top:16px;border-radius:12px;padding:14px 16px;font-size:.92rem;display:none}
+  .feedback.show{display:block}
+  .feedback.good{background:var(--okBg);border:1px solid var(--okBd)}
+  .feedback.bad{background:var(--badBg);border:1px solid var(--badBd)}
+  .feedback .verdict{font-weight:800;margin-bottom:5px;display:block}
+  .feedback.good .verdict{color:var(--ok)}
+  .feedback.bad .verdict{color:var(--bad)}
+  .feedback .just{color:var(--ink)}
+  .actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px;flex-wrap:wrap}
+  button.btn{
+    font-family:inherit;font-size:.95rem;font-weight:700;border:none;border-radius:11px;
+    padding:12px 22px;cursor:pointer;transition:.15s;background:var(--brand2);color:#fff;
+  }
+  button.btn:hover{background:var(--brand);transform:translateY(-1px)}
+  button.btn.ghost{background:transparent;color:var(--muted);border:1.5px solid var(--line)}
+  button.btn.ghost:hover{color:var(--ink);border-color:var(--brand2);background:var(--soft)}
+  button.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+  /* Results */
+  .result-head{text-align:center;margin-bottom:8px}
+  .score-big{font-size:3rem;font-weight:800;color:var(--brand);line-height:1}
+  .score-sub{color:var(--muted);margin:6px 0 4px}
+  .grade{font-size:1.05rem;font-weight:700;margin-bottom:20px;text-align:center}
+  .review h3{font-size:1rem;margin:22px 0 10px}
+  .rev-item{border:1px solid var(--line);border-left:4px solid var(--bad);border-radius:10px;padding:12px 14px;margin-bottom:10px;background:var(--soft)}
+  .rev-item .rq{font-weight:600;font-size:.9rem;margin-bottom:6px}
+  .rev-item .ra{font-size:.85rem;color:var(--muted)}
+  .rev-item .ra b{color:var(--ok)}
+  .allgood{text-align:center;color:var(--ok);font-weight:700;padding:16px;background:var(--okBg);border:1px solid var(--okBd);border-radius:12px}
+  .footnote{text-align:center;color:#cbd5e1;font-size:.8rem;margin-top:18px;opacity:.85}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 1) TEXT SELECT -->
+  <section id="textselect">
+    <header class="hero">
+      <span class="kicker">UNLP · Marketing Táctico y Operativo · Unidad 5</span>
+      <h1>Repaso Parcial — Planeamiento Comercial</h1>
+      <p>Herramienta de estudio multiple choice</p>
+    </header>
+    <div class="card">
+      <h2>¿Qué texto querés estudiar?</h2>
+      <p class="sub">Elegí un texto para practicar sus preguntas, o "Todos" para un repaso integral.</p>
+      <div class="texts">
+        <div class="textcard" onclick="chooseText('hair')">
+          <div class="num">5.1.1</div>
+          <div class="body">
+            <h3>Hair et al. — Elaboración de pronósticos y presupuestos</h3>
+            <p>Administración de ventas, Cap. 5 · 42 preguntas</p>
+          </div>
+          <div class="chev">›</div>
+        </div>
+        <div class="textcard alt" onclick="chooseText('lavolpe')">
+          <div class="num">5.1.2</div>
+          <div class="body">
+            <h3>Lavolpe et al. — El presupuesto de ventas</h3>
+            <p>Presupuestos y gestión, Cap. 3 · 38 preguntas</p>
+          </div>
+          <div class="chev">›</div>
+        </div>
+        <div class="textcard b3" onclick="chooseText('bilinkis')">
+          <div class="num">5.1.3</div>
+          <div class="body">
+            <h3>Bilinkis — Modelar para emprender</h3>
+            <p>Artículos de entrepreneurship · 27 preguntas</p>
+          </div>
+          <div class="chev">›</div>
+        </div>
+        <div class="textcard all" onclick="chooseText('todos')">
+          <div class="num">∑</div>
+          <div class="body">
+            <h3>Todos los textos</h3>
+            <p>Repaso integral combinado · 107 preguntas</p>
+          </div>
+          <div class="chev">›</div>
+        </div>
+      </div>
+    </div>
+    <p class="footnote">Se irán sumando más textos de la unidad a medida que los trabajemos.</p>
+  </section>
+
+  <!-- 2) MODE SELECT -->
+  <section id="modeselect" class="hidden">
+    <header class="hero">
+      <span class="kicker" id="modeKicker">Texto seleccionado</span>
+      <h1 id="modeTitle">—</h1>
+      <p id="modeSub">—</p>
+    </header>
+    <div class="card">
+      <button class="backbtn" onclick="show('textselect')">‹ Cambiar de texto</button>
+      <h2>Elegí tu modo de repaso</h2>
+      <p class="sub">Un repaso rápido de los conceptos núcleo, o la cobertura completa del texto.</p>
+      <div class="modes">
+        <div class="mode" onclick="startQuiz('express')">
+          <span class="tag">Repaso Express</span>
+          <span class="count" id="expCount">0</span>
+          <h3>Conceptos núcleo</h3>
+          <p>Selección breve para un repaso ágil.</p>
+        </div>
+        <div class="mode" onclick="startQuiz('general')">
+          <span class="tag">Repaso General</span>
+          <span class="count" id="genCount">0</span>
+          <h3>Cobertura completa</h3>
+          <p>Todas las preguntas del texto, de principio a fin.</p>
+        </div>
+      </div>
+      <label class="optrow">
+        <input type="checkbox" id="shuffleQ" checked>
+        Mezclar también el orden de las preguntas
+      </label>
+    </div>
+    <p class="footnote">El orden de las opciones se aleatoriza en cada intento.</p>
+  </section>
+
+  <!-- 3) QUIZ -->
+  <section id="quiz" class="hidden">
+    <div class="card">
+      <div class="topbar">
+        <span class="counter" id="counter">Pregunta 1 / 21</span>
+        <span class="scorepill" id="scorepill">Aciertos: 0</span>
+      </div>
+      <div class="progress"><div class="bar" id="bar"></div></div>
+      <span class="srctag" id="srctag">—</span>
+      <p class="qtext" id="qtext"></p>
+      <div class="opts" id="opts"></div>
+      <div class="feedback" id="feedback">
+        <span class="verdict" id="verdict"></span>
+        <span class="just" id="just"></span>
+      </div>
+      <div class="actions">
+        <button class="btn ghost" onclick="quitToMenu()">Salir</button>
+        <button class="btn" id="checkBtn" onclick="checkAnswer()" disabled>Comprobar</button>
+        <button class="btn hidden" id="nextBtn" onclick="nextQuestion()">Siguiente</button>
+      </div>
+    </div>
+    <p class="footnote">Seleccioná una opción y presioná “Comprobar” para ver la justificación.</p>
+  </section>
+
+  <!-- 4) RESULTS -->
+  <section id="results" class="hidden">
+    <div class="card">
+      <div class="result-head">
+        <div class="score-big" id="finalScore">0 / 0</div>
+        <p class="score-sub" id="finalPct">0% de aciertos</p>
+      </div>
+      <div class="grade" id="grade"></div>
+      <div class="review" id="review"></div>
+      <div class="actions">
+        <button class="btn ghost" onclick="show('textselect')">Elegir otro texto</button>
+        <button class="btn ghost" onclick="quitToMenu()">Cambiar modo</button>
+        <button class="btn" onclick="retrySame()">Reintentar</button>
+      </div>
+    </div>
+    <p class="footnote">Repasá especialmente las preguntas marcadas en rojo.</p>
+  </section>
+
+</div>
+
+<script>
+const TEXT_INFO = {
+  hair:     {title:'Hair et al. — Pronósticos y presupuestos', sub:'Administración de ventas, Cap. 5'},
+  lavolpe:  {title:'Lavolpe et al. — El presupuesto de ventas', sub:'Presupuestos y gestión, Cap. 3'},
+  bilinkis: {title:'Bilinkis — Modelar para emprender', sub:'Artículos de entrepreneurship (2009)'},
+  todos:    {title:'Todos los textos', sub:'Repaso integral · Unidad 5 (Planeamiento Comercial)'}
+};
+
+/* ===================== BANCO DE PREGUNTAS =====================
+   text: 'hair' | 'lavolpe'
+   express: true => entra en Repaso Express de su texto
+   type 'mc': opts a-d + e/f automáticos (según ask) ; correct 'a'..'f'
+   type 'vf': correct 'V' o 'F'
+=============================================================== */
+const BANK = [
+/* ---------- HAIR (1-42) ---------- */
+{n:1,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Caso de apertura (Hopkins)',
+ q:`Según el caso de apertura, ¿cuál de las siguientes afirmaciones (a-d) sobre el "túnel de ventas" es correcta?`,
+ opts:[
+  `En la etapa 2 los prospectos ya han identificado a Morgan Holland como su proveedor preferido y, a partir de allí, ninguno debería salir del túnel.`,
+  `Los prospectos de la etapa 2 han expresado interés, tienen una necesidad identificada y un marco de tiempo para resolverla, lo que le permite a Hopkins predecir a quiénes necesitará en el equipo.`,
+  `En la etapa 4 se cierra el trato y recién allí Hopkins comienza a identificar a quiénes necesitará para el proyecto.`,
+  `El túnel de ventas se ensancha a medida que los prospectos avanzan de etapa, porque aumenta el número de involucrados.`],
+ correct:'b',
+ just:`La etapa 3 (no la 2) es la del "proveedor preferido"; el túnel "se estrecha cada vez más"; y ya en la etapa 2 Hopkins sabe lo suficiente para predecir a quién necesitará.`},
+
+{n:2,text:'hair',express:true,type:'mc',ask:'incorrecta',src:'Hair et al. · Caso de apertura (Hopkins)',
+ q:`Con relación a la dotación de personal en el caso Hopkins, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `En un negocio de servicios, nada acaba con la rentabilidad más rápido que un exceso de personal de reserva.`,
+  `Mantener a la empresa con personal reducido puede implicar renunciar a algunas oportunidades, pero eso no la llevará a la quiebra, a diferencia de un exceso de personal.`,
+  `La clave para predecir con exactitud las ventas es preparar al mismo tiempo el pronóstico del proyecto y el plan de proceso de empleo.`,
+  `Hopkins sostiene que conviene mantener siempre un amplio plantel de contratistas independientes en reserva para no perder ninguna oportunidad de negocio.`],
+ correct:'d',
+ just:`Contradice la tesis central del caso: el exceso de personal de reserva es justamente lo que "acaba con la rentabilidad".`},
+
+{n:3,text:'hair',express:true,type:'mc',ask:'incorrecta',src:'Hair et al. · Importancia del pronóstico',
+ q:`Según el texto, ¿cuál de las siguientes afirmaciones (a-d) sobre la importancia de los pronósticos es incorrecta?`,
+ opts:[
+  `Sin un pronóstico a corto plazo, los gerentes carecen de una base lógica para asignar las cargas de trabajo o decidir dónde concentrar el esfuerzo de ventas.`,
+  `El pronóstico a largo plazo permite estimar cuántos vendedores necesitará la empresa y a cuántos promover a gerentes de ventas.`,
+  `La necesidad misma de elaborar un pronóstico reconoce que existe incertidumbre en el proceso.`,
+  `Como el arte y la ciencia de pronosticar son imperfectos, cada pronóstico puede llegar a ser completamente exacto sólo si se emplean técnicas cuantitativas avanzadas.`],
+ correct:'d',
+ just:`El texto dice que cada pronóstico "sólo puede ser exacto hasta cierto punto" y que usar una técnica compleja "no es una promesa de exactitud".`},
+
+{n:4,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Conceptos base',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre pronóstico, potencial de mercado y potencial de ventas es correcta?`,
+ opts:[
+  `El potencial de mercado es la porción del potencial de ventas que una empresa espera razonablemente obtener.`,
+  `El potencial de ventas es la estimación cuantitativa de las ventas totales de un producto dentro de un mercado, considerando a todas las empresas competidoras.`,
+  `El pronóstico de ventas es una predicción del futuro potencial de mercado para un producto específico y establece las expectativas de ventas para un periodo determinado.`,
+  `El potencial de mercado se expresa únicamente en unidades monetarias y el potencial de ventas únicamente en unidades físicas.`],
+ correct:'c',
+ just:`En a y b las definiciones están invertidas; el potencial de mercado puede ser monetario o físico (d es falsa).`},
+
+{n:5,text:'hair',express:true,type:'vf',src:'Hair et al. · Cuotas',
+ q:`Conteste V o F: Según el texto, las cuotas son metas de ventas para diferentes territorios y vendedores individuales, y los gerentes coinciden en usar el término con cierta cautela, ya que los vendedores suelen interpretarlo como "Haz esto o de lo contrario".`,
+ correct:'V',
+ just:`Reproduce literalmente la definición de cuota y la advertencia sobre el uso del término.`},
+
+{n:6,text:'hair',express:true,type:'mc',ask:'incorrecta',src:'Hair et al. · Impacto de pronósticos erróneos (Tabla 5.1)',
+ q:`Con relación al impacto de los pronósticos de ventas erróneos (Tabla 5.1), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Un pronóstico demasiado alto puede generar inventario excesivo de bienes no vendidos, seguido de cierres de plantas, despidos y deterioro de la materia prima.`,
+  `Un pronóstico que subestime la demanda hace que se agoten las existencias, se pierdan ventas y hasta se pierda permanentemente a ciertos clientes.`,
+  `En el área de finanzas, un pronóstico demasiado alto produce escasez de efectivo, mientras que uno demasiado bajo genera efectivo inactivo.`,
+  `En la fuerza de ventas, un pronóstico demasiado alto lleva a tener demasiados vendedores y altos costos de ventas.`],
+ correct:'c',
+ just:`Está invertido: pronóstico alto → efectivo inactivo; pronóstico bajo → escasez de efectivo.`},
+
+{n:7,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Aplicación numérica (Nº de vendedores)',
+ q:`Una empresa espera $800.000 de ventas anuales. Un vendedor común vende $40.000 al año y se estima una rotación (RO) del 20%. Aplicando NV = (Potencial de ventas / Ventas por vendedor) × (1 + RO), ¿cuántos vendedores debería planear contratar?`,
+ opts:[`20 vendedores.`,`24 vendedores.`,`22 vendedores.`,`16 vendedores.`],
+ correct:'b',
+ just:`(800.000 / 40.000) × (1 + 0,20) = 20 × 1,20 = 24. "20" ignora la rotación; "16" la resta en lugar de sumarla.`},
+
+{n:8,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Ventas y Planeación Operativa (V y PO)',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el proceso de V y PO y las contingencias es correcta?`,
+ opts:[
+  `El proceso de V y PO ajusta los parámetros de planeación (compras, programas de mano de obra, requerimientos de capital) con base en el pronóstico.`,
+  `Una contingencia se refiere a acontecimientos más probables que los basados directamente en el pronóstico y que, por lo tanto, deben priorizarse.`,
+  `En el proceso de V y PO interviene sólo el equipo de ventas, sin participación de marketing, producción o finanzas.`,
+  `El proceso parte de un pronóstico ya cerrado por la dirección y no admite ajustes de los gerentes funcionales.`],
+ correct:'a',
+ just:`La contingencia es un evento "concebible pero menos probable" (b falsa); gerentes de varias áreas revisan el pronóstico preliminar (c y d falsas).`},
+
+{n:9,text:'hair',express:true,type:'mc',ask:'incorrecta',src:'Hair et al. · Enfoques de desglose y acumulación',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los enfoques de desglose y de acumulación es incorrecta?`,
+ opts:[
+  `El enfoque de desglose inicia con un pronóstico de las condiciones económicas generales, y luego siguen en sucesión los pronósticos de la industria, de la empresa y del producto.`,
+  `El enfoque de acumulación se basa en investigación primaria y suma las estimaciones individuales de vendedores o clientes.`,
+  `El enfoque de desglose se hace más atractivo a medida que se acorta el marco de tiempo, mientras que el de acumulación es más confiable para periodos de seis meses o más.`,
+  `En general, el enfoque de desglose es menos costoso, porque los pronósticos totales son distribuidos públicamente por fuentes secundarias.`],
+ correct:'c',
+ just:`Está invertido: el desglose es confiable para 6 meses o más; la acumulación se vuelve más atractiva a medida que se acorta el marco de tiempo.`},
+
+{n:10,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Muestreo e índices de respuesta',
+ q:`Según el texto, ¿cuál de las siguientes afirmaciones (a-d) sobre los índices de respuesta y el muestreo en el enfoque de acumulación es correcta?`,
+ opts:[
+  `Los compradores industriales suelen ser cooperativos, con índices de respuesta del 50% o más, mientras que en los consumidores un índice cercano al 33% ya sería bueno.`,
+  `Los consumidores suelen ser más cooperativos que los compradores industriales, alcanzando índices del 50% o más.`,
+  `Cuando una muestra aleatoria representativa es imposible o impráctica, las empresas nunca deben recurrir a técnicas de muestreo no probabilísticas.`,
+  `Al usar muestras no probabilísticas no es necesario examinar los perfiles de los participantes, porque el índice de respuesta garantiza la representatividad.`],
+ correct:'a',
+ just:`b invierte la cooperación; ante la imposibilidad de muestra aleatoria sí se usan muestras no probabilísticas (c falsa), pero hay que examinar los perfiles (d falsa).`},
+
+{n:11,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Pronóstico ingenuo',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el pronóstico ingenuo es correcta?`,
+ opts:[
+  `El pronóstico ingenuo supone que las ventas del siguiente periodo serán el promedio de los últimos tres periodos.`,
+  `El pronóstico ingenuo es el método de juicio más sencillo y supone que las ventas del siguiente periodo serán iguales a las del periodo anterior.`,
+  `El pronóstico ingenuo es un método cuantitativo de series de tiempo basado en la ponderación de datos recientes.`,
+  `El pronóstico ingenuo es más exacto que cualquier otro método de juicio.`],
+ correct:'b',
+ just:`Es un método de juicio (no cuantitativo, c falsa); el texto aclara que "otros métodos de juicio son más exactos" (d falsa). La opción a describe otro método.`},
+
+{n:12,text:'hair',express:true,type:'mc',ask:'incorrecta',src:'Hair et al. · Jurado de opinión ejecutiva',
+ q:`Con relación al jurado de opinión ejecutiva, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `En industrias caracterizadas por cambios rápidos puede ser el mejor método disponible, por ser flexible y rápido.`,
+  `Una desventaja es que se basa en opiniones y no en hechos, por lo que puede ser poco científico.`,
+  `Otra desventaja es que los altos directivos a menudo no están en contacto con los desarrollos de los mercados locales.`,
+  `Al reunir a los gerentes clave, es un método cuantitativo cuyo consenso garantiza mayor exactitud que cualquier otro método.`],
+ correct:'d',
+ just:`Es un método no cuantitativo (de juicio) y el consenso no "garantiza" exactitud.`},
+
+{n:13,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Composición de la fuerza de ventas',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el método de composición de la fuerza de ventas es correcta?`,
+ opts:[
+  `Una ventaja es que ayuda al personal de ventas a aceptar las cuotas asignadas, porque participa en la elaboración del pronóstico.`,
+  `Una desventaja es que los vendedores pueden subestimar deliberadamente su pronóstico para cumplir sus cuotas con mayor facilidad.`,
+  `Permite preparar estimaciones por productos, clientes y territorios, de modo que se dispone fácilmente de un pronóstico final con gran detalle.`,
+  `Al basarse en vendedores no capacitados en la elaboración de pronósticos, los resultados pueden ser demasiado optimistas o pesimistas.`],
+ correct:'e',
+ just:`Las cuatro reproducen ventajas y desventajas que el texto lista, por lo que "Todas las anteriores son correctas".`},
+
+{n:14,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Encuestas de intenciones de compra',
+ q:`Una empresa que vende maquinaria industrial tiene pocos clientes, fácilmente identificables, capaces de anticipar sus requerimientos. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Son particularmente útiles para productos industriales, porque los clientes son identificables, de número reducido y pueden estimar sus requerimientos con anticipación al pedido.`,
+  `Una ventaja es que las intenciones que los clientes declaran siempre coinciden con lo que finalmente compran.`,
+  `Sólo pueden aplicarse cuando existen amplios datos históricos de ventas del producto.`,
+  `Las intenciones de compra de productos industriales están libres de efectos externos, porque su demanda es autónoma respecto de la de bienes de consumo.`],
+ correct:'a',
+ just:`Lo declarado y lo comprado pueden diferir (b falsa); son "base viable cuando no existen datos históricos" (c falsa); la demanda industrial es derivada (d falsa).`},
+
+{n:15,text:'hair',express:true,type:'mc',ask:'incorrecta',src:'Hair et al. · Mercado de prueba y laboratorio',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el mercado de prueba y la prueba de laboratorio es incorrecta?`,
+ opts:[
+  `La estimación de ventas de un producto nuevo es el tipo de pronóstico más difícil, porque no existen datos históricos disponibles.`,
+  `El mercado de prueba es un método popular para bienes empacados de consumo, similar a un ensayo general en un área de mercado limitada.`,
+  `Entre sus críticas están que se lleva mucho tiempo, es costoso y revela información a los competidores.`,
+  `La prueba de laboratorio se reserva exclusivamente para productos industriales de demanda derivada, ya que resulta más costosa y lenta que el mercado de prueba tradicional.`],
+ correct:'d',
+ just:`La prueba de laboratorio ofrece mayor privacidad, menor costo y mayor rapidez, y no está reservada a productos industriales.`},
+
+{n:16,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Componentes de las series de tiempo',
+ q:`Según el texto, ¿cuál de las siguientes afirmaciones (a-d) sobre los componentes de las series de tiempo es correcta?`,
+ opts:[
+  `Los movimientos cíclicos son patrones consistentes de cambios dentro de un año, como las variaciones de temporada de los esquíes o las lanchas.`,
+  `Los movimientos erráticos son acontecimientos de una sola vez, como guerras, huelgas o tormentas de nieve, que no son predecibles.`,
+  `Las tendencias son movimientos semejantes a las olas, de duración mayor a un año y ocurrencia irregular, como las recesiones.`,
+  `Los movimientos periódicos tienen una duración mayor a un año y son característicos del mercado de viviendas.`],
+ correct:'b',
+ just:`a describe los periódicos; c describe los cíclicos; d confunde periódicos con cíclicos (las viviendas son cíclicas).`},
+
+{n:17,text:'hair',express:true,type:'mc',ask:'incorrecta',src:'Hair et al. · Promedio móvil y suavizamiento',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el promedio móvil y el suavizamiento exponencial es incorrecta?`,
+ opts:[
+  `El suavizamiento exponencial es un tipo de promedio móvil que asigna el mayor peso a los datos más recientes.`,
+  `El suavizamiento exponencial supera una desventaja del promedio móvil: que este último no es sensible a las tendencias más recientes.`,
+  `Cuando las ventas son particularmente volátiles, suele ser más exacto un promedio que contenga menos datos, como el móvil de tres años.`,
+  `En empresas con crecimiento o disminución sostenida de las ventas, el promedio móvil suele ser más exacto que el promedio total.`],
+ correct:'c',
+ just:`Con ventas volátiles, el texto indica que es más exacto un promedio con más datos (el promedio total).`},
+
+{n:18,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Aplicación numérica (suavizamiento)',
+ q:`Con un promedio ponderado (suavizamiento exponencial) de tres años que asigna pesos 1/6, 1/3 y 1/2 del año más antiguo al más reciente, y ventas de 900, 1.200 y 1.500 unidades (del más antiguo al más reciente), el pronóstico es:`,
+ opts:[`1.200 unidades.`,`1.300 unidades.`,`1.250 unidades.`,`1.350 unidades.`],
+ correct:'b',
+ just:`1/6(900) + 1/3(1.200) + 1/2(1.500) = 150 + 400 + 750 = 1.300. "1.200" es el promedio simple, que ignora la ponderación.`},
+
+{n:19,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Métodos causales/de asociación',
+ q:`Según el texto, ¿cuál de las siguientes afirmaciones (a-d) sobre los métodos causales/de asociación es correcta?`,
+ opts:[
+  `El análisis de correlación permite establecer relaciones de causa y efecto entre las variables.`,
+  `En el análisis de tendencias como pronóstico cuantitativo, la variable dependiente son las ventas y la independiente es el tiempo.`,
+  `La regresión múltiple utiliza una única variable independiente para predecir la variable dependiente.`,
+  `El coeficiente de correlación mide la pendiente de la recta de regresión estimada por mínimos cuadrados.`],
+ correct:'b',
+ just:`"Las correlaciones no implican causa y efecto" (a falsa); la regresión múltiple usa varias independientes (c falsa); el coeficiente mide cuánto se relacionan dos variables (d falsa).`},
+
+{n:20,text:'hair',express:true,type:'mc',ask:'incorrecta',src:'Hair et al. · Evaluación de los métodos',
+ q:`Con relación a los criterios para seleccionar un método de pronóstico, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Muchos encargados consideran aceptable una proyección dentro del 10% de exactitud, y un pronóstico es en realidad una gama de valores más que un número único.`,
+  `El principio GIGO ("basura entra, basura sale") refleja que cualquier método está limitado por la calidad y cantidad de la información disponible.`,
+  `A diferencia del jurado de opinión ejecutiva, en el método Delphi los expertos consultados por lo general no trabajan en la empresa y suelen pertenecer a industrias estrechamente relacionadas.`,
+  `La utilización de una técnica de pronóstico más compleja y cuantitativa constituye, según el texto, una garantía de mayor exactitud en la predicción.`],
+ correct:'d',
+ just:`El texto afirma expresamente que usar una técnica compleja "no es una promesa de exactitud".`},
+
+{n:21,text:'hair',express:true,type:'mc',ask:'correcta',src:'Hair et al. · Presupuesto de ventas',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el presupuesto de ventas es correcta?`,
+ opts:[
+  `Es un plan financiero de ventas que delinea cómo asignar los recursos y las actividades de ventas para cumplir con el pronóstico.`,
+  `Los pronósticos y los presupuestos de ventas son independientes entre sí, de modo que un aumento en la importancia del pronóstico no afecta al presupuesto.`,
+  `El cálculo del presupuesto es un proceso de planeación estratégica expresado exclusivamente en unidades físicas.`,
+  `Un presupuesto continuo es aquel que abarca un único periodo fijo de 18 meses sin revisiones.`],
+ correct:'a',
+ just:`Son interdependientes (b falsa); el cálculo es planeación operativa en términos financieros (c falsa); el de 18 meses es el traslapado (d falsa).`},
+
+{n:22,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Analogía del pronóstico',
+ q:`Según la analogía del texto (el pronóstico como "direcciones" para el viaje), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El pronóstico sólo aporta la "dirección" (qué productos desean los clientes), pero no la magnitud de las ventas.`,
+  `Planear sin pronóstico equivale a subirse al automóvil con direcciones precisas.`,
+  `El pronóstico aporta tanto el "qué tan lejos" como la "dirección".`,
+  `El pronóstico del clima no guarda analogía alguna con el de ventas, ya que uno se basa en datos meteorológicos y el otro en datos de mercado.`],
+ correct:'c',
+ just:`El pronóstico da el "qué tan lejos" (cantidad de ventas posible) y la "dirección"; planear sin él es "subirse sin direcciones".`},
+
+{n:23,text:'hair',express:false,type:'mc',ask:'incorrecta',src:'Hair et al. · El pronóstico como punto de partida',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el pronóstico como punto de partida de la planeación es incorrecta?`,
+ opts:[
+  `El pronóstico del potencial de ventas es el punto de partida para la planeación de ventas y marketing, la programación de la producción y el cálculo de presupuestos.`,
+  `Antes de desarrollar un programa de producción, la empresa debe saber cuánto espera vender.`,
+  `Los gerentes de ventas deben conocer su presupuesto de operación antes de determinar cuánto personal contratar.`,
+  `La programación de la producción se define primero y de ella se deriva el pronóstico de ventas.`],
+ correct:'d',
+ just:`Invierte la secuencia: primero el pronóstico, y a partir de él se define el programa de producción.`},
+
+{n:24,text:'hair',express:false,type:'mc',ask:'incorrecta',src:'Hair et al. · Complejidad del pronóstico',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `La predicción de la demanda de un nuevo medicamento depende de variables como cuántas personas contraigan la enfermedad, la expectativa de vida y la aprobación de la FDA.`,
+  `La elaboración de pronósticos no sólo es importante, sino que también puede ser compleja.`,
+  `Comparar las ventas del año actual con las del anterior es un enfoque que deja fuera mucha información relevante.`,
+  `Una predicción simple resulta útil aun cuando cambien las tendencias económicas y los gustos del consumidor.`],
+ correct:'d',
+ just:`Una predicción simple es útil sólo cuando las condiciones (tendencias económicas y gustos) permanecen inalterables.`},
+
+{n:25,text:'hair',express:false,type:'vf',src:'Hair et al. · Enfoque comparativo simple',
+ q:`Conteste V o F: Determinar el pronóstico comparando las ventas del año actual con las del año anterior en el mismo periodo es un enfoque que sólo resulta útil cuando las tendencias económicas y los gustos del consumidor permanecen inalterables.`,
+ correct:'V',
+ just:`El texto advierte que este enfoque deja fuera mucha información y sólo sirve si las condiciones no cambian.`},
+
+{n:26,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Modelo de pronóstico (Figura 5.2)',
+ q:`Según el modelo de elaboración de pronósticos de ventas (Figura 5.2), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El pronóstico de ventas de la empresa puede desglosarse por producto, territorio, cliente y periodo.`,
+  `Los cambios demográficos y los desarrollos legales no se consideran factores relevantes del modelo.`,
+  `El jurado de opinión ejecutivo no figura entre los recursos potenciales del modelo.`,
+  `El modelo parte del pronóstico del producto y asciende hacia las condiciones económicas generales.`],
+ correct:'a',
+ just:`El desglose por producto/territorio/cliente/periodo es explícito; demográficos y legales sí figuran; el jurado es un recurso potencial; el flujo es descendente.`},
+
+{n:27,text:'hair',express:false,type:'mc',ask:'incorrecta',src:'Hair et al. · Clasificación de métodos (Figura 5.3)',
+ q:`Según la clasificación de los métodos (Figura 5.3), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `El jurado de opinión ejecutiva y la composición de la fuerza de ventas son métodos de juicio.`,
+  `Las encuestas de intenciones de compra y el mercado de prueba son métodos de conteo.`,
+  `Los promedios móviles y el suavizamiento exponencial son métodos causales o de asociación.`,
+  `Los modelos econométricos y de entrada-salida son métodos causales o de asociación.`],
+ correct:'c',
+ just:`Los promedios móviles y el suavizamiento exponencial son métodos de series de tiempo, no causales.`},
+
+{n:28,text:'hair',express:false,type:'vf',src:'Hair et al. · Jurado de opinión ejecutiva',
+ q:`Conteste V o F: A pesar de sus desventajas, las empresas más pequeñas casi siempre utilizan el método del jurado de opinión ejecutiva.`,
+ correct:'V',
+ just:`El texto lo afirma expresamente pese a las desventajas del método.`},
+
+{n:29,text:'hair',express:false,type:'mc',ask:'incorrecta',src:'Hair et al. · Composición de la fuerza de ventas',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre las desventajas de la composición de la fuerza de ventas es incorrecta?`,
+ opts:[
+  `Produce pronósticos basados en las condiciones presentes más que en las futuras, porque los vendedores carecen de perspectiva de planeación a futuro.`,
+  `Requiere una cantidad considerable de tiempo de la fuerza de ventas, que de otro modo se dedicaría al campo.`,
+  `Asigna la responsabilidad del pronóstico a quienes son responsables de las ventas.`,
+  `Garantiza pronósticos siempre exactos y libres de sesgos optimistas o pesimistas.`],
+ correct:'d',
+ just:`El texto advierte justamente que los pronósticos "a menudo son demasiado optimistas o pesimistas".`},
+
+{n:30,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Encuestas de intenciones de compra',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre las desventajas de las encuestas de intenciones de compra es correcta?`,
+ opts:[
+  `Nunca resultan costosas ni requieren tiempo, sin importar el número de clientes.`,
+  `En mercados con muchos clientes difíciles de localizar pueden ser costosas y llevar mucho tiempo.`,
+  `Las intenciones declaradas por el comprador siempre coinciden con lo que finalmente compra.`,
+  `Los pronósticos son independientes del criterio y la cooperación de los usuarios, por lo que su calidad no se afecta aunque algunos no cooperen.`],
+ correct:'b',
+ just:`a y c usan absolutos ("nunca", "siempre") que el texto contradice; los pronósticos sí dependen del criterio y la cooperación de los usuarios (d falsa).`},
+
+{n:31,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Mercado de prueba',
+ q:`Una empresa lanza un producto empacado de consumo y prueba su desempeño en algunas áreas representativas, midiendo su participación de mercado. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El mercado de prueba usa la participación obtenida en áreas pequeñas y representativas para pronosticar el mercado total.`,
+  `Si logra 10% de participación en la prueba, debe suponer que obtendrá una participación radicalmente distinta en el mercado amplio.`,
+  `El mercado de prueba requiere áreas de mercado nacionales y amplias desde el inicio.`,
+  `El mercado de prueba elimina por completo el riesgo de que los competidores conozcan el producto.`],
+ correct:'a',
+ just:`El ejemplo Nokia (10%) muestra que se extrapola esa misma participación; se hace en área limitada; y una crítica es que revela el producto a los competidores (d falsa).`},
+
+{n:32,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Promedio móvil (construcción)',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la construcción del promedio móvil es correcta?`,
+ opts:[
+  `El promedio móvil de tres años utiliza el promedio de los tres años más recientes.`,
+  `El promedio móvil conserva indefinidamente todos los periodos, sin eliminar los más antiguos.`,
+  `El promedio simple sólo utiliza el dato del último año disponible.`,
+  `El promedio móvil asigna mayor peso a los datos más antiguos.`],
+ correct:'a',
+ just:`El móvil elimina el periodo más antiguo al añadir uno nuevo (b falsa); el simple promedia todos los años previos (c falsa); no pondera (d falsa).`},
+
+{n:33,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Aplicación numérica (promedio móvil)',
+ q:`Una empresa registró ventas de 650 (2006), 1.150 (2007) y 850 (2008). Con un promedio móvil de tres años, el pronóstico para 2009 es:`,
+ opts:[`883 unidades.`,`850 unidades.`,`917 unidades.`,`1.023 unidades.`],
+ correct:'a',
+ just:`(650 + 1.150 + 850) / 3 = 2.650 / 3 = 883. "1.023" correspondería a un promedio simple con toda la serie.`},
+
+{n:34,text:'hair',express:false,type:'mc',ask:'incorrecta',src:'Hair et al. · Modelo ARIMA',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre el modelo ARIMA es incorrecta?`,
+ opts:[
+  `Es un método sofisticado basado en el concepto del promedio móvil.`,
+  `Detecta patrones en las fluctuaciones de los datos e incluye información sobre tendencias.`,
+  `Es un método no cuantitativo basado en el juicio de expertos.`,
+  `Ha sido útil para predecir distintos tipos de ventas, como la demanda de turismo a China.`],
+ correct:'c',
+ just:`ARIMA es un método cuantitativo (serie de tiempo), no un método de juicio.`},
+
+{n:35,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Aplicación numérica (regresión)',
+ q:`Un análisis de tendencias arroja la ecuación Y = 20 + 8X, donde X es el periodo. El pronóstico de ventas para el Año 6 es:`,
+ opts:[`68.`,`48.`,`168.`,`28.`],
+ correct:'a',
+ just:`20 + 8 × 6 = 20 + 48 = 68. "48" olvida el intercepto; "28" suma 8 en lugar de multiplicarlo.`},
+
+{n:36,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Regresión y tendencias',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la regresión y el análisis de tendencias es correcta?`,
+ opts:[
+  `La regresión simple describe la relación entre una variable independiente y una dependiente.`,
+  `La regresión múltiple utiliza el tiempo como única variable independiente.`,
+  `En el análisis de tendencias, la variable independiente son las ventas.`,
+  `El método de mínimos cuadrados traza la recta mediante inspección visual con una regla.`],
+ correct:'a',
+ just:`La regresión múltiple usa varias variables independientes (b falsa); en tendencias la independiente es el tiempo (c falsa); mínimos cuadrados es un ajuste matemático (d falsa).`},
+
+{n:37,text:'hair',express:false,type:'mc',ask:'incorrecta',src:'Hair et al. · Criterios de evaluación',
+ q:`El gerente de una empresa de tecnología, en un mercado que cambia rápido y con poco tiempo, recibe de un consultor la propuesta de un modelo econométrico complejo que demora semanas. ¿Cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `La comprensibilidad importa: si sólo los expertos en estadística entienden las estimaciones, los ejecutivos confiarán menos en los resultados.`,
+  `La oportunidad importa: los métodos complejos pueden demorar semanas y ser poco útiles cuando se necesitan respuestas rápidas.`,
+  `En industrias de cambios rápidos, el jurado de opinión ejecutiva puede ser el mejor método por su flexibilidad y velocidad.`,
+  `El modelo econométrico complejo, por ser cuantitativo, garantiza un pronóstico más exacto y debe preferirse siempre.`],
+ correct:'d',
+ just:`El texto es explícito: usar una técnica compleja "no es una promesa de exactitud".`},
+
+{n:38,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Criterios de evaluación',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los criterios de evaluación de los métodos de pronóstico es correcta?`,
+ opts:[
+  `Conviene utilizar más de un método para comparar los resultados de varias técnicas.`,
+  `La exactitud aceptable habitual es un margen del 50%.`,
+  `La flexibilidad implica ignorar las desviaciones entre las ventas reales y el pronóstico.`,
+  `Los beneficios del pronóstico no necesitan superar sus costos.`],
+ correct:'a',
+ just:`El margen aceptable ronda el 10% (b falsa); la flexibilidad exige monitorear las desviaciones (c falsa); los beneficios deben superar los costos (d falsa).`},
+
+{n:39,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Horizontes del presupuesto',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los horizontes del presupuesto de ventas es correcta?`,
+ opts:[
+  `Un presupuesto operativo para un año incluye por lo común un pronóstico para los próximos 12 meses.`,
+  `Un presupuesto a corto plazo abarca por lo común periodos de cinco años o más.`,
+  `El presupuesto a largo plazo cubre periodos de seis meses o menos.`,
+  `Las empresas deben tener presupuestos sólo a largo plazo, nunca a corto plazo.`],
+ correct:'a',
+ just:`b y c invierten los plazos (largo = 5 años o más; corto = 6 meses o menos); el texto pide tener ambos (d falsa).`},
+
+{n:40,text:'hair',express:false,type:'mc',ask:'incorrecta',src:'Hair et al. · Presupuestos traslapado y continuo',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los presupuestos traslapados y continuos es incorrecta?`,
+ opts:[
+  `En un presupuesto traslapado, un plan de doce meses puede incluir un traslape de tres meses al inicio y otro al final, cubriendo 18 meses.`,
+  `El presupuesto continuo proyecta un mes o un trimestre adelante a medida que termina cada mes o trimestre.`,
+  `El presupuesto continuo obliga a los gerentes a revisar y actualizar continuamente el presupuesto.`,
+  `El presupuesto continuo se fija una sola vez al año y no admite revisiones.`],
+ correct:'d',
+ just:`El presupuesto continuo es, por definición, el que obliga a revisar y actualizar de forma permanente.`},
+
+{n:41,text:'hair',express:false,type:'mc',ask:'correcta',src:'Hair et al. · Función de planeación del presupuesto',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la función de planeación del presupuesto es correcta?`,
+ opts:[
+  `El presupuesto proporciona una guía para la acción hacia el logro de los objetivos de la organización.`,
+  `Las tareas del departamento de ventas no llevan asociado ningún costo estimado.`,
+  `El cálculo del presupuesto es un proceso ajeno a la planeación operativa.`,
+  `El presupuesto se expresa en términos cualitativos, no financieros.`],
+ correct:'a',
+ just:`Cada tarea sí lleva un costo estimado (b falsa); el cálculo del presupuesto es planeación operativa en términos financieros (c y d falsas).`},
+
+{n:42,text:'hair',express:false,type:'vf',src:'Hair et al. · V y PO (síntesis)',
+ q:`Conteste V o F: El proceso formal de ventas y planeación operativa (V y PO) utiliza los recursos para pronosticar los negocios de periodos venideros de diversa duración y luego ajusta los parámetros de planeación (compras, mano de obra, capital) con base en el pronóstico.`,
+ correct:'V',
+ just:`Reproduce la definición del proceso de V y PO y su lógica de ajuste posterior de parámetros.`},
+
+/* ---------- LAVOLPE (43-80) ---------- */
+{n:43,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.1 Importancia del PV',
+ q:`Según Lavolpe et al., ¿cuál de las siguientes afirmaciones (a-d) sobre la importancia del presupuesto de ventas (PV) es correcta?`,
+ opts:[
+  `Es un presupuesto parcial más, cuya elaboración depende de que estén definidos previamente el plan de producción y el plan de compras.`,
+  `Constituye el punto de partida de todo el sistema presupuestario y funciona como la "llave" que pone en funcionamiento las distintas áreas.`,
+  `Es relevante sólo para el área comercial; el resto elabora sus presupuestos con independencia del pronóstico de ventas.`,
+  `El plan de producción se arma primero y de él se deriva el pronóstico de ventas.`],
+ correct:'b',
+ just:`a y d invierten la dependencia; el PV es el disparador de todo el sistema presupuestario.`},
+
+{n:44,text:'lavolpe',express:true,type:'vf',src:'Lavolpe et al. · 3.1 Importancia del PV',
+ q:`Conteste V o F: Según el texto, la relación de dependencia del sistema presupuestario respecto del PV es tan vital que un mal presupuesto de ventas invalida absolutamente toda la tarea de presupuestación posterior.`,
+ correct:'V',
+ just:`Es afirmación textual del autor (aquí el "absolutamente" es correcto porque lo dice el texto).`},
+
+{n:45,text:'lavolpe',express:true,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.1 Criterio de confección',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre cómo debe confeccionarse el PV es incorrecta?`,
+ opts:[
+  `Con criterio profesional y el mayor realismo posible.`,
+  `Descartando por completo las manifestaciones de optimismo o de prudencia excesiva.`,
+  `Cierto optimismo moderado es tolerable cuando la empresa enfrenta un contexto económico desfavorable.`,
+  `Debe entenderse como la fiel expresión de lo que se espera vender.`],
+ correct:'c',
+ just:`El texto no admite "optimismo tolerable": descarta por completo el optimismo o la prudencia excesiva.`},
+
+{n:46,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.1 Ejemplo del plan de producción',
+ q:`Una empresa tiene un plan de producción técnicamente impecable, pero su pronóstico de ventas fue mal confeccionado. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El plan de producción, por ser perfecto, neutraliza los errores del pronóstico de ventas.`,
+  `Las unidades a fabricar serán insuficientes o excesivas, ocasionando pérdidas de ventas y utilidades o costos por inmovilización de inventarios.`,
+  `El error sólo afecta al área comercial, sin impacto en producción ni inventarios.`,
+  `La calidad del plan de producción es independiente del pronóstico de ventas.`],
+ correct:'b',
+ just:`Es el ejemplo textual del apartado 3.1: un plan perfecto no compensa un mal pronóstico.`},
+
+{n:47,text:'lavolpe',express:true,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.2 Presupuesto motivador',
+ q:`Con relación al "presupuesto motivador" (inflar los pronósticos por encima de la demanda esperada), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Es una práctica muy discutible como medio motivacional.`,
+  `Genera niveles de producción sobredimensionados, con sobrestock e inmovilización de capital.`,
+  `Es una práctica recomendada por los autores siempre que se confeccione un presupuesto paralelo con los valores reales para el área productiva.`,
+  `Es de dudosa efectividad, pues existen otros medios para lograr los mismos objetivos sin distorsionar los presupuestos.`],
+ correct:'c',
+ just:`Los autores critican esta práctica; no la recomiendan (trampa del "siempre que…").`},
+
+{n:48,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.2 Doble juego de pronósticos',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la solución del "doble juego de pronósticos" es correcta?`,
+ opts:[
+  `Usa un pronóstico motivador para lo comercial y el verdadero para el resto.`,
+  `Consiste en aplicar el mismo pronóstico inflado a todas las áreas por igual, de modo que la presión motivacional alcance también a producción y finanzas.`,
+  `Es la vía que los autores recomiendan con carácter general.`,
+  `Reemplaza el criterio de operar sobre la base de lo que realmente se espera vender.`],
+ correct:'a',
+ just:`Es un recurso último ("incluso en el hipotético caso de que no existiese otro camino"), no la vía general.`},
+
+{n:49,text:'lavolpe',express:false,type:'vf',src:'Lavolpe et al. · 3.2 Presupuesto motivador',
+ q:`Conteste V o F: Según los autores, incrementar intencionalmente los pronósticos de venta por encima de la demanda esperada para motivar a la fuerza de ventas es una práctica recomendada, siempre que se sostenga durante todo el período.`,
+ correct:'F',
+ just:`Los autores la califican como "muy discutible" y de dudosa efectividad.`},
+
+{n:50,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.3 Rubros que integran el PV',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) define correctamente qué operaciones integran el PV?`,
+ opts:[
+  `Sólo las ventas de productos que generan un ingreso directo y habitual.`,
+  `Todas las operaciones que, según la práctica habitual, implican una transferencia definitiva a título oneroso o gratuito de bienes o servicios a terceros.`,
+  `Todas las operaciones que generan ingresos, tengan o no habitualidad.`,
+  `Únicamente las transferencias a título oneroso, quedando excluidas las gratuitas.`],
+ correct:'b',
+ just:`El criterio incluye también las gratuitas (bonificaciones, donaciones).`},
+
+{n:51,text:'lavolpe',express:true,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.3 Rubros que integran el PV',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los rubros que integran el PV es incorrecta?`,
+ opts:[
+  `Los servicios de façon sobre materias primas entregadas por terceros integran el PV.`,
+  `Las transferencias internas entre divisiones de la misma empresa integran el PV.`,
+  `Las operaciones especiales con artículos fuera de línea o a precios diferenciales integran el PV.`,
+  `Los intereses por operaciones financieras de colocación de dinero integran el PV.`],
+ correct:'d',
+ just:`Los intereses NO integran el PV: carecen de habitualidad y son ajenos a la acción de producir bienes para terceros.`},
+
+{n:52,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.3 Bonificaciones y donaciones',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre las bonificaciones y donaciones (rubros f y g) es correcta?`,
+ opts:[
+  `Se excluyen del PV por no generar ingresos directos, ya que su registro corresponde a otros presupuestos parciales ajenos a la actividad de ventas.`,
+  `Se incluyen para que producción disponga de un único documento y las tenga en cuenta.`,
+  `Nunca representan una cantidad significativa de unidades.`,
+  `Deben facturarse siempre a precio de mercado.`],
+ correct:'b',
+ just:`Se incluyen para que el sector de planeamiento de la producción tenga un único documento y no se corra el peligro de que estas operaciones no sean tenidas en cuenta.`},
+
+{n:53,text:'lavolpe',express:true,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.3 Operaciones que NO integran',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre operaciones que NO integran el PV es incorrecta?`,
+ opts:[
+  `La venta de bienes de uso no integra el PV.`,
+  `La venta de materias primas revendidas en el mismo estado no integra el PV.`,
+  `Los intereses por colocaciones financieras no integran el PV.`,
+  `Las bonificaciones por cantidad o promoción no integran el PV porque no generan ingresos directos.`],
+ correct:'d',
+ just:`Las bonificaciones SÍ integran el PV (aunque no generen ingreso directo).`},
+
+{n:54,text:'lavolpe',express:false,type:'vf',src:'Lavolpe et al. · 3.3 Transferencias internas',
+ q:`Conteste V o F: Las transferencias internas de productos de una división a otra de la misma empresa, con la finalidad de elaborar otros productos, quedan excluidas del PV por no implicar una transferencia definitiva a terceros.`,
+ correct:'F',
+ just:`Integran el PV (categoría d del apartado 3.3).`},
+
+{n:55,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4 Factores de confección',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los factores de confección del PV es correcta?`,
+ opts:[
+  `Se confecciona respondiendo qué productos, en qué cantidades, a qué precios, con qué métodos y en qué zonas, más a través de qué canales de distribución.`,
+  `El precio de venta es el único parámetro verdaderamente relevante, del que dependen de manera directa las cantidades, los métodos, las zonas y los canales.`,
+  `Los canales de distribución no forman parte de los factores a considerar.`,
+  `La zona geográfica es irrelevante en la confección del PV.`],
+ correct:'a',
+ just:`Son las 5 preguntas (productos, cantidades, precios, métodos, zonas) más la de canales de distribución.`},
+
+{n:56,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.1 Productos a vender',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los "productos a ser vendidos" es correcta?`,
+ opts:[
+  `Incluyen los bienes de uso y las materias primas que la empresa pueda llegar a vender.`,
+  `Comprenden los de línea, los nuevos lanzados, los nuevos a lanzar, los stocks discontinuados y los semielaborados y subproductos.`,
+  `Se limitan exclusivamente a los productos de venta normal ya consolidados.`,
+  `Excluyen los productos nuevos a lanzar durante el período.`],
+ correct:'b',
+ just:`Los bienes de uso y las materias primas se dejan fuera (a falsa); los productos nuevos a lanzar sí se incluyen (d falsa).`},
+
+{n:57,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.2 Cantidades',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la estimación de cantidades a vender es correcta?`,
+ opts:[
+  `Se basa exclusivamente en la performance histórica.`,
+  `Se basa en dos elementos: la performance histórica y la proyección futura de la misma.`,
+  `Se basa únicamente en la proyección futura, sin considerar el pasado.`,
+  `Se basa en la capacidad máxima de producción como único parámetro.`],
+ correct:'b',
+ just:`Los dos pilares son la performance histórica y la proyección futura.`},
+
+{n:58,text:'lavolpe',express:false,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.4.2 Comportamientos (Cuadro 3.3)',
+ q:`Con relación a los comportamientos históricos de la demanda (Cuadro 3.3), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `La tendencia lineal u horizontal implica ventas estables a lo largo del tiempo.`,
+  `La tendencia positiva implica un crecimiento sostenido período a período.`,
+  `La estacionalidad sólo puede combinarse con tendencias positivas, nunca con negativas ni lineales.`,
+  `La tendencia negativa implica una caída sostenida de las ventas.`],
+ correct:'c',
+ just:`El cuadro muestra estacionalidad combinada con las tres tendencias (positiva, negativa y lineal).`},
+
+{n:59,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.2 Proyección futura',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la proyección futura de cantidades es correcta?`,
+ opts:[
+  `Debe proyectarse el comportamiento histórico tal cual, sin depurar situaciones atípicas.`,
+  `Debe proyectarse el comportamiento histórico eliminando previamente las situaciones que no corresponden a un mercado normalizado.`,
+  `La proyección sólo puede ser una extrapolación lineal, sin posibilidad de modificarse.`,
+  `Las situaciones atípicas deben conservarse porque reflejan el comportamiento natural del mercado.`],
+ correct:'b',
+ just:`Regla de oro: proyectar sobre la base de un mercado normalizado, depurando los hechos atípicos.`},
+
+{n:60,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.2 Depuración de datos',
+ q:`Al proyectar cantidades, ¿cuál de las siguientes situaciones (a-d) debe eliminarse de la serie histórica por NO corresponder a un mercado normalizado?`,
+ opts:[
+  `Un incremento imprevisto de la demanda originado en problemas internos de nuestro principal competidor.`,
+  `La venta habitual de los productos de línea en condiciones normales de mercado.`,
+  `El crecimiento explicado por una tendencia positiva genuina del producto.`,
+  `La estacionalidad recurrente propia del producto.`],
+ correct:'a',
+ just:`Es un hecho atípico ajeno al mercado normalizado; el resto es comportamiento natural que debe conservarse.`},
+
+{n:61,text:'lavolpe',express:true,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.4.2 Capacidad máxima',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la capacidad máxima de producción es incorrecta?`,
+ opts:[
+  `En principio, es el límite a los niveles de venta: no se puede vender más de lo que se puede producir.`,
+  `En empresas en marcha, una proyección a un año normalmente no supera la capacidad disponible.`,
+  `Superar la capacidad máxima nunca afecta los resultados, ya que los costos fijos permanecen constantes.`,
+  `Cambiar de "rango" de producción sin un aprovechamiento significativo puede no ser conveniente.`],
+ correct:'c',
+ just:`Superar la capacidad afecta los resultados por la incidencia de los costos fijos incrementales.`},
+
+{n:62,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.3 Precios',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la fijación de precios en el PV es correcta?`,
+ opts:[
+  `Se busca la mejor relación Costo-Utilidad-Volumen, considerando el tipo de mercado, la elasticidad de la demanda y las acciones de la competencia.`,
+  `El precio se define sin considerar la posición del producto frente a competidores ni la elasticidad, atendiendo sólo al costo interno de producción.`,
+  `Es una tarea simple que no requiere trabajo de los responsables.`,
+  `El precio se fija una sola vez y no admite adecuaciones posteriores.`],
+ correct:'a',
+ just:`La fijación busca la relación Costo-Utilidad-Volumen y se hace en dos momentos (posicionar y adecuar).`},
+
+{n:63,text:'lavolpe',express:true,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.4.3 Control de precios',
+ q:`Con relación al control de precios según la posición de mercado, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `En posición monopólica o de líder de oligopolio, el precio es más controlable por la empresa.`,
+  `En competencia perfecta, la empresa carece de fuerza para asegurar el precio durante el período.`,
+  `En mercados altamente competitivos, la empresa fija libremente los precios sin atender a las "indicaciones" del mercado.`,
+  `En posición monopólica, la estimación del volumen no se ve tan afectada por variaciones de precios.`],
+ correct:'c',
+ just:`En competencia el precio lo fija el mercado; la empresa sólo prevé las "indicaciones", no fija libremente.`},
+
+{n:64,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.3 Variación de precios',
+ q:`En un mercado altamente competitivo, ¿cuál de las siguientes afirmaciones (a-d) es correcta según el texto?`,
+ opts:[
+  `Las modificaciones de precio por "indicaciones" del mercado alteran el monto de ventas por variación de precios, pero no las cantidades demandadas.`,
+  `Las modificaciones de precio alteran las participaciones de las empresas competidoras entre sí.`,
+  `La empresa puede asegurar su precio durante todo el período presupuestado.`,
+  `Hoy la influencia de la empresa sobre las cantidades demandadas es mayor que en el pasado, porque el precio se volvió plenamente controlable.`],
+ correct:'a',
+ just:`Todo el mercado se mueve en el mismo sentido: no se alteran las participaciones ni las cantidades, sólo el monto por variación de precios.`},
+
+{n:65,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.3 Precios brutos o netos',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre precios brutos o netos de descuentos es correcta?`,
+ opts:[
+  `Los precios brutos son la mejor alternativa para el control y la evaluación de resultados.`,
+  `Los precios netos de descuentos son la mejor alternativa para el control, porque facilitan el análisis del cumplimiento por líneas de producto.`,
+  `Los descuentos pueden considerarse como un solo renglón que resta del total del presupuesto.`,
+  `Trabajar con precios brutos es siempre válido, sin condición alguna.`],
+ correct:'b',
+ just:`Los precios netos son la mejor alternativa; los brutos sólo valen si los descuentos se reflejan por líneas de producto (no como un renglón único).`},
+
+{n:66,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.4 Métodos',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los métodos de venta es correcta?`,
+ opts:[
+  `Son los mecanismos para promocionar, vender y distribuir; cuanto más agresivos, generan un efecto negativo en los resultados pero permiten suponer un mayor volumen de ventas.`,
+  `Cuanto más desarrollados y agresivos son, menor resulta su impacto sobre los costos, por lo que conviene intensificarlos sin análisis previo.`,
+  `No guardan ninguna relación con el volumen de ventas esperado.`,
+  `Son siempre adoptados por libre voluntad de la empresa, nunca por presión de la competencia.`],
+ correct:'a',
+ just:`Es la paradoja que plantea el texto: mayor agresividad = efecto negativo en resultados, compensable con mayor volumen.`},
+
+{n:67,text:'lavolpe',express:false,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.4.4 Aprobación de un método',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la aprobación de un método de venta es incorrecta?`,
+ opts:[
+  `Antes de aprobarlo, debe hacerse un estudio económico que determine el volumen adicional necesario para equilibrar su costo.`,
+  `Sólo es viable aprobarlo cuando se está convencido de la factibilidad de ese volumen.`,
+  `Cualquier método puede aprobarse sin análisis previo, porque siempre genera un efecto positivo neto.`,
+  `A veces la adopción surge por imposición de la competencia, obligando a la empresa a adaptarse.`],
+ correct:'c',
+ just:`Se exige un estudio económico previo; no hay efecto positivo neto garantizado.`},
+
+{n:68,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.5 Zonas',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la presupuestación por zonas es correcta?`,
+ opts:[
+  `La segmentación geográfica dificulta la certeza de la estimación.`,
+  `Presupuestar por zonas da mayor certeza y facilita el control y la determinación de resultados por segmento geográfico.`,
+  `Todas las empresas deben definir la misma cantidad de zonas, sin importar su tamaño.`,
+  `Las exportaciones nunca se incluyen en el PV.`],
+ correct:'b',
+ just:`La segmentación geográfica aumenta la certeza y sirve al control por región.`},
+
+{n:69,text:'lavolpe',express:false,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.4.5 Zonificación según tamaño',
+ q:`Con relación a la zonificación según el tamaño de la empresa, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Una empresa de envergadura estructura una cantidad considerable de zonas, con un responsable al frente de cada una.`,
+  `Una empresa con escasa participación tendrá pocas zonas, seguramente amplias.`,
+  `Cuando las exportaciones son poco significativas, se incluyen bajo el rubro exportaciones sin aperturas adicionales.`,
+  `Una empresa exportadora debe tratar todo su mercado externo como una única zona, sin distinguir países.`],
+ correct:'d',
+ just:`Una exportadora debe clasificar el mercado externo por países o grupos de países según magnitud y calidad de las operaciones.`},
+
+{n:70,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.6 Canales',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre los canales de distribución es correcta?`,
+ opts:[
+  `Un producto de consumo masivo de bajo precio unitario requiere una distribución más selectiva y menos canales.`,
+  `La elección de canales considera la dispersión geográfica de los clientes, la frecuencia de compras y los volúmenes de las operaciones.`,
+  `El tipo de producto no incide en la definición de los canales.`,
+  `Un producto industrial de alta tecnología requiere la mayor cantidad posible de canales.`],
+ correct:'b',
+ just:`a y d invierten la relación: el consumo masivo requiere más canales; el industrial de alta tecnología, una distribución selectiva.`},
+
+{n:71,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.4.6 Ejemplo de la mayonesa',
+ q:`En el ejemplo del fabricante de mayonesa (a: directa domiciliaria; b: minoristas; c: distribuidores de minoristas; d: supermercados), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Se inclinará por la entrega directa domiciliaria, por el menor costo.`,
+  `Se inclinará por las opciones c) y d), que garantizan un razonable equilibrio entre llegada y costo.`,
+  `Elegirá las opciones que maximizan las ventas sin considerar el costo.`,
+  `Descartará la venta a supermercados por su alto costo.`],
+ correct:'b',
+ just:`Descarta a) y b) (mayores ventas pero distribución impracticable/costo incalculable) y elige c) y d).`},
+
+{n:72,text:'lavolpe',express:true,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.5 Presentaciones del PV',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre las distintas presentaciones del PV es correcta?`,
+ opts:[
+  `Existe una única presentación válida, y cualquier otra apertura debe elaborarse como un presupuesto independiente.`,
+  `Cada sector usa el PV con fines distintos y requiere aperturas diferentes, todas derivaciones válidas de un mismo presupuesto base.`,
+  `Todos los sectores requieren exactamente los mismos datos y la misma presentación.`,
+  `La presentación por cliente es la más recomendada con carácter general para todas las empresas.`],
+ correct:'b',
+ just:`Un mismo PV base se reorganiza en distintas aperturas según el sector que lo usa.`},
+
+{n:73,text:'lavolpe',express:true,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.5 Presentación por sector (Cuadro 3.4)',
+ q:`Sobre la presentación del PV según el sector (Cuadro 3.4), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `El Directorio usa una presentación por líneas de venta y grandes rubros, con fines de control.`,
+  `Ventas y Marketing requieren, además, agrupamientos por zonas y canales de distribución.`,
+  `El área de Producción requiere una presentación en unidades totalizadas por líneas de producción.`,
+  `La apertura por condición de venta es útil para Producción, ya que le permite determinar el uso de la capacidad productiva.`],
+ correct:'d',
+ just:`La apertura por condición de venta la usa Planeamiento y Control (proyección financiera); Producción usa la apertura por líneas de producción.`},
+
+{n:74,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.5 Presentación base (Cuadro 3.5)',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la presentación base (por líneas de venta) es correcta?`,
+ opts:[
+  `Constituye el único indicador del PV incorporado al "tablero de comando" del Directorio.`,
+  `Es la única presentación que necesitan también las gerencias de Ventas y Marketing.`,
+  `Agrupa los productos por proceso productivo, no por línea de venta.`,
+  `No sirve para el seguimiento del cumplimiento presupuestario.`],
+ correct:'a',
+ just:`Ventas, Marketing y Planeamiento requieren aperturas adicionales (b falsa); agrupa por línea de venta, no por proceso (c falsa).`},
+
+{n:75,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.5 Por zonas y por canales (Cuadros 3.6 y 3.7)',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre las presentaciones por zonas (Cuadro 3.6) y por canales (Cuadro 3.7) es correcta?`,
+ opts:[
+  `Presentan información distinta y no comparable entre sí.`,
+  `Son inversas: una corta primero por zona y dentro por canal; la otra primero por canal y dentro por zona.`,
+  `La presentación por zonas agrupa los productos por proceso productivo.`,
+  `La presentación por canales elimina la apertura geográfica.`],
+ correct:'b',
+ just:`Son la misma información con el corte invertido: zona→canal (3.6) vs. canal→zona (3.7).`},
+
+{n:76,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.5 Por líneas de producción (Cuadro 3.8)',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la presentación agrupada por líneas de producción (Cuadro 3.8) es correcta?`,
+ opts:[
+  `Es la que requiere especialmente Producción, centrada en el componente físico del presupuesto.`,
+  `Expresa el presupuesto en valores monetarios totales por condición de venta, para alimentar la proyección financiera de Planeamiento y Control.`,
+  `Agrupa los productos por marca y acción terapéutica.`,
+  `Es la presentación utilizada por el Directorio en su tablero de comando.`],
+ correct:'a',
+ just:`Producción sólo se interesa por el componente físico: unidades por líneas de iguales procesos productivos.`},
+
+{n:77,text:'lavolpe',express:false,type:'mc',ask:'correcta',src:'Lavolpe et al. · 3.5 Por condición de venta (Cuadro 3.9)',
+ q:`¿Cuál de las siguientes afirmaciones (a-d) sobre la presentación por condición de venta (Cuadro 3.9) es correcta?`,
+ opts:[
+  `La utiliza Planeamiento y Control para la proyección financiera, con valores totales mensuales y apertura por condiciones de venta.`,
+  `La utiliza Producción para definir el uso de la capacidad productiva.`,
+  `Se expresa exclusivamente en unidades físicas, sin valores.`,
+  `No requiere distinguir plazos de cobro como 30, 60 o 90 días.`],
+ correct:'a',
+ just:`Es para la proyección financiera: valores totales mensuales por grandes rubros y condiciones de venta (30, 60, 90… días FF).`},
+
+{n:78,text:'lavolpe',express:false,type:'vf',src:'Lavolpe et al. · 3.5 Presupuesto por cliente',
+ q:`Conteste V o F: Según los autores, el "presupuesto por cliente" es una presentación adicional que resultaría válida en una organización que tenga su mercado centralizado en pocos pero muy importantes clientes.`,
+ correct:'V',
+ just:`Es el ejemplo textual de presentación adicional del apartado 3.5.`},
+
+{n:79,text:'lavolpe',express:true,type:'vf',src:'Lavolpe et al. · 3.6 Plazos de entrega',
+ q:`Conteste V o F: Una empresa cuyo ciclo de insumos-fabricación-disposición demora 90 días confecciona su PV. El texto da la razón al área de Ventas, que considera suficiente recibir el PV una semana antes del inicio del período, porque el PV es un instrumento comercial y las necesidades del área productiva son secundarias.`,
+ correct:'F',
+ just:`El texto sostiene lo contrario: el sector productivo necesita mayor anticipación (plan de producción, compras, fabricación).`},
+
+{n:80,text:'lavolpe',express:false,type:'mc',ask:'incorrecta',src:'Lavolpe et al. · 3.6 Actualizaciones',
+ q:`Sobre los plazos y actualizaciones del PV, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `No todos los usuarios requieren el PV con la misma anticipación.`,
+  `Si el ciclo productivo es de 90 días, un ajuste que aumente las cifras recién podrá atenderse a partir del cuarto mes, con pérdida de ventas los primeros meses.`,
+  `Operar con inventarios de seguridad podría atenuar el problema, aunque hoy se privilegia la lógica Just in Time reduciendo excedentes de stock.`,
+  `El área comercial necesita más anticipación que el sector productivo para disponer del PV.`],
+ correct:'d',
+ just:`Es al revés: el sector productivo necesita más anticipación que el comercial.`},
+
+/* ---------- BILINKIS (81-107) ---------- */
+{n:81,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Modelar el negocio',
+ q:`Según Bilinkis, ¿qué significa "modelar" un negocio?`,
+ opts:[
+  `Para él, el Excel sirve únicamente para hacer las proyecciones financieras del emprendimiento.`,
+  `Es construir una representación simplificada pero funcional de cómo opera internamente el negocio, identificando sus variables y conectándolas entre sí.`,
+  `Es adivinar con precisión la cifra de ventas del primer año.`,
+  `Es una herramienta secundaria, menos relevante que dominar la contabilidad.`],
+ correct:'b',
+ just:`Modelar es entender la maquinaria interna del negocio, no sólo proyectar lo financiero.`},
+
+{n:82,text:'bilinkis',express:true,type:'vf',src:'Bilinkis · Art. I · Idea clave',
+ q:`Conteste V o F: Modelar un negocio no consiste en "adivinar" cuánto se va a vender, sino en entender de qué variables depende esa venta y cómo las decisiones impactan en toda la estructura operativa.`,
+ correct:'V',
+ just:`Es la idea clave del Artículo I.`},
+
+{n:83,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Descomposición de variables',
+ q:`¿En qué consiste la técnica de descomposición de variables?`,
+ opts:[
+  `En estimar directamente la variable "grande" (la venta mensual) con la mayor precisión posible.`,
+  `En desarmar una variable grande e inestimable en variables cada vez más pequeñas y abordables.`,
+  `En reducir el número de variables del modelo al mínimo posible.`,
+  `En aplicarla sólo a la variable ventas, no al resto del negocio.`],
+ correct:'b',
+ just:`El objetivo es desarmar "la venta" en tantas variables chiquitas como sea posible.`},
+
+{n:84,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Tipos de variables',
+ q:`Sobre los dos tipos de variables descompuestas, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Las variables de decisión son las que el emprendedor no controla y debe estimar.`,
+  `Hay dos tipos: de decisión (que el emprendedor controla) y desconocidas pero estimables (más fáciles de estimar que la variable grande).`,
+  `Todas las variables descompuestas son incontrolables y de estimación imposible.`,
+  `Las variables desconocidas se controlan directamente fijando su valor.`],
+ correct:'b',
+ just:`Decisión = controlables; desconocidas pero estimables = no controlables pero abordables.`},
+
+{n:85,text:'bilinkis',express:false,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Clasificación de variables',
+ q:`"Cuántas piezas de correo enviar" y "cuánto consume una empresa promedio por mes" son, respectivamente:`,
+ opts:[
+  `Ambas variables de decisión.`,
+  `Una de decisión (piezas de correo) y una desconocida pero estimable (consumo promedio).`,
+  `Ambas desconocidas pero estimables.`,
+  `Una desconocida (piezas de correo) y una de decisión (consumo promedio).`],
+ correct:'b',
+ just:`Las piezas de correo las decide el emprendedor; el consumo promedio se estima.`},
+
+{n:86,text:'bilinkis',express:false,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Del modelo de ventas al completo',
+ q:`Sobre el paso del modelo de ventas al modelo completo del negocio, ¿cuál es correcta?`,
+ opts:[
+  `Una vez estimadas las ventas, esa cifra es el input para modelar en cadena pedidos, personal, logística y demás áreas.`,
+  `La estimación de ventas se usa sólo para el estado de resultados, sin vincularla a las áreas operativas.`,
+  `Cada área del negocio se modela de manera independiente de las ventas.`,
+  `El ejercicio de descomposición se aplica exclusivamente a las ventas.`],
+ correct:'a',
+ just:`"Sabiendo cuánto vendo → pedidos → personal → camionetas…", y se repite para todas las áreas.`},
+
+{n:87,text:'bilinkis',express:false,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Hoja de supuestos y megaplanilla',
+ q:`Sobre la hoja de supuestos y la megaplanilla, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La hoja de supuestos reúne todas las variables chiquitas del modelo en una pestaña aparte.`,
+  `La megaplanilla mantiene las proyecciones fijas: cambiar un supuesto no afecta al resto.`,
+  `Los supuestos se dispersan por todas las pestañas, sin centralizarse.`,
+  `La megaplanilla modela un solo mes, no la proyección de los primeros años.`],
+ correct:'a',
+ just:`Cambiar un supuesto actualiza todo el modelo (b falsa); los supuestos se centralizan (c falsa).`},
+
+{n:88,text:'bilinkis',express:true,type:'mc',ask:'incorrecta',src:'Bilinkis · Art. I · Sistema de semáforo',
+ q:`Sobre el sistema de semáforo (código de colores), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Verde = confianza alta: datos ciertos, decisiones propias o estimaciones validadas por investigación.`,
+  `Amarillo = confianza media: supuestos razonables pero con margen de error importante.`,
+  `Rojo = confianza baja: estimaciones "al voleo", sin respaldo en datos reales.`,
+  `El color refleja el impacto de la variable en los resultados, no el nivel de confianza en su estimación.`],
+ correct:'d',
+ just:`El color mide la confianza en la estimación; el impacto lo mide el análisis de sensibilidad.`},
+
+{n:89,text:'bilinkis',express:false,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Variables verdes',
+ q:`¿Qué variables pueden pintarse de verde?`,
+ opts:[
+  `Sólo las que son datos oficiales publicados.`,
+  `Las que son una decisión propia del emprendedor o las que fueron validadas mediante investigación rigurosa.`,
+  `Las decisiones del emprendedor se pintan de rojo, por su incertidumbre.`,
+  `El verde se reserva para variables que nunca fueron investigadas.`],
+ correct:'b',
+ just:`Verde = certeza: dato conocido, decisión propia o estimación ya validada.`},
+
+{n:90,text:'bilinkis',express:false,type:'vf',src:'Bilinkis · Art. I · Variables rojas',
+ q:`Conteste V o F: Las variables rojas son las que se calcularon "sin tener la más pálida idea" y representan los mayores puntos de riesgo e incertidumbre del modelo.`,
+ correct:'V',
+ just:`Definición textual del rojo (confianza baja, al voleo).`},
+
+{n:91,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Proceso de validación',
+ q:`Una variable está en rojo ("no sé cuánto consume un cliente por mes"). Según el ejemplo del autor, el camino de validación es:`,
+ opts:[
+  `Dejarla en rojo, porque las variables inciertas no pueden mejorarse.`,
+  `Preguntar a varias empresas conocidas (pasa a amarilla) y luego contrastar con estadísticas ajustadas al país (puede pasar a verde).`,
+  `Pintarla directamente de verde, ya que es una decisión del emprendedor.`,
+  `Eliminarla del modelo por ser demasiado incierta.`],
+ correct:'b',
+ just:`El semáforo avanza rojo → amarillo → verde a medida que se investiga.`},
+
+{n:92,text:'bilinkis',express:false,type:'mc',ask:'incorrecta',src:'Bilinkis · Art. I · Importancia del proceso',
+ q:`Sobre por qué es importante el proceso de modelar, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Guía al emprendedor a cuestionar a fondo cómo funciona el negocio, metiéndose en su maquinaria interna.`,
+  `El modelo con colores funciona como una hoja de ruta que indica dónde enfocar la investigación.`,
+  `El objetivo posterior es investigar para ir pintando de verde la mayor cantidad de variables.`,
+  `Su principal utilidad es mantener la idea en secreto para que nadie pueda copiarla.`],
+ correct:'d',
+ just:`El valor está en la profundidad del conocimiento validado, no en el secreto de la idea.`},
+
+{n:93,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. I · Apropiarse de la idea',
+ q:`Según Bilinkis, "apropiarse de la idea" significa:`,
+ opts:[
+  `Patentarla legalmente antes de contarla.`,
+  `Desmenuzar a fondo el modelo y pintar de verde todos los supuestos.`,
+  `Mantener la idea en absoluto secreto como ventaja competitiva.`,
+  `No compartir jamás la idea una vez validado el modelo.`],
+ correct:'b',
+ just:`La ventaja competitiva es el conocimiento validado, no el secreto.`},
+
+{n:94,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Officenet: venta total',
+ q:`En el modelo de Officenet, la venta total de un mes se descompone como:`,
+ opts:[
+  `Piezas de correo × monto promedio de un pedido.`,
+  `Cantidad de clientes que compran en el mes × consumo promedio por cliente.`,
+  `Clientes nuevos × tasa de efectividad del catálogo.`,
+  `Pedidos del mes × cantidad de camionetas.`],
+ correct:'b',
+ just:`Venta total = clientes que compran × consumo promedio por cliente.`},
+
+{n:95,text:'bilinkis',express:false,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Clientes del mes',
+ q:`¿Cómo se estima la cantidad de clientes que compran en un mes?`,
+ opts:[
+  `Depende sólo de los nuevos clientes que se consiguen.`,
+  `Clientes al comenzar el mes + nuevos que se consiguen − viejos que se pierden.`,
+  `La cartera es la misma todos los meses, incluido el primero.`,
+  `El primer mes se parte de una cartera ya consolidada.`],
+ correct:'b',
+ just:`El primer mes parte de cero; luego = inicio + nuevos − perdidos.`},
+
+{n:96,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Clientes nuevos',
+ q:`¿De qué depende la cantidad de clientes nuevos?`,
+ opts:[
+  `Piezas de correo enviadas × tasa de efectividad (% que responde al catálogo).`,
+  `Se estiman directamente, sin descomponerlos.`,
+  `Dependen sólo del consumo promedio por cliente.`,
+  `Monto promedio del pedido × cantidad de camionetas.`],
+ correct:'a',
+ just:`Nuevos = piezas enviadas × tasa de efectividad de la pieza.`},
+
+{n:97,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Semáforo en Officenet',
+ q:`En Officenet, "cantidad de piezas a enviar", "tasa de efectividad de la pieza" y "consumo promedio por cliente" se pintan, respectivamente:`,
+ opts:[
+  `Verde, amarilla y roja.`,
+  `Roja, amarilla y verde.`,
+  `Verde, roja y amarilla.`,
+  `Amarilla, verde y roja.`],
+ correct:'a',
+ just:`Decisión (verde), estimable pero incierta (amarilla) y la más difícil (roja).`},
+
+{n:98,text:'bilinkis',express:false,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Dimensionamiento de pedidos',
+ q:`El dimensionamiento de pedidos se obtiene:`,
+ opts:[
+  `Dividiendo la venta total por el monto promedio de un pedido.`,
+  `Multiplicando el consumo promedio por la tasa de efectividad.`,
+  `Estimándolo directamente, sin partir de la venta.`,
+  `Multiplicando la cantidad de camionetas por las horas trabajadas.`],
+ correct:'a',
+ just:`Pedidos = venta total / monto promedio de un pedido.`},
+
+{n:99,text:'bilinkis',express:false,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Dimensionamiento del depósito',
+ q:`El dimensionamiento del personal de depósito se estima con:`,
+ opts:[
+  `Dos supuestos: pedidos que arma una persona por hora (amarilla) y horas trabajadas por mes (verde).`,
+  `No puede estimarse a partir del modelo.`,
+  `Sólo con el margen bruto de la empresa.`,
+  `Con las horas trabajadas, que son una variable roja imposible de conocer.`],
+ correct:'a',
+ just:`Personal = pedidos por hora (amarilla) y horas por mes (verde), cruzados con el total de pedidos.`},
+
+{n:100,text:'bilinkis',express:false,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Margen bruto (benchmarking)',
+ q:`Para estimar el margen bruto porcentual ("quizá la variable más difícil"), Bilinkis:`,
+ opts:[
+  `Lo estimó al voleo, dejándolo permanentemente en rojo.`,
+  `Miró los balances públicos de empresas comparables (Staples, Office Depot, OfficeMax) y asumió un margen igual o algo menor.`,
+  `Lo copió de un promedio de la industria local sin ajustes.`,
+  `Lo definió como una decisión propia, pintándolo de verde.`],
+ correct:'b',
+ just:`Técnica de benchmarking con empresas que cotizan en bolsa y publican sus balances.`},
+
+{n:101,text:'bilinkis',express:true,type:'mc',ask:'incorrecta',src:'Bilinkis · Art. II · Capital de trabajo e impuestos',
+ q:`Sobre las variables monetarias y los impuestos, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `El último bloque a modelar son las variables monetarias, típicamente el capital de trabajo (cuentas a pagar, a cobrar e inventario).`,
+  `Un error muy común es olvidarse de incluir los impuestos, como el IVA y el Impuesto a las Ganancias.`,
+  `Los impuestos son irrelevantes y pueden omitirse sin distorsionar las proyecciones.`,
+  `Omitir impuestos puede distorsionar significativamente las proyecciones.`],
+ correct:'c',
+ just:`El autor advierte expresamente que olvidar los impuestos es un error que distorsiona el modelo.`},
+
+{n:102,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Estructura de la planilla',
+ q:`Sobre la estructura de la planilla, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `La pestaña "Supuestos" es la única con valores ingresados a mano; el resto debe contener sólo fórmulas.`,
+  `Todas las pestañas contienen valores cargados a mano, para mayor control.`,
+  `Cambiar un supuesto no afecta al resto del modelo.`,
+  `Los parámetros manuales se reparten entre varias pestañas.`],
+ correct:'a',
+ just:`Regla fundamental: sólo "Supuestos" tiene valores manuales; así un cambio repercute en todo.`},
+
+{n:103,text:'bilinkis',express:false,type:'vf',src:'Bilinkis · Art. II · Interconexión del modelo',
+ q:`Conteste V o F: Si se aumenta la cantidad de piezas de marketing directo por mes, la cartera crece más rápido, la venta sube y se necesitan antes más personal, camionetas e inventario, porque todo el modelo está vinculado a los supuestos.`,
+ correct:'V',
+ just:`Ejemplo textual de la interconexión del modelo vía fórmulas.`},
+
+{n:104,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Análisis de sensibilidad',
+ q:`¿En qué consiste el análisis de sensibilidad?`,
+ opts:[
+  `En fijar los valores definitivos de cada supuesto.`,
+  `En subir y bajar cada supuesto para ver cuánto impacta en los resultados y así priorizar la investigación.`,
+  `En pintar de verde todas las variables sin investigarlas.`,
+  `En eliminar del modelo las variables de decisión.`],
+ correct:'b',
+ just:`Sube/baja cada supuesto para medir su impacto y priorizar dónde investigar.`},
+
+{n:105,text:'bilinkis',express:true,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · Hallazgo de sensibilidad',
+ q:`Hallazgo clave del análisis de sensibilidad:`,
+ opts:[
+  `Todas las variables rojas tienen siempre un alto impacto en los resultados.`,
+  `Algunas variables rojas tienen impacto chico (no justifican gran esfuerzo), mientras otras tienen impacto enorme y deben concentrar la preparación.`,
+  `Las variables de alto impacto no requieren esfuerzo de investigación.`,
+  `El impacto de una variable no puede conocerse hasta terminar el emprendimiento.`],
+ correct:'b',
+ just:`Rojo no equivale a alto impacto: hay que distinguir incertidumbre de sensibilidad.`},
+
+{n:106,text:'bilinkis',express:true,type:'mc',ask:'incorrecta',src:'Bilinkis · Art. II · Variables de alto impacto',
+ q:`Sobre las variables de alto impacto y el esfuerzo de investigación, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `Entre las variables de alto impacto de Officenet están la tasa de respuesta al marketing directo, el margen bruto, el consumo promedio y el churn.`,
+  `La magnitud del esfuerzo de investigación debe ser proporcional a la sensibilidad de la variable.`,
+  `Pulir una variable muy sensible puede ameritar viajar a otros países o hacer tests en escala.`,
+  `Conviene dedicar el mismo esfuerzo de investigación a todas las variables, sin importar su sensibilidad.`],
+ correct:'d',
+ just:`El esfuerzo debe concentrarse en las variables más sensibles, no repartirse por igual.`},
+
+{n:107,text:'bilinkis',express:false,type:'mc',ask:'correcta',src:'Bilinkis · Art. II · ¿Cuándo está listo?',
+ q:`¿Cuándo está listo el modelo para pasar a la siguiente etapa?`,
+ opts:[
+  `Cuando la mayoría de los supuestos —incluidos todos los muy sensibles— están en verde y el modelo refleja bien el negocio; la etapa siguiente es el manual de procesos.`,
+  `Apenas se completa la primera carga de datos, aunque haya supuestos rojos sensibles.`,
+  `Cuando todas las variables son de decisión.`,
+  `Todos los proyectos requieren exactamente el mismo nivel de complejidad de modelado.`],
+ correct:'a',
+ just:`Dos condiciones: modelo sofisticado + supuestos sensibles en verde. Luego: manual de procesos.`}
+];
+
+/* ===================== LÓGICA ===================== */
+let selectedText='hair', queue=[], idx=0, score=0, wrongList=[], currentMode='express', answered=false;
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function $(id){return document.getElementById(id);}
+function show(sec){['textselect','modeselect','quiz','results'].forEach(s=>$(s).classList.add('hidden'));$(sec).classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+function poolFor(text,expressOnly){return BANK.filter(q=>(text==='todos'||q.text===text)&&(!expressOnly||q.express));}
+
+function chooseText(t){
+  selectedText=t;
+  $('modeTitle').textContent=TEXT_INFO[t].title;
+  $('modeSub').textContent=TEXT_INFO[t].sub;
+  $('expCount').textContent=poolFor(t,true).length;
+  $('genCount').textContent=poolFor(t,false).length;
+  show('modeselect');
+}
+
+function startQuiz(mode){
+  currentMode=mode;
+  queue=poolFor(selectedText, mode==='express').map(q=>({...q}));
+  if($('shuffleQ').checked) shuffle(queue);
+  idx=0; score=0; wrongList=[];
+  show('quiz');
+  renderQuestion();
+}
+function retrySame(){ startQuiz(currentMode); }
+function quitToMenu(){ chooseText(selectedText); }
+
+function buildDisplayOptions(q){
+  if(q.type==='vf'){
+    return [{text:'Verdadero',correct:q.correct==='V'},{text:'Falso',correct:q.correct==='F'}];
+  }
+  let ad=q.opts.map((t,i)=>({text:t,correct:q.correct==='abcd'[i]}));
+  shuffle(ad);
+  const suf = q.ask==='incorrecta'
+    ? {e:'Todas las anteriores (a-d) son incorrectas', f:'Ninguna de las anteriores (a-d) es incorrecta'}
+    : {e:'Todas las anteriores (a-d) son correctas',   f:'Ninguna de las anteriores (a-d) es correcta'};
+  ad.push({text:suf.e,correct:q.correct==='e'});
+  ad.push({text:suf.f,correct:q.correct==='f'});
+  return ad;
+}
+
+function renderQuestion(){
+  answered=false;
+  const q=queue[idx];
+  q._display=buildDisplayOptions(q);
+  const total=queue.length;
+  $('counter').textContent=`Pregunta ${idx+1} / ${total}`;
+  $('scorepill').textContent=`Aciertos: ${score}`;
+  $('bar').style.width=`${(idx/total)*100}%`;
+  $('srctag').textContent=q.src;
+  $('qtext').textContent=q.q;
+
+  const letters='abcdef';
+  const box=$('opts'); box.innerHTML='';
+  q._display.forEach((o,i)=>{
+    const div=document.createElement('div');
+    div.className='opt'; div.dataset.i=i;
+    div.innerHTML=`<span class="lt">${q.type==='vf'?(i===0?'V':'F'):letters[i]}</span><span class="ot">${o.text}</span>`;
+    div.onclick=()=>selectOption(i);
+    box.appendChild(div);
+  });
+  $('feedback').className='feedback';
+  $('checkBtn').classList.remove('hidden'); $('checkBtn').disabled=true;
+  $('nextBtn').classList.add('hidden');
+  $('nextBtn').textContent = (idx===total-1)?'Ver resultados':'Siguiente';
+  q._sel=null;
+}
+
+function selectOption(i){
+  if(answered) return;
+  queue[idx]._sel=i;
+  [...$('opts').children].forEach(c=>c.classList.toggle('sel',+c.dataset.i===i));
+  $('checkBtn').disabled=false;
+}
+
+function checkAnswer(){
+  if(answered||queue[idx]._sel===null) return;
+  answered=true;
+  const q=queue[idx];
+  const opts=[...$('opts').children];
+  const correctIdx=q._display.findIndex(o=>o.correct);
+  const chosen=q._sel;
+  opts.forEach(c=>{
+    const i=+c.dataset.i; c.classList.add('locked'); c.onclick=null;
+    if(i===correctIdx) c.classList.add('correct');
+    if(i===chosen && chosen!==correctIdx) c.classList.add('wrong');
+  });
+  const good=(chosen===correctIdx);
+  if(good) score++;
+  else wrongList.push({q:q.q, correcta:q._display[correctIdx].text, just:q.just});
+  const fb=$('feedback');
+  fb.className='feedback show '+(good?'good':'bad');
+  $('verdict').textContent=good?'✓ ¡Correcto!':'✗ Incorrecto';
+  $('just').textContent=q.just;
+  $('scorepill').textContent=`Aciertos: ${score}`;
+  $('checkBtn').classList.add('hidden');
+  $('nextBtn').classList.remove('hidden');
+}
+
+function nextQuestion(){
+  if(idx<queue.length-1){ idx++; renderQuestion(); }
+  else showResults();
+}
+
+function showResults(){
+  const total=queue.length;
+  const pct=Math.round((score/total)*100);
+  $('bar').style.width='100%';
+  $('finalScore').textContent=`${score} / ${total}`;
+  $('finalPct').textContent=`${pct}% de aciertos`;
+  let g='';
+  if(pct>=90) g='Excelente — dominás el texto. 🎯';
+  else if(pct>=70) g='Muy bien — repasá los puntos flojos y estás listo. 👍';
+  else if(pct>=50) g='Aprobado justo — conviene otra vuelta al capítulo. 📚';
+  else g='A reforzar — volvé al texto y reintentá. 💪';
+  $('grade').textContent=g;
+
+  const rev=$('review');
+  if(wrongList.length===0){
+    rev.innerHTML=`<div class="allgood">¡Sin errores! No hay preguntas para repasar.</div>`;
+  }else{
+    rev.innerHTML=`<h3>Para repasar (${wrongList.length})</h3>`+
+      wrongList.map(w=>`<div class="rev-item">
+        <div class="rq">${w.q}</div>
+        <div class="ra"><b>Correcta:</b> ${w.correcta}<br><span style="opacity:.85">${w.just}</span></div>
+      </div>`).join('');
+  }
+  show('results');
+}
+</script>
+</body>
+</html>
