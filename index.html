@@ -61,6 +61,7 @@
   .textcard.f .num{background:linear-gradient(135deg,#b45309,#d97706);font-size:1.15rem}
   .textcard.cs .num{background:linear-gradient(135deg,#059669,#10b981);font-size:1.15rem}
   .textcard.hs .num{background:linear-gradient(135deg,#ea580c,#fb923c);font-size:1.15rem}
+  .textcard.pc .num{background:linear-gradient(135deg,#be123c,#f43f5e);font-size:.95rem;letter-spacing:.02em}
   .textcard.all .num{background:linear-gradient(135deg,#7c3aed,#a855f7)}
   .textcard .body h3{margin:0 0 3px;font-size:1.08rem}
   .textcard .body p{margin:0;color:var(--muted);font-size:.86rem}
@@ -202,6 +203,14 @@
           </div>
           <div class="chev">›</div>
         </div>
+        <div class="textcard pc" onclick="chooseText('parcial')">
+          <div class="num">P</div>
+          <div class="body">
+            <h3>Parciales modelo (I.d y II.d)</h3>
+            <p>Ítems oficiales de la cátedra · 7 preguntas</p>
+          </div>
+          <div class="chev">›</div>
+        </div>
         <div class="textcard all" onclick="chooseText('todos')">
           <div class="num">∑</div>
           <div class="body">
@@ -300,6 +309,7 @@ const TEXT_INFO = {
   frydman:  {title:'Frydman — Efectividad y productividad comercial', sub:'Caps. 1, 9 y 13 (2012)'},
   cescato:  {title:'Cescato — Consumo masivo, es hora de cambiar', sub:'Caps. II, III, IV y VI (2019)'},
   hubspot:  {title:'HubSpot — El poder de la conexión', sub:'Enriquecimiento de contactos con IA (2025)'},
+  parcial:  {title:'Parciales modelo I.d y II.d', sub:'Ítems oficiales de la cátedra (7 preguntas)'},
   todos:    {title:'Todos los textos', sub:'Repaso integral · Unidad 5'}
 };
 
@@ -2292,7 +2302,73 @@ const BANK = [
   `Es equivalente al retorno sobre la inversión (ROI) y se calcula del mismo modo, comparando los ingresos generados por las campañas con el costo total de las herramientas de enriquecimiento contratadas.`,
   `No guarda relación con la rapidez para cerrar acuerdos ni con la capacidad de conectar con los tomadores de decisión correctos, dado que la guía la vincula solo con métricas internas del equipo operativo de la empresa.`],
  correct:'a',
- just:`El texto: ciclo de ventas, tasa de cierre y costo de adquisición como indicadores centrales.`}
+ just:`El texto: ciclo de ventas, tasa de cierre y costo de adquisición como indicadores centrales.`},
+
+/* ---------- PARCIALES MODELO (212-218) ---------- */
+{n:212,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo · Lavolpe: importancia del PV',
+ q:`Lavolpe et al.: Presupuestos y gestión. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) sobre la importancia del presupuesto de ventas (PV) es correcta?`,
+ opts:[
+  `El PV es uno de los presupuestos parciales de la empresa, cuya elaboración depende previamente de que estén definidos el presupuesto de producción y el plan de compras de insumos.`,
+  `Asignarle al PV objetivos adicionales (como motivar a la fuerza de ventas incrementando intencionalmente los pronósticos por encima de la demanda esperada) es una práctica recomendada por el texto, siempre que se confeccione un presupuesto paralelo con los valores reales para el área productiva.`,
+  `El texto sostiene que el PV debe confeccionarse con criterio profesional y el mayor realismo posible, pero admite que cierto optimismo moderado es tolerable cuando la empresa enfrenta un contexto económico desfavorable.`,
+  `El PV debe entenderse como la fiel expresión de lo que se espera vender, y un mal pronóstico de ventas invalida absolutamente toda la tarea de presupuestación posterior.`],
+ correct:'d',
+ just:`El PV es la base de todo el sistema presupuestario; un mal pronóstico contamina la cadena posterior (producción, compras, financiero).`},
+
+{n:213,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo · Hair: pronóstico snack B2B',
+ q:`Hair et al.: Administración de ventas. Una empresa de consumo masivo lanza un nuevo snack y necesita estimar su demanda inicial. No cuenta con datos históricos de ventas del producto y sus clientes directos son grandes cadenas de supermercados, fácilmente identificables y en número reducido. El gerente de ventas está evaluando qué método de pronóstico aplicar. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `El método más adecuado sería el promedio móvil de tres años, ya que al tratarse de un producto nuevo es conveniente anclar el pronóstico en los datos históricos de productos similares de la empresa.`,
+  `La encuesta de intenciones de compra es un método particularmente apto para esta situación, dado que los clientes son pocos, identificables y pueden estimar sus requerimientos con anticipación al pedido.`,
+  `El jurado de opinión ejecutiva no podría aplicarse en este caso porque el texto lo restringe a situaciones donde ya existe información histórica de ventas del producto a pronosticar.`,
+  `El mercado de prueba no es aplicable para productos de consumo masivo porque el texto lo reserva para productos industriales con demanda derivada.`],
+ correct:'b',
+ just:`La encuesta de intenciones es ideal cuando los clientes son pocos e identificables; el jurado ejecutivo no está restringido a esa condición y el mercado de prueba tampoco está reservado al B2B.`},
+
+{n:214,text:'parcial',express:true,type:'mc',ask:'incorrecta',src:'Parcial modelo · Frydman: PPVV',
+ q:`Frydman: Efectividad y productividad comercial. ¿Cuál de las siguientes afirmaciones (a-d) sobre productividad comercial y el concepto de PPVV es incorrecta?`,
+ opts:[
+  `La productividad es una medida que abarca eficacia y eficiencia en forma conjunta: la eficacia refiere a la consecución de la meta y la eficiencia mide la proporción entre ese resultado y los insumos requeridos.`,
+  `La fórmula PPVV = CA × TC × OP indica que la productividad promedio de ventas por vendedor resulta de multiplicar la cantidad de actividad comercial, la tasa de conversión y el valor de la operación promedio.`,
+  `Según el texto, para pasar la PPVV de 2000 a 2600 dólares no es necesario mejorar los tres indicadores al mismo tiempo: alcanza con subir alguno de ellos un 30%, o hacer una combinación que sume ese efecto.`,
+  `El performance gap es la brecha entre el nivel actual de un indicador y el nivel deseado, y reducirlo es el objetivo central del proceso de mejora de productividad.`],
+ correct:'f',
+ just:`Las cuatro reproducen definiciones textuales de Frydman. Si piden la INCORRECTA y todas son correctas, la respuesta es "Ninguna de las anteriores (a-d) es incorrecta".`},
+
+{n:215,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo · Cescato: periodicidad y frecuencia',
+ q:`Cescato: Consumo masivo. Con relación a la periodicidad y frecuencia de visita, y su vínculo con la rotación y el stock, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `A mayor rotación de un producto, corresponde una mayor periodicidad de visita y una menor frecuencia, para no saturar al punto de venta con contactos innecesarios.`,
+  `Los niveles de stock promedio de los productos son el único factor que determina la periodicidad y la frecuencia de atención, siendo la rotación una variable secundaria.`,
+  `Productos con corto vencimiento, alto costo o necesidad de frío son ejemplos que limitan sus niveles de stock y, por ende, impactan en una mayor frecuencia y menor periodicidad de visita.`,
+  `Una ruta con periodicidad semanal y frecuencia tres implica visitar los puntos de venta tres veces al mes, distribuyendo esas visitas a lo largo de cuatro semanas.`],
+ correct:'c',
+ just:`Corto vencimiento, alto costo o necesidad de frío limitan el stock → visitas más frecuentes y menor tiempo entre visitas (menor periodicidad). a invierte la relación, b es absoluto y d confunde el cálculo.`},
+
+{n:216,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo · Lavolpe: aperturas del PV',
+ q:`Lavolpe et al.: Presupuestos y gestión. El área de Planeamiento y Control de una empresa solicita al equipo comercial que le entregue el presupuesto de ventas (PV) con una apertura por condición de venta (plazos de financiación), mientras que el área de Producción requiere la información agrupada por líneas de producción en unidades físicas. El área de Ventas, en cambio, necesita los datos abiertos por zonas y canales de distribución. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Las distintas presentaciones solicitadas son coherentes con lo que el texto describe: cada sector utiliza el PV con fines distintos y requiere aperturas diferentes, siendo todas ellas derivaciones válidas de un mismo presupuesto base.`,
+  `El texto indica que existe una única presentación válida del PV (la que totaliza por líneas de venta y grandes rubros) y que cualquier otra apertura debe elaborarse como un presupuesto independiente.`,
+  `La apertura del PV por condición de venta es útil para el área de Producción, dado que permite determinar el uso de la capacidad productiva.`,
+  `Según el texto, la presentación del PV por cliente es la más recomendada con carácter general, dado que permite el mayor nivel de detalle y control para todas las áreas de la empresa simultáneamente.`],
+ correct:'a',
+ just:`El texto sostiene explícitamente que Producción, Ventas y Planeamiento necesitan aperturas distintas del mismo PV base (unidades físicas, zonas/canales, condición de venta).`},
+
+{n:217,text:'parcial',express:true,type:'mc',ask:'incorrecta',src:'Parcial modelo · Frydman: tres drivers',
+ q:`Frydman: Efectividad y productividad comercial. ¿Cuál de las siguientes afirmaciones (a-d) sobre los tres drivers de la productividad de ventas es incorrecta?`,
+ opts:[
+  `Uno de los drivers implica definir a quién contarle la historia, ya que ofrecer a personas sin probabilidad de compra hace que la tasa de conversión sea cero independientemente de la cantidad de entrevistas o la calidad del producto.`,
+  `Uno de los drivers tiene que ver con la cantidad de contactos, a cuántos contar la historia, y para eso se sugiere definir un plan de acción.`,
+  `Uno de los drivers implica hacer que el personal sea efectivo en lograr que el cliente entienda en qué le cambia la vida comprar el producto o servicio ofrecido.`,
+  `El texto plantea que si se falla en alguno de los tres drivers, la productividad de ventas se verá afectada negativamente, ya que la silla se cae si le falta cualquiera de sus tres patas.`],
+ correct:'f',
+ just:`Las cuatro son afirmaciones textuales de Frydman (a quién / cuántos / qué contamos + analogía de la silla). Si piden la INCORRECTA y todas son correctas, la respuesta es f.`},
+
+{n:218,text:'parcial',express:true,type:'vf',src:'Parcial modelo · Cescato: fuerza de ventas por subcanal',
+ q:`Cescato: Consumo masivo. Conteste V o F: Una empresa de consumo masivo con 500 puntos de venta está evaluando separar su fuerza de ventas por canal. Actualmente tiene una única fuerza de ventas que atiende supermercados (SMK), mayoristas, kioscos, negocios de canal tradicional y locales de gastronomía (On Premise). Un gerente propone crear equipos independientes para cada uno de los cinco subcanales. La propuesta del gerente es la recomendada por el texto: el tamaño de la cartera y las características suficientemente distintas de cada subcanal justifican asignar fuerzas de ventas separadas para cada uno de ellos.`,
+ correct:'F',
+ just:`Cescato no recomienda automáticamente separar en tantos equipos por el tamaño. Suele agruparse por afinidad de subcanales; 5 equipos independientes generan duplicación de esfuerzos y costos y son excepción, no regla.`}
 ];
 
 /* ===================== LÓGICA ===================== */
@@ -2301,7 +2377,7 @@ let selectedText='hair', queue=[], idx=0, score=0, wrongList=[], currentMode='ex
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function $(id){return document.getElementById(id);}
 function show(sec){['textselect','modeselect','quiz','results'].forEach(s=>$(s).classList.add('hidden'));$(sec).classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
-function poolFor(text,expressOnly){return BANK.filter(q=>(text==='todos'||q.text===text)&&(!expressOnly||q.express));}
+function poolFor(text,expressOnly){return BANK.filter(q=>(text==='todos'?q.text!=='parcial':q.text===text)&&(!expressOnly||q.express));}
 
 function chooseText(t){
   selectedText=t;
