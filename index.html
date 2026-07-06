@@ -206,8 +206,8 @@
         <div class="textcard pc" onclick="chooseText('parcial')">
           <div class="num">P</div>
           <div class="body">
-            <h3>Parciales modelo (I.d y II.d)</h3>
-            <p>Ítems oficiales de la cátedra · 7 preguntas</p>
+            <h3>Parciales modelo (5.a y 5.b)</h3>
+            <p>Ítems oficiales de la cátedra · 14 preguntas</p>
           </div>
           <div class="chev">›</div>
         </div>
@@ -309,7 +309,7 @@ const TEXT_INFO = {
   frydman:  {title:'Frydman — Efectividad y productividad comercial', sub:'Caps. 1, 9 y 13 (2012)'},
   cescato:  {title:'Cescato — Consumo masivo, es hora de cambiar', sub:'Caps. II, III, IV y VI (2019)'},
   hubspot:  {title:'HubSpot — El poder de la conexión', sub:'Enriquecimiento de contactos con IA (2025)'},
-  parcial:  {title:'Parciales modelo I.d y II.d', sub:'Ítems oficiales de la cátedra (7 preguntas)'},
+  parcial:  {title:'Parciales modelo (5.a y 5.b)', sub:'Ítems oficiales de la cátedra (14 preguntas)'},
   todos:    {title:'Todos los textos', sub:'Repaso integral · Unidad 5'}
 };
 
@@ -2305,7 +2305,7 @@ const BANK = [
  just:`El texto: ciclo de ventas, tasa de cierre y costo de adquisición como indicadores centrales.`},
 
 /* ---------- PARCIALES MODELO (212-218) ---------- */
-{n:212,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo · Lavolpe: importancia del PV',
+{n:212,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo 5.a · Lavolpe: importancia del PV',
  q:`Lavolpe et al.: Presupuestos y gestión. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) sobre la importancia del presupuesto de ventas (PV) es correcta?`,
  opts:[
   `El PV es uno de los presupuestos parciales de la empresa, cuya elaboración depende previamente de que estén definidos el presupuesto de producción y el plan de compras de insumos.`,
@@ -2315,7 +2315,7 @@ const BANK = [
  correct:'d',
  just:`El PV es la base de todo el sistema presupuestario; un mal pronóstico contamina la cadena posterior (producción, compras, financiero).`},
 
-{n:213,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo · Hair: pronóstico snack B2B',
+{n:213,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo 5.a · Hair: pronóstico snack B2B',
  q:`Hair et al.: Administración de ventas. Una empresa de consumo masivo lanza un nuevo snack y necesita estimar su demanda inicial. No cuenta con datos históricos de ventas del producto y sus clientes directos son grandes cadenas de supermercados, fácilmente identificables y en número reducido. El gerente de ventas está evaluando qué método de pronóstico aplicar. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
   `El método más adecuado sería el promedio móvil de tres años, ya que al tratarse de un producto nuevo es conveniente anclar el pronóstico en los datos históricos de productos similares de la empresa.`,
@@ -2325,7 +2325,7 @@ const BANK = [
  correct:'b',
  just:`La encuesta de intenciones es ideal cuando los clientes son pocos e identificables; el jurado ejecutivo no está restringido a esa condición y el mercado de prueba tampoco está reservado al B2B.`},
 
-{n:214,text:'parcial',express:true,type:'mc',ask:'incorrecta',src:'Parcial modelo · Frydman: PPVV',
+{n:214,text:'parcial',express:true,type:'mc',ask:'incorrecta',src:'Parcial modelo 5.a · Frydman: PPVV',
  q:`Frydman: Efectividad y productividad comercial. ¿Cuál de las siguientes afirmaciones (a-d) sobre productividad comercial y el concepto de PPVV es incorrecta?`,
  opts:[
   `La productividad es una medida que abarca eficacia y eficiencia en forma conjunta: la eficacia refiere a la consecución de la meta y la eficiencia mide la proporción entre ese resultado y los insumos requeridos.`,
@@ -2335,7 +2335,7 @@ const BANK = [
  correct:'f',
  just:`Las cuatro reproducen definiciones textuales de Frydman. Si piden la INCORRECTA y todas son correctas, la respuesta es "Ninguna de las anteriores (a-d) es incorrecta".`},
 
-{n:215,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo · Cescato: periodicidad y frecuencia',
+{n:215,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo 5.a · Cescato: periodicidad y frecuencia',
  q:`Cescato: Consumo masivo. Con relación a la periodicidad y frecuencia de visita, y su vínculo con la rotación y el stock, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
   `A mayor rotación de un producto, corresponde una mayor periodicidad de visita y una menor frecuencia, para no saturar al punto de venta con contactos innecesarios.`,
@@ -2345,7 +2345,7 @@ const BANK = [
  correct:'c',
  just:`Corto vencimiento, alto costo o necesidad de frío limitan el stock → visitas más frecuentes y menor tiempo entre visitas (menor periodicidad). a invierte la relación, b es absoluto y d confunde el cálculo.`},
 
-{n:216,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo · Lavolpe: aperturas del PV',
+{n:216,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo 5.a · Lavolpe: aperturas del PV',
  q:`Lavolpe et al.: Presupuestos y gestión. El área de Planeamiento y Control de una empresa solicita al equipo comercial que le entregue el presupuesto de ventas (PV) con una apertura por condición de venta (plazos de financiación), mientras que el área de Producción requiere la información agrupada por líneas de producción en unidades físicas. El área de Ventas, en cambio, necesita los datos abiertos por zonas y canales de distribución. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
   `Las distintas presentaciones solicitadas son coherentes con lo que el texto describe: cada sector utiliza el PV con fines distintos y requiere aperturas diferentes, siendo todas ellas derivaciones válidas de un mismo presupuesto base.`,
@@ -2355,7 +2355,7 @@ const BANK = [
  correct:'a',
  just:`El texto sostiene explícitamente que Producción, Ventas y Planeamiento necesitan aperturas distintas del mismo PV base (unidades físicas, zonas/canales, condición de venta).`},
 
-{n:217,text:'parcial',express:true,type:'mc',ask:'incorrecta',src:'Parcial modelo · Frydman: tres drivers',
+{n:217,text:'parcial',express:true,type:'mc',ask:'incorrecta',src:'Parcial modelo 5.a · Frydman: tres drivers',
  q:`Frydman: Efectividad y productividad comercial. ¿Cuál de las siguientes afirmaciones (a-d) sobre los tres drivers de la productividad de ventas es incorrecta?`,
  opts:[
   `Uno de los drivers implica definir a quién contarle la historia, ya que ofrecer a personas sin probabilidad de compra hace que la tasa de conversión sea cero independientemente de la cantidad de entrevistas o la calidad del producto.`,
@@ -2365,10 +2365,76 @@ const BANK = [
  correct:'f',
  just:`Las cuatro son afirmaciones textuales de Frydman (a quién / cuántos / qué contamos + analogía de la silla). Si piden la INCORRECTA y todas son correctas, la respuesta es f.`},
 
-{n:218,text:'parcial',express:true,type:'vf',src:'Parcial modelo · Cescato: fuerza de ventas por subcanal',
+{n:218,text:'parcial',express:true,type:'vf',src:'Parcial modelo 5.a · Cescato: fuerza de ventas por subcanal',
  q:`Cescato: Consumo masivo. Conteste V o F: Una empresa de consumo masivo con 500 puntos de venta está evaluando separar su fuerza de ventas por canal. Actualmente tiene una única fuerza de ventas que atiende supermercados (SMK), mayoristas, kioscos, negocios de canal tradicional y locales de gastronomía (On Premise). Un gerente propone crear equipos independientes para cada uno de los cinco subcanales. La propuesta del gerente es la recomendada por el texto: el tamaño de la cartera y las características suficientemente distintas de cada subcanal justifican asignar fuerzas de ventas separadas para cada uno de ellos.`,
  correct:'F',
- just:`Cescato no recomienda automáticamente separar en tantos equipos por el tamaño. Suele agruparse por afinidad de subcanales; 5 equipos independientes generan duplicación de esfuerzos y costos y son excepción, no regla.`}
+ just:`Cescato no recomienda automáticamente separar en tantos equipos por el tamaño. Suele agruparse por afinidad de subcanales; 5 equipos independientes generan duplicación de esfuerzos y costos y son excepción, no regla.`},
+
+/* ---------- PARCIALES MODELO 5.b (219-225) ---------- */
+{n:219,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo 5.b · Lavolpe: rubros del PV',
+ q:`Lavolpe et al.: Presupuestos y gestión. Con relación a los rubros que integran el presupuesto de ventas (PV), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
+ opts:[
+  `Las donaciones y obsequios efectuados con productos de la empresa no forman parte del PV porque no generan ingresos directos para la organización.`,
+  `La venta de bienes de uso y la venta de materias primas en el mismo estado en que fueron compradas se incluyen en el PV porque, si bien son operaciones no habituales, implican una transferencia de bienes a terceros.`,
+  `Las unidades entregadas sin cargo en calidad de bonificaciones por cantidad o por promoción deben incluirse en el PV para que el sector de producción disponga de un único documento sobre el cual planificar sus actividades.`,
+  `Las trasferencias internas de productos de una división a otra de la misma empresa, con la finalidad de ser consumidos o utilizados para la elaboración de otros productos, quedan excluidas del PV por no implicar una transferencia definitiva de bienes de la empresa a terceros.`],
+ correct:'c',
+ just:`Producción necesita saber TODAS las unidades a fabricar y despachar (incluidas bonificaciones sin cargo) sobre un único documento; donaciones/obsequios también integran el PV en unidades, bienes de uso NO son actividad habitual, y transferencias internas SÍ se incluyen porque producción debe fabricarlas.`},
+
+{n:220,text:'parcial',express:true,type:'mc',ask:'incorrecta',src:'Parcial modelo 5.b · Hair: criterios de elección de método',
+ q:`Hair et al.: Administración de ventas. El gerente de ventas de una empresa de tecnología necesita elegir un método de pronóstico. El mercado cambia con mucha rapidez, no dispone de mucho tiempo para elaborar el pronóstico y el equipo gerencial tiene amplia experiencia en el sector. Al mismo tiempo, un consultor externo propone aplicar un modelo econométrico complejo que requiere varias semanas de procesamiento. ¿Cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `La comprensibilidad es un criterio relevante para este caso: si solo los expertos en estadística comprenden cómo se obtienen las estimaciones, los ejecutivos de ventas tenderán a confiar menos en los resultados.`,
+  `La oportunidad es un criterio relevante para este caso: métodos complejos o encuestas extensas pueden demorar semanas, lo que los hace poco útiles cuando se necesitan respuestas con rapidez.`,
+  `El texto sugiere que en industrias con cambios rápidos el jurado de opinión ejecutiva puede ser el mejor método disponible, precisamente por su flexibilidad y velocidad de aplicación.`,
+  `Un pronóstico de ventas erróneo por ser demasiado bajo podría generar a la empresa, entre otros efectos, exceso de producción y de existencias, pudiendo incluso llegar al cierre de plantas.`],
+ correct:'d',
+ just:`Está invertido (Tabla 5.1 de Hair): un pronóstico demasiado BAJO produce agotamiento de existencias y pérdida de ventas. El exceso de producción, inventario y cierres de planta corresponden al pronóstico demasiado ALTO.`},
+
+{n:221,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo 5.b · Frydman: PPVV del 20% superior',
+ q:`Frydman: Efectividad y productividad comercial. Una empresa de seguros tiene 100 vendedores con una PPVV promedio de USD 2.000 por mes. El director comercial quiere llevar esa cifra a USD 2.600. Antes de diseñar el plan de mejora, decide revisar cuánto vende el 20% superior de su fuerza. Descubre que ese grupo tiene una PPVV promedio de USD 4.500 por mes. Según el texto, ¿qué conclusión preliminar es más adecuada?`,
+ opts:[
+  `Como el 20% superior ya supera ampliamente la meta de USD 2.600, el director debería enfocarse solo en ese grupo para maximizar resultados sin desperdiciar recursos en el resto.`,
+  `El dato del 20% superior demuestra empíricamente que con el mismo producto, sistemas e incentivos es factible alcanzar una nueva media de USD 2.600, lo que justifica trabajar sobre la efectividad del resto del equipo.`,
+  `El resultado del 20% superior no aporta información útil para definir la factibilidad de la meta.`,
+  `Según el texto, si la PPVV del 20% superior fuera de USD 2.450, de igual manera se puede aseverar la factibilidad de la meta propuesta.`],
+ correct:'b',
+ just:`Frydman: si el 20% superior ya alcanza USD 4.500 con el mismo producto, sistemas e incentivos, queda probada la factibilidad de USD 2.600 como nueva media. Si el 20% superior estuviera en USD 2.450 (< 2.600), no habría prueba de factibilidad de la meta.`},
+
+{n:222,text:'parcial',express:true,type:'mc',ask:'incorrecta',src:'Parcial modelo 5.b · Cescato: comisiones distributivas',
+ q:`Cescato: Consumo masivo. Una distribuidora de golosinas remunera a su fuerza de ventas mediante un porcentaje fijo de comisión sobre lo vendido. El gerente comercial nota que los vendedores concentran sus visitas en los clientes de mayor volumen y prácticamente ignoran a los puntos de venta más pequeños. Además, un aumento reciente de ventas —originado en una campaña publicitaria nacional— generó conflicto cuando la empresa intentó revisar el porcentaje de comisión. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
+ opts:[
+  `El comportamiento de los vendedores de concentrarse en clientes grandes es esperable en un esquema de comisiones, ya que el texto señala que este sistema puede ser distorsivo y poco equitativo.`,
+  `El conflicto generado al intentar ajustar las comisiones ante un aumento de ventas originado en una campaña publicitaria es un problema estructural del sistema: las comisiones se convierten en un derecho adquirido que la fuerza de ventas difícilmente acepta resignar, aun cuando el incremento no sea producto de su gestión.`,
+  `La solución propuesta por el texto es reemplazar las comisiones por programas de remuneración variable basados en objetivos, que permiten incluir múltiples indicadores como volumen, clientes con compra y eficiencia.`,
+  `Cuando las comisiones incluyen otras variables además de la venta en importes su cálculo puede volverse complejo, requiriendo que el vendedor dedique tiempo diario o semanal a ese cálculo para poder hacer el seguimiento de su avance durante el período.`],
+ correct:'f',
+ just:`Las cuatro son afirmaciones textuales de Cescato sobre las limitaciones del esquema de comisiones y la propuesta de remuneración variable por objetivos. Si piden la INCORRECTA y todas son correctas, la respuesta es f.`},
+
+{n:223,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo 5.b · Cescato: eficiencia teórica y de campo',
+ q:`Cescato: Consumo masivo. ¿Cuál de las siguientes afirmaciones (a-d) sobre la eficiencia teórica y la eficiencia de campo en la preventa es correcta?`,
+ opts:[
+  `La eficiencia de campo se calcula dividiendo los contactos con compra por los contactos planeados.`,
+  `La eficiencia de campo siempre arroja un valor menor que la eficiencia teórica, porque su denominador incluye todos los puntos de venta del padrón y no solo los visitados.`,
+  `La eficiencia teórica mide exclusivamente el desempeño del vendedor en los puntos de venta que efectivamente visitó, sin considerar los no visitados.`,
+  `Ambos indicadores son equivalentes cuando el vendedor cumple el 100% de las visitas planeadas, ya que en ese caso el denominador de ambos coincide.`],
+ correct:'d',
+ just:`Cuando visitados = planeados (cumplimiento del 100%), los denominadores de ambas fórmulas coinciden y los indicadores dan el mismo valor. a invierte el denominador; b y c también intercambian teórica ↔ campo.`},
+
+{n:224,text:'parcial',express:true,type:'mc',ask:'correcta',src:'Parcial modelo 5.b · Hair: métodos no cuantitativos',
+ q:`Hair et al.: Administración de ventas. Según el texto, ¿cuál de las siguientes afirmaciones (a-d) sobre los métodos no cuantitativos de elaboración de pronósticos es correcta?`,
+ opts:[
+  `El método de composición de la fuerza de ventas tiene como desventaja que los vendedores pueden subestimar deliberadamente su pronóstico para facilitar el cumplimiento posterior de sus cuotas.`,
+  `El pronóstico ingenuo supone que las ventas del siguiente periodo serán el promedio de los últimos tres periodos.`,
+  `El método del jurado de opinión ejecutiva tiene como ventaja principal que los altos directivos suelen estar en contacto permanente con los desarrollos en los mercados locales, lo que hace más confiable su estimación.`,
+  `Las encuestas de intenciones de compra son más útiles para mercados de consumo masivo que para mercados industriales.`],
+ correct:'a',
+ just:`Debilidad clásica de la composición de la FdV en Hair (sesgo pesimista para "asegurarse" la cuota). El ingenuo replica el ÚLTIMO periodo (no un promedio de tres); en el jurado ejecutivo los directivos suelen estar ALEJADOS de los mercados locales (es su desventaja); las encuestas son más útiles en B2B/industrial que en masivo.`},
+
+{n:225,text:'parcial',express:true,type:'vf',src:'Parcial modelo 5.b · Lavolpe: plazos de entrega del PV',
+ q:`Lavolpe et al.: Presupuestos y gestión. Conteste V o F: Una empresa farmacéutica confecciona su presupuesto de ventas (PV). El área de Producción solicita que se le entregue la información con suficiente anticipación, argumentando que el ciclo completo de adquisición de insumos, fabricación y puesta a disposición del producto demora 90 días. El área de Ventas, en cambio, considera que con recibir el PV una semana antes del inicio del período es suficiente para organizar su operación comercial. El texto da la razón al área de Ventas: dado que el PV es un instrumento comercial, su principal usuario es la fuerza de ventas, y las necesidades del área productiva resultan secundarias en la definición de los plazos de entrega.`,
+ correct:'F',
+ just:`El PV no es un instrumento exclusivamente comercial: es la base de TODO el sistema presupuestario (producción, compras, financiero, RRHH). Los plazos de entrega se definen por el ciclo productivo más largo (aquí 90 días), no por las necesidades operativas de Ventas.`}
 ];
 
 /* ===================== LÓGICA ===================== */
