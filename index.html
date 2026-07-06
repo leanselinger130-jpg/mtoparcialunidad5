@@ -1685,8 +1685,8 @@ const BANK = [
  opts:[
   `El preventista atiende, vende y entrega en el mismo momento y por la misma persona, en función al stock que lleva cargado en su vehículo, sin intervención de un repartidor o fletero en un momento posterior de la operación.`,
   `La clave de la preventa es la separación entre la función de venta y la de entrega: el preventista prevende y otra persona (repartidor/fletero) entrega después, habitualmente dentro de las 24 horas.`,
-  `En la preventa el día y la frecuencia de venta no se programan; el PDV decide cuándo comprar.`,
-  `La preventa es una modalidad no programada que depende de llamadas entrantes del cliente al call center.`],
+  `En la preventa, aunque las visitas están programadas, la venta y su frecuencia efectiva las decide el propio punto de venta según su necesidad de reposición, y la entrega queda condicionada a esa decisión del PDV.`,
+  `Es una modalidad programada exclusivamente por el call center: el operador telefónico contacta al PDV en un día fijo y coordina la entrega inmediata con el propio vehículo del preventista de la ruta asignada.`],
  correct:'b',
  just:`a describe la autoventa; c y d, otras modalidades. La preventa separa la venta (programada) de la entrega posterior.`},
 
@@ -1695,7 +1695,7 @@ const BANK = [
  opts:[
   `La misma persona ejecuta la atención, la venta y la entrega, que se realizan en el mismo momento en función al stock del vehículo.`,
   `Un preventista toma el pedido y otro repartidor lo entrega al día siguiente, en un esquema totalmente programado y separado.`,
-  `Se basa en operadores telefónicos que levantan pedidos sin presencia física en el punto de venta.`,
+  `Se basa en operadores telefónicos que levantan pedidos de manera programada sin presencia física en el punto de venta, y la entrega se coordina en el mismo momento a través del vehículo asignado a la ruta comercial.`,
   `El punto de venta realiza sus propios pedidos por una app o portal web y decide libremente el momento de la compra, en función a su propia necesidad de reposición de mercadería.`],
  correct:'a',
  just:`Venta y entrega simultáneas, por la misma persona (b es preventa; c es call center; d es autogestión).`},
@@ -1703,9 +1703,9 @@ const BANK = [
 {n:148,text:'cescato',express:false,type:'mc',ask:'incorrecta',src:'Cescato · Cap. II · Quién vende (Cuadro 2.2)',
  q:`Sobre "quién vende" en cada modalidad (Cuadro 2.2), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
  opts:[
-  `En la autoventa vende el vendedor/repartidor; en la preventa, el prevendedor.`,
+  `En la autoventa vende el vendedor/repartidor en el mismo momento en función al stock del vehículo; en la preventa vende el prevendedor y la entrega la ejecuta después un repartidor o fletero, dentro de las 24 horas siguientes.`,
   `Tanto en el Call Center (Call Out) como en el Contact Center (Call In) quien vende es un operador telefónico, que atiende las necesidades del punto de venta y levanta los pedidos.`,
-  `En la autogestión, quien "vende" es el propio punto de venta, que realiza sus pedidos.`,
+  `En la autogestión, quien "vende" es el propio punto de venta, que realiza sus pedidos a través de portales, soluciones web o apps móviles, sin intervención directa de un operador ni de un vendedor de la empresa distribuidora del sector.`,
   `En el Contact Center (Call In) la venta está programada con frecuencia fija, igual que en la preventa, ya que el operador llama al PDV según un cronograma establecido.`],
  correct:'d',
  just:`El Call In recibe llamados que originan ventas NO programadas: el PDV es quien activa la venta.`},
@@ -1716,7 +1716,7 @@ const BANK = [
   `En el Call Center – Call Out, el operador llama de manera programada a un conjunto de PDVs (similar a la preventa) pero sin presencia física.`,
   `En el Contact Center – Call In la venta está programada y la empresa es la responsable de activar el pedido y la reposición del PDV.`,
   `Tanto el Call Out como el Call In entregan en el mismo momento de la venta, sin ningún tipo de diferimiento, ya que el operador telefónico coordina la entrega inmediata del pedido.`,
-  `El Call Out se aplica sólo cuando el producto es extremadamente fuerte y sin competencia en su sector.`],
+  `El Call Out se aplica cuando el producto es extremadamente fuerte, tiene una campaña de marketing muy potente y no tiene competencia en su sector, lo que determina que el mercado esté dispuesto a hacer el esfuerzo de compra.`],
  correct:'a',
  just:`En el Call In el PDV es el único responsable de activar la venta (b falsa); ambos entregan con diferimiento (c falsa); d describe al Call In.`},
 
@@ -1725,8 +1725,8 @@ const BANK = [
  opts:[
   `Preventa; con día y frecuencia de venta programados por la empresa, ya que el preventista visita físicamente el punto de venta según un cronograma fijo y estable.`,
   `Autogestión (portales/apps); no programada, ya que el PDV decide el momento de la compra en función a su necesidad.`,
-  `Contact Center – Call In; programada por el operador telefónico.`,
-  `Car service; con venta y entrega simultáneas en el punto de venta.`],
+  `Contact Center – Call In; programada por el operador telefónico de la empresa, que llama al PDV con periodicidad definida y confirma la reposición según el consumo estimado del período anterior por la cartera de clientes atendida.`,
+  `Car service; con venta y entrega simultáneas en el punto de venta, dado que la app permite al vendedor cargar el pedido en el sistema y descargar el producto desde el vehículo asignado en la misma jornada de trabajo comercial.`],
  correct:'b',
  just:`El IoT (heladeras/estanterías con sensores) amplía este modelo de autogestión.`},
 
@@ -1735,8 +1735,8 @@ const BANK = [
  opts:[
   `Aplicar sistemas mixtos es una excepción marginal que el autor desaconseja de forma expresa por su elevada complejidad operativa, sus costos y las dificultades de control que implica.`,
   `Aplicar sistemas mixtos es optimizar: como no todos los clientes son iguales, atender a todos de la misma manera es "la mayor pérdida de utilidad del negocio".`,
-  `Los sistemas mixtos consisten en aplicar una única modalidad uniforme a toda la cartera de clientes.`,
-  `Los sistemas mixtos sólo son viables para empresas con una cantidad muy limitada de SKUs.`],
+  `Los sistemas mixtos consisten en aplicar una única modalidad uniforme (habitualmente preventa) a toda la cartera de clientes, dado que la homogeneidad simplifica el control y reduce los costos operativos totales del negocio comercial.`,
+  `Los sistemas mixtos son viables solo para empresas con cantidad muy limitada de SKUs y todos ellos de pequeño tamaño, dado que la coexistencia de modalidades exige simplicidad de cartera para no perder eficiencia comercial.`],
  correct:'b',
  just:`Es la idea central del libro: optimizar combinando modalidades según el valor de cada cliente.`},
 
@@ -1744,8 +1744,8 @@ const BANK = [
  q:`Sobre las fortalezas y debilidades de cada modelo (Cuadro 2.3), ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
  opts:[
   `La autoventa tiene un nivel de servicio alto (el funcionario no sólo vende), pero se aplica sólo en empresas con pocos productos y no satisface la demanda completa en ruta.`,
-  `La preventa es costosa por su pesada estructura de recursos humanos, y tiene difícil control del personal en el campo.`,
-  `La autogestión es un modelo económico, sin los riesgos, costos y previsiones asociados a los recursos humanos.`,
+  `La preventa es costosa por su pesada estructura de recursos humanos (con riesgos y previsiones asociadas al personal en la calle), y tiene difícil control del vendedor en el campo durante su jornada de trabajo diaria en la ruta.`,
+  `La autogestión es un modelo económico, sin los riesgos, costos y previsiones asociados a los recursos humanos, aunque tiene nivel de servicio nulo dado que no hay contacto directo con el punto de venta atendido por la empresa.`,
   `El Call Center tiene un nivel de servicio alto y es difícil de controlar, ya que la tarea se efectúa fuera de un ambiente supervisado que impide optimizar los recursos.`],
  correct:'d',
  just:`El Call Center tiene nivel de servicio bajo y es fácil de controlar (ambiente supervisado).`},
@@ -1755,8 +1755,8 @@ const BANK = [
  opts:[
   `La autoventa es el modelo ideal del sector y hoy alrededor del 90% de las compañías de consumo masivo la utilizan como forma principal de atención, mediante distribuidores o estructuras directas.`,
   `La preventa es el modelo ideal (bien ejecutada y con cartera rentable ofrece los mejores resultados); hoy el 90% de las compañías tienen distribuidores o directas que la usan.`,
-  `La autoventa se reserva para distribuidores con una enorme cantidad de SKUs de gran tamaño.`,
-  `El Contact Center – Call In es el modelo más usado del sector y reemplaza a la preventa en la mayoría de las distribuidoras.`],
+  `La autoventa se reserva para distribuidores con enorme cantidad de SKUs de gran tamaño, como los de bebidas o alimentos refrigerados que requieren rotación rápida y frecuencia alta de reposición en el punto de venta atendido.`,
+  `El Contact Center – Call In es el modelo más usado del sector y reemplaza a la preventa en la mayoría de las distribuidoras, dado que reduce estructura de RRHH y permite tomar pedidos con la misma programación semanal del canal.`],
  correct:'b',
  just:`La autoventa es para pocos SKUs / pequeño tamaño (cigarrillos, baterías, golosinas); el Call In como único modelo es marginal.`},
 
@@ -1765,18 +1765,18 @@ const BANK = [
  opts:[
   `Un punto de venta (PDV) sólo se considera tal si es una persona jurídica de cierto tamaño, con condición fiscal formal y que no pertenezca a ninguna cadena o grupo económico.`,
   `La ruta de venta es el conjunto de PDVs que un vendedor visita, atiende o llama en un día, con periodicidad y frecuencia repetitiva y estable.`,
-  `Una cadena o grupo económico son siempre PDVs de razones sociales distintas que compiten entre sí.`,
-  `La cantidad de PDVs por ruta es fija en 100, sin importar la movilidad del vendedor ni la zona geográfica.`],
+  `Una cadena o grupo económico son siempre PDVs de razones sociales distintas que compiten entre sí en la misma zona geográfica, y por eso el texto las trata como carteras independientes para el análisis comercial del período.`,
+  `La cantidad de PDVs por ruta es fija en 100 puntos de venta sin importar la movilidad del vendedor, la zona geográfica ni la densidad comercial, dado que la estandarización simplifica la comparación entre rutas del sector.`],
  correct:'b',
  just:`El PDV lo es independientemente de condición fiscal, tamaño o pertenencia (a falsa); la ruta habitual tiene 40-65 PDVs (d falsa).`},
 
 {n:155,text:'cescato',express:false,type:'mc',ask:'incorrecta',src:'Cescato · Cap. III · Periodicidad vs frecuencia',
  q:`Sobre periodicidad y frecuencia de visita, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
  opts:[
-  `La periodicidad es el tiempo cada el cual se repite el cronograma de visitas (habitualmente semanal).`,
+  `La periodicidad es el tiempo cada el cual se repite el cronograma de visitas para una ruta de venta (habitualmente semanal en el sector), con casos excepcionales de visitas quincenales e incluso mensuales según la cartera.`,
   `La frecuencia de visita es la cantidad de días (y por ende la cantidad de veces) con que se visita, atiende o llama a un PDV o a una ruta dentro de la periodicidad definida.`,
   `La periodicidad y la frecuencia son conceptos equivalentes que miden exactamente lo mismo dentro del cronograma de atención de una ruta.`,
-  `Una ruta semanal con frecuencia 2 se visita dos días por semana (por ejemplo, lunes y jueves).`],
+  `Una ruta semanal con frecuencia 2 se visita dos días por semana (por ejemplo, lunes y jueves), respetando la separación de días para mantener una atención distribuida durante el período de la periodicidad definida por la empresa.`],
  correct:'c',
  just:`Son conceptos distintos: una es el "cada cuánto"; la otra, "cuántas veces" dentro de esa periodicidad.`},
 
@@ -1785,18 +1785,18 @@ const BANK = [
  opts:[
   `A mayor rotación de un producto corresponde siempre una mayor periodicidad de visita y una menor frecuencia de atención, para no saturar al punto de venta con contactos innecesarios y reducir de ese modo los costos logísticos totales.`,
   `Mayor rotación implica menor periodicidad y mayor frecuencia; productos con corto vencimiento, alto costo o necesidad de frío limitan el stock e impactan también en una mayor frecuencia y menor periodicidad.`,
-  `Los niveles de stock son el único factor que determina la periodicidad y la frecuencia, siendo la rotación irrelevante.`,
-  `Productos con muchas presentaciones o sabores no afectan de ningún modo la periodicidad ni la frecuencia de atención.`],
+  `Los niveles de stock promedio son el único factor determinante de la periodicidad y la frecuencia, siendo la rotación una variable secundaria que solo interviene cuando el stock del PDV se acerca al mínimo operativo definido por la empresa.`,
+  `Productos con muchas presentaciones o sabores no afectan la periodicidad ni la frecuencia de atención, ya que estos factores dependen exclusivamente del canal comercial (SMK, tradicional, mayorista) y no del mix de productos ofrecido.`],
  correct:'b',
  just:`a invierte la relación; la rotación es uno de los dos factores clave junto al nivel de stock.`},
 
 {n:157,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Aplicación rotación/stock',
  q:`Una distribuidora incorpora un lácteo de corto vencimiento y alta rotación que necesita frío. Según el texto, ¿qué corresponde?`,
  opts:[
-  `Aumentar la periodicidad y reducir la frecuencia, para no saturar el punto de venta con contactos.`,
+  `Aumentar la periodicidad (quincenal o mensual) y reducir la frecuencia a una sola visita por período, para no saturar el punto de venta con contactos y minimizar el costo logístico de un producto con márgenes bajos y frío.`,
   `Reducir la periodicidad (por ejemplo, semanal) y aumentar la frecuencia (dos o tres visitas), porque tanto la alta rotación como el bajo stock lo empujan en ese sentido.`,
   `Mantener exactamente la misma periodicidad y frecuencia que el resto de la cartera, ya que ni el vencimiento del producto ni sus necesidades de frío constituyen factores relevantes para definir la atención.`,
-  `Atender ese producto sólo con periodicidad mensual, dado su alto costo de inmovilización.`],
+  `Atender ese producto sólo con periodicidad mensual dado su alto costo de inmovilización, aunque compensando con una entrega diaria del preventista para asegurar la rotación y evitar rupturas de stock en el punto de venta.`],
  correct:'b',
  just:`Alta rotación y bajo stock → menor periodicidad y mayor frecuencia.`},
 
@@ -1817,8 +1817,8 @@ const BANK = [
  opts:[
   `Se calcula dividiendo los contactos con compra por los contactos planeados y multiplicando por cien.`,
   `Se calcula dividiendo los contactos con compra por los contactos realmente visitados, excluyendo los planeados no visitados.`,
-  `Es un indicador de venta que mide el volumen facturado neto de descuentos e impuestos.`,
-  `Sólo permite analizar al vendedor, sin decir nada sobre la periodicidad ni la frecuencia definidas.`],
+  `Es un indicador de venta que mide el volumen facturado neto de descuentos e impuestos en cada operación registrada por el vendedor durante su jornada laboral, orientado al análisis de la rentabilidad comercial del período.`,
+  `Sólo permite analizar el desempeño del vendedor en su ruta asignada, sin decir nada sobre la periodicidad ni la frecuencia definidas, dado que estas variables se evalúan con otros indicadores propios del negocio comercial.`],
  correct:'a',
  just:`b es la eficiencia de campo; y la teórica sí permite evaluar si la periodicidad/frecuencia están bien definidas.`},
 
@@ -1843,18 +1843,18 @@ const BANK = [
  opts:[
   `Cuenta únicamente los PDVs en los que el vendedor registró manualmente una visita en su sistema de gestión, en función a una acción o evento que él mismo confirma al finalizar la atención.`,
   `Mediante GPS, cuenta los PDVs en los que el vendedor pasó a menos de 50-100 metros; el PDV se considera visitado por su ubicación geográfica, no por una acción registrada.`,
-  `Cuenta únicamente los clientes que efectivamente realizaron una compra en el período.`,
-  `Es el padrón total de clientes que la empresa podría llegar a atender.`],
+  `Cuenta únicamente los clientes que efectivamente realizaron una compra en el período, dado que sin operación registrada la visita no puede computarse como efectiva en el indicador de eficiencia de la ruta del vendedor asignado.`,
+  `Es el padrón total de clientes que la empresa podría llegar a atender en su zona geográfica de distribución, y sirve de denominador para el cálculo de la efectividad y otros indicadores porcentuales del negocio comercial.`],
  correct:'b',
  just:`El GPS mide la cercanía física, no una acción del vendedor.`},
 
 {n:164,text:'cescato',express:true,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Eficiencia de campo',
  q:`Sobre la eficiencia de campo, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
-  `Se calcula dividiendo los visitados con compra por los contactos planeados del período.`,
+  `Se calcula dividiendo los visitados con compra por los contactos planeados del período, dado que el texto ancla la fórmula al plan de visitas de la ruta y no al comportamiento real del vendedor durante su jornada laboral asignada.`,
   `Se calcula dividiendo los visitados con compra por los visitados, y siempre arroja un valor mayor que la eficiencia teórica porque su denominador es menor.`,
   `Siempre arroja un valor menor que la eficiencia teórica, porque su denominador incluye la totalidad de los PDVs del padrón y no sólo aquellos que el vendedor efectivamente visitó en la jornada.`,
-  `Mide exactamente lo mismo que la eficiencia teórica, ya que ambos usan el mismo denominador.`],
+  `Mide exactamente lo mismo que la eficiencia teórica, dado que ambos indicadores usan el mismo denominador (contactos planeados) y sólo cambian en la definición del numerador según la modalidad de atención empleada por el vendedor.`],
  correct:'b',
  just:`Es una pormenorización de la teórica, enfocada en los PDVs que realmente visitó (denominador menor → valor mayor).`},
 
@@ -1869,8 +1869,8 @@ const BANK = [
  opts:[
   `Un cliente cuenta como comprador en proporción directa a la cantidad de productos que adquirió y a la cantidad de veces que efectuó una compra a lo largo del período considerado.`,
   `Un cliente es comprador o no lo es (con al menos una compra), y se aconseja definir un mínimo de compra para evitar que se sobrevalúe el indicador con cantidades mínimas.`,
-  `Los productos entregados sin cargo siempre deben computarse como compra, sin excepción ni discusión.`,
-  `Es un índice porcentual que se obtiene dividiendo por el padrón total de clientes.`],
+  `Los productos entregados sin cargo siempre deben computarse como compra, sin excepción ni discusión, dado que el texto sostiene que la presencia del producto en el mercado es lo único relevante para el indicador comercial del período.`,
+  `Es un índice porcentual que se obtiene dividiendo la cantidad de clientes compradores por el padrón total de clientes registrados por la empresa distribuidora, multiplicado por cien para expresarlo como porcentaje.`],
  correct:'b',
  just:`No hay consenso sobre los sin cargo; d describe la efectividad/cobertura.`},
 
@@ -1879,18 +1879,18 @@ const BANK = [
  opts:[
   `Se obtiene dividiendo la cantidad de clientes con compra por el padrón total de clientes, multiplicado por 100.`,
   `Se obtiene dividiendo los visitados con compra por el total de visitados que registró el dispositivo GPS del vendedor durante su jornada de trabajo.`,
-  `Mide el volumen facturado neto de descuentos, expresado en unidad de medida (litros o kilos).`,
-  `Es un valor nominal (no porcentual) que cuenta la cantidad de clientes compradores del período.`],
+  `Mide el volumen facturado neto de descuentos, expresado en unidad de medida (litros o kilos), y complementa el análisis de venta en importes al eliminar el impacto de las variaciones de precio en el período comparado del negocio.`,
+  `Es un valor nominal (no porcentual) que cuenta la cantidad de clientes compradores del período, y por eso el texto lo distingue de la efectividad, que sí se expresa en porcentaje sobre el padrón total de clientes registrados.`],
  correct:'a',
  just:`Representa la porción de clientes que compran sobre todos los posibles compradores.`},
 
 {n:168,text:'cescato',express:false,type:'mc',ask:'correcta',src:'Cescato · Cap. III · Clientes con compra vs efectividad',
  q:`Sobre medir clientes con compra o efectividad (padrón no depurado), ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
-  `Siempre conviene medir sólo clientes con compra, porque la efectividad nunca aporta contexto sobre el máximo posible.`,
+  `Siempre conviene medir sólo clientes con compra, porque la efectividad nunca aporta contexto útil sobre el máximo posible ni permite comparar el desempeño con otros períodos del mismo negocio o con otras rutas de venta del sector.`,
   `Es preferible medir efectividad (contextualiza con el 100%), pero requiere un padrón completo y real; si no está depurado, conviene medir ambos indicadores a la vez.`,
   `Con un padrón sin depurar, la efectividad porcentual siempre sube en los primeros períodos de medición, aun cuando no crezcan los clientes con compra, porque el denominador se estabiliza muy rápido.`,
-  `Depurar el padrón no tiene ningún efecto sobre el valor de la efectividad porcentual.`],
+  `Depurar el padrón no tiene ningún efecto sobre el valor de la efectividad porcentual, ya que el numerador (compradores) y el denominador (padrón) crecen a igual ritmo por definición metodológica del indicador comercial del período.`],
  correct:'b',
  just:`Con padrón sin depurar la efectividad tiende a bajar al inicio (crece el denominador), por eso se miden ambos.`},
 
@@ -1899,8 +1899,8 @@ const BANK = [
  opts:[
   `Los vendedores efectivamente dejaron de vender durante esos meses, pese a registrar un número creciente de altas de clientes nuevos en el padrón de la distribuidora.`,
   `Es más fácil dar de alta clientes no registrados que venderles; al crecer el denominador (padrón), el porcentaje baja aunque los compradores aumenten.`,
-  `La efectividad se calcula mal cuando el padrón crece, y por eso el indicador pierde toda validez.`,
-  `La caída se debe exclusivamente a la estacionalidad del consumo entre febrero y abril.`],
+  `La efectividad se calcula mal cuando el padrón crece durante el período, y por eso el indicador pierde toda validez, obligando a la empresa a recurrir exclusivamente al conteo nominal de clientes compradores mensuales del negocio.`,
+  `La caída se debe exclusivamente a la estacionalidad del consumo entre febrero y abril, sin relación con la depuración del padrón ni con el crecimiento del denominador aplicado en el cálculo del indicador porcentual comercial.`],
  correct:'b',
  just:`Dar de alta clientes es más fácil que venderles: el padrón crece más rápido que los compradores.`},
 
@@ -1909,8 +1909,8 @@ const BANK = [
  opts:[
   `Es un indicador perfectamente exacto para analizar las ventas totales de la empresa, incluso cuando se mezclan productos de muy distinta presentación, empaque o tamaño dentro del mismo total.`,
   `Es válido para análisis por SKU/producto, pero resulta inexacto para ventas totales; un cambio de empaque (de 6 a 12) puede simular una caída del 50% sin cambio de volumen real.`,
-  `Se expresa siempre en importes netos, tras descuentos y sin impuestos.`,
-  `Convierte todos los productos a una unidad de medida uniforme (litros o kilos) para evitar distorsiones.`],
+  `Se expresa siempre en importes netos, tras descuentos y sin impuestos, dado que el texto lo asocia al monto neto que percibe efectivamente el negocio por cada operación registrada durante el período comparado del análisis comercial.`,
+  `Convierte todos los productos a una unidad de medida uniforme (litros o kilos) para evitar distorsiones, y por eso el texto lo recomienda como reemplazo del análisis en importes en períodos con inflación alta o descuentos agresivos aplicados.`],
  correct:'b',
  just:`"Mezclar chanchos con bicicletas": c es la venta neta y d es la venta en unidad de medida.`},
 
@@ -1925,8 +1925,8 @@ const BANK = [
  opts:[
   `Aplica un factor de conversión uniforme (volumen o peso) para superar las limitaciones de los bultos y de los importes; si el volumen es muy grande, se usa la unidad mayor (hectolitros/toneladas).`,
   `Consiste en sumar la totalidad de los bultos vendidos según la presentación original con la que el fabricante entrega cada producto (cajas, packs, blisters), sin aplicar ningún factor de conversión uniforme.`,
-  `Es el monto neto que percibe el negocio tras descuentos y sin impuestos.`,
-  `Sólo puede aplicarse a productos sólidos pesables, nunca a bebidas ni líquidos.`],
+  `Es el monto neto que percibe el negocio tras descuentos y sin impuestos, y se calcula multiplicando el precio bruto por la cantidad vendida y por el factor (1 - bonificación) según la fórmula de venta neta clásica del negocio.`,
+  `Sólo puede aplicarse a productos sólidos pesables, nunca a bebidas ni líquidos, dado que el texto reserva la conversión a unidad de medida a los productos con empaque rígido y peso estable durante todo el período comparado del análisis.`],
  correct:'a',
  just:`Bebidas → litros/hectolitros; alimentos → kilos/toneladas.`},
 
@@ -1935,8 +1935,8 @@ const BANK = [
  opts:[
   `Mide el tamaño promedio de una entrega o venta, dividiendo el indicador elegido (bultos, litros, kilos, importe) por la cantidad de entregas/operaciones.`,
   `Mide la porción de clientes que compran un producto sobre el padrón total de posibles compradores, expresada como un valor porcentual respecto del máximo posible del 100%.`,
-  `Es el cociente entre los contactos con compra y los contactos planeados del período.`,
-  `Es la estimación de las ventas futuras a partir de la extrapolación de los períodos pasados.`],
+  `Es el cociente entre los contactos con compra y los contactos planeados del período de análisis, y por eso el texto lo asocia al indicador principal de la modalidad de preventa presencial en el mercado del sector consumo masivo actual.`,
+  `Es la estimación de las ventas futuras a partir de la extrapolación de los períodos pasados sobre la base de los días trabajados y los días totales hábiles del mes de análisis considerado por la empresa distribuidora.`],
  correct:'a',
  just:`b es efectividad; c, eficiencia teórica; d, tendencia.`},
 
@@ -1951,8 +1951,8 @@ const BANK = [
  opts:[
   `Se calcula exactamente igual que el promedio simple o tradicional: sumando todos los valores del conjunto y dividiendo ese total por la cantidad de valores que lo componen, sin asignar ningún peso ni ponderación particular a ninguno.`,
   `Multiplica cada dato por su ponderación, suma esos productos y divide por la suma de los pesos; la ponderación puede ser subjetiva (criterio personal) u objetiva (otro indicador de la serie).`,
-  `Sólo puede usarse con ponderaciones objetivas, nunca subjetivas.`,
-  `Siempre arroja el mismo resultado que el promedio simple, por lo que resulta redundante.`],
+  `Sólo puede usarse con ponderaciones objetivas, nunca subjetivas, dado que el texto reserva el método a las series con un atributo duro (cantidades, precios) que le dé peso propio a cada dato del conjunto analizado por el negocio.`,
+  `Siempre arroja el mismo resultado que el promedio simple, por lo que resulta redundante como herramienta de análisis; el texto lo menciona solo como ejercicio conceptual, sin recomendarlo para la operación diaria del negocio comercial.`],
  correct:'b',
  just:`La ponderación puede ser subjetiva u objetiva y cambia por completo el ranking respecto del promedio simple.`},
 
@@ -1961,8 +1961,8 @@ const BANK = [
  opts:[
   `Usar directamente el promedio simple de los precios, ya que el autor lo considera el método más objetivo y lógico para analizar el precio real percibido por cada unidad efectivamente vendida del SKU durante el período.`,
   `Usar el precio promedio ponderado por las cantidades vendidas a cada precio ($78,58), que refleja el valor real percibido por unidad y, multiplicado por los bultos, da la venta total neta.`,
-  `Descartar todo análisis de precios porque los descuentos lo vuelven imposible de calcular.`,
-  `Tomar directamente el precio de lista de reposición como precio promedio del período.`],
+  `Descartar todo análisis de precios porque los descuentos vuelven imposible su cálculo, y por eso el texto sugiere trabajar exclusivamente con volúmenes en litros o kilos para evitar las distorsiones del sistema comercial de la empresa distribuidora.`,
+  `Tomar directamente el precio de lista de reposición como precio promedio del período, dado que refleja el valor de mercado y elimina el ruido de los descuentos otorgados en cada operación comercial del período comparado del negocio.`],
  correct:'b',
  just:`El precio promedio ponderado se usa luego para el análisis de contribución marginal (restando el costo).`},
 
@@ -1971,8 +1971,8 @@ const BANK = [
  opts:[
   `Es una medida de tendencia central (media, mediana o modo) aplicada al conjunto de ventas del período, que resume en un único valor el comportamiento típico de la serie histórica de ventas del período analizado.`,
   `Es la inclinación o estimación de las ventas futuras: extrapola el comportamiento promedio de los períodos pasados a los futuros (Venta Real / Períodos Transcurridos × Total de Períodos).`,
-  `Es el tamaño promedio de cada entrega, obtenido dividiendo la venta por la cantidad de comprobantes.`,
-  `Es el porcentaje de clientes que compran sobre el padrón total.`],
+  `Es el tamaño promedio de cada entrega, obtenido dividiendo la venta total del período por la cantidad de comprobantes u operaciones registradas durante el mismo período de análisis según la fórmula del drop size del negocio.`,
+  `Es el porcentaje de clientes que compran sobre el padrón total de posibles compradores, y por eso el texto la asocia al indicador de efectividad o cobertura sobre la cartera total registrada de la empresa distribuidora del sector.`],
  correct:'b',
  just:`El texto aclara que no debe confundirse con la tendencia central.`},
 
@@ -1985,7 +1985,7 @@ const BANK = [
 {n:179,text:'cescato',express:true,type:'mc',ask:'incorrecta',src:'Cescato · Cap. IV · Comisiones',
  q:`Sobre las comisiones como metodología única de remuneración variable, ¿cuál de las siguientes afirmaciones (a-d) es incorrecta?`,
  opts:[
-  `Son limitantes porque contemplan sólo la variable monetaria, cuando existen esquemas con capacitación, cursos y ocio.`,
+  `Son limitantes porque contemplan sólo la variable monetaria, cuando existen esquemas de retribución que también ponen en juego capacitación, cursos, elementos personales y de ocio para motivar a los recursos comerciales del negocio.`,
   `Cuando incluyen otras variables además de la venta en importes, su cálculo puede volverse tan complejo que el vendedor sólo conoce cuánto cobra al finalizar el período.`,
   `Pueden ser distorsivas: el vendedor tiende a concentrarse en los clientes grandes que impactan su comisión y a desatender a los pequeños.`,
   `Constituyen la metodología que el autor recomienda con carácter general, por ser la forma más equitativa de retribuir a la fuerza de ventas.`],
@@ -1997,8 +1997,8 @@ const BANK = [
  opts:[
   `El vendedor que más comisiones cobra es siempre, y por definición, el mejor vendedor y el que mejor trabaja de toda la fuerza de ventas, con independencia de la zona geográfica que le haya tocado.`,
   `Como la ruta se define por límites geográficos, muchas veces el que más comisiones cobra es circunstancialmente quien tiene los mejores clientes en su zona, no el mejor vendedor.`,
-  `La comisión no guarda ninguna relación con la zona geográfica asignada al vendedor.`,
-  `Para equilibrar, las empresas asignan siempre las mejores zonas a los peores vendedores.`],
+  `La comisión no guarda ninguna relación con la zona geográfica asignada al vendedor, dado que la empresa asigna las rutas por sorteo aleatorio para asegurar la equidad entre todos los integrantes de la fuerza de ventas del sector.`,
+  `Para equilibrar el sistema, las empresas del sector asignan siempre las mejores zonas a los peores vendedores, buscando así compensar la falta de habilidad comercial con la calidad de la cartera de clientes recibida por cada uno.`],
  correct:'b',
  just:`Por eso se asignan mejores zonas a los mejores (evaluación subjetiva) o se rompe la cercanía geográfica de las rutas.`},
 
@@ -2007,8 +2007,8 @@ const BANK = [
  opts:[
   `Cuando las ventas aumentan desproporcionadamente por una acción comercial, publicidad o un nuevo producto, las comisiones se vuelven un "derecho adquirido" difícil de ajustar, aun cuando el incremento no fue producto de la gestión del vendedor.`,
   `Ante un aumento de ventas totalmente ajeno a su propia gestión, los vendedores aceptan sin ningún tipo de conflicto ni resistencia resignar de inmediato su participación histórica en las comisiones que venían percibiendo mes a mes desde su ingreso a la empresa.`,
-  `Si las ventas caen, la empresa nunca modifica el esquema ni incorpora productos con mejor comisión.`,
-  `El conflicto por las comisiones desaparece por completo cuando las ventas crecen, ya que todos ganan más.`],
+  `Si las ventas caen, la empresa nunca modifica el esquema ni incorpora productos con mejor comisión, dado que el texto sostiene que el porcentaje pactado debe mantenerse estable con independencia de la evolución comercial del período.`,
+  `El conflicto por las comisiones desaparece por completo cuando las ventas crecen, ya que todos los vendedores ganan más y no hay motivo para renegociar el esquema retributivo pactado con la fuerza de ventas de la empresa distribuidora.`],
  correct:'a',
  just:`Las comisiones se convierten en derecho adquirido cuando el aumento excede la gestión del vendedor.`},
 
@@ -2017,8 +2017,8 @@ const BANK = [
  opts:[
   `El autor se opone por completo a la remuneración variable de la fuerza de ventas y prefiere garantizar un ingreso fijo elevado para todo el equipo comercial, sin distinguir en absoluto entre los de mejor y peor desempeño individual dentro de la estructura.`,
   `Los programas de remuneración variable definen objetivos que dan un valor económico directo y reemplazan a las comisiones; con objetivos S.M.A.R.T. y escala adecuada, la mayoría del personal debería percibir al menos una escala básica.`,
-  `En los programas de premios (concursos) siempre cobran todos los participantes por igual, sin escala ni ranking.`,
-  `En estos programas sólo puede incluirse el objetivo de venta en importes, nunca otros indicadores.`],
+  `En los programas de premios (concursos) siempre cobran todos los participantes por igual, sin escala ni ranking de desempeño, dado que el texto los propone como mecanismo de reconocimiento colectivo antes que individual de la fuerza de ventas.`,
+  `En estos programas sólo puede incluirse el objetivo de venta en importes, nunca otros indicadores del desempeño comercial como clientes con compra o eficiencia, dado que la venta neta es la única variable objetiva comparable.`],
  correct:'b',
  just:`El autor defiende la meritocracia (menor fijo + mayor variable); los premios a veces premian sólo a los "N" primeros; pueden incluir varios indicadores.`},
 
@@ -2033,8 +2033,8 @@ const BANK = [
  opts:[
   `Lo recomendable, según el autor, es tener una fuerza de ventas exclusiva e independiente para cada uno de los subcanales existentes (SMK, Tradicional, Kioscos, Petroleras, Social y On Premise), sin importar el tamaño total de la cartera de clientes de cada zona geográfica.`,
   `No conviene tener una fuerza por canal (por costos y traslados); se aconseja separar al menos dos: una para SMK y Mayoristas, y otra para el resto (Tradicional, Kioscos, Petroleras, Social, On Premise), con una cartera mínima de 1.000 PDVs.`,
-  `Nunca conviene separar fuerzas de ventas, porque los canales tienen características idénticas.`,
-  `La separación se justifica con cualquier cartera, incluso con menos de 100 PDVs.`],
+  `Nunca conviene separar fuerzas de ventas por canal, dado que los canales tienen características idénticas en su forma de atención y en los productos que compran, y por eso el texto reserva la separación a casos excepcionales de gran volumen anual.`,
+  `La separación de fuerzas se justifica con cualquier tamaño de cartera, incluso con menos de 100 PDVs por zona, dado que el texto sostiene que la especialización del vendedor por canal siempre mejora el nivel de servicio y las ventas.`],
  correct:'b',
  just:`a describe justamente lo que el autor descarta; la cota mínima es ~1.000 PDVs.`},
 
@@ -2042,8 +2042,8 @@ const BANK = [
  q:`Sobre por qué no todos los clientes merecen la misma atención, ¿cuál de las siguientes afirmaciones (a-d) es correcta?`,
  opts:[
   `Según Pareto, alrededor del 80% de la venta se origina en el 20% de los clientes, por lo que la optimización debe ser por cliente, asignando a cada PDV la periodicidad y frecuencia que su valor justifica.`,
-  `Como todos los clientes son iguales, corresponde atenderlos a todos con la misma periodicidad y frecuencia.`,
-  `La mejor solución es que cada vendedor decida discrecionalmente a qué clientes visitar y a cuáles omitir.`,
+  `Como todos los clientes son iguales, corresponde atenderlos a todos con la misma periodicidad y frecuencia, dado que la homogeneidad simplifica el control de la fuerza de ventas y reduce los costos operativos totales del negocio comercial.`,
+  `La mejor solución es que cada vendedor decida discrecionalmente a qué clientes visitar y a cuáles omitir, dado que su conocimiento directo del PDV le permite optimizar mejor la atención que un análisis centralizado del área comercial.`,
   `Disminuir la frecuencia a rutas enteras (asignando frecuencia 2 a las "buenas rutas" y frecuencia 1 a las "malas rutas") resuelve por completo el problema de la atención no diferenciada de los clientes que integran la cartera.`],
  correct:'a',
  just:`La decisión no debe quedar en manos del vendedor (c); el recorte por ruta es insuficiente porque dentro de cada ruta conviven clientes de distinto valor (d).`},
